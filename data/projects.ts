@@ -892,7 +892,7 @@ export const projects: Project[] = [
     problemLines: [
       'The quality of AI output is directly determined by prompt quality, but most users have no feedback loop telling them when a prompt is underspecified',
       'Extension had to work across 3 different DOM structures (ChatGPT, Claude, Gemini) with no official API - required custom selectors and MutationObserver per platform',
-      'UX constraint: suggestions must appear without interrupting the user's flow and disappear cleanly when not needed'
+      'UX constraint: suggestions must appear without interrupting the user\'s flow and disappear cleanly when not needed'
     ],
     kpis: [
       { n: '3', l: 'AI Platforms Supported' },
@@ -928,7 +928,7 @@ export const projects: Project[] = [
     problem: 'Built as a deep-dive into real-time mobile product development. Wazzap replicates the core WhatsApp experience: contact lists, chat rooms, real-time message threads, and cross-platform delivery on both iOS and Android.',
     data: 'Chat messages, user contacts, conversation threads, message timestamps and read status',
     method: 'React Native + Expo for cross-platform mobile, React Navigation for screen routing, Zustand for client-side state management, custom theming system for dark/light mode support',
-    decisionChanged: 'Built the full messaging architecture: conversation list, real-time message thread, contact discovery, and the navigation flow that mirrors WhatsApp's tab-based UX.',
+    decisionChanged: 'Built the full messaging architecture: conversation list, real-time message thread, contact discovery, and the navigation flow that mirrors WhatsApp\'s tab-based UX.',
     whatIDid: 'Built the full app architecture: screens, navigation, state management, theming, and the real-time message thread component. Implemented all core messaging flows from scratch.',
     result: 'Cross-platform React Native app with full messaging UX: chat list, message threads, contacts, real-time updates, and dark/light theming.',
     impact: 'Complete messaging product built end-to-end. Full navigation, state management, theming system, and real-time UI all working cross-platform.',
