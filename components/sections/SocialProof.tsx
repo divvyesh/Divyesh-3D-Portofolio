@@ -50,10 +50,10 @@ export default function SocialProof() {
             <button
               key={t}
               onClick={() => setLightbox(t)}
-              style={{ padding: 0, border: '1px solid var(--line)', borderRadius: '12px', overflow: 'hidden', cursor: 'zoom-in', background: 'none', display: 'block', width: '100%', transition: 'border-color 200ms, transform 200ms' }}
+              style={{ padding: 0, border: '1px solid #000', borderRadius: '12px', overflow: 'hidden', cursor: 'zoom-in', background: 'none', display: 'block', width: '100%', transition: 'border-color 200ms, transform 200ms' }}
               aria-label={'View evaluation screenshot ' + t}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--accent)'; (e.currentTarget as HTMLElement).style.transform = 'scale(1.01)'; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--line)'; (e.currentTarget as HTMLElement).style.transform = ''; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = '#000'; (e.currentTarget as HTMLElement).style.transform = ''; }}
             >
               <Image
                 src={'/images/testimonials/' + t + '.png'}
