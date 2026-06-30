@@ -1,152 +1,153 @@
 'use client'
-import { useRef, useEffect, useState } from 'react'
 import Link from 'next/link'
+import { useRef, useEffect, useState } from 'react'
 
-const featured = [
-  {
-    slug: 'rat-lab',
-    tag: 'TOOL I BUILT',
-    tagColor: 'var(--accent)',
-    title: 'Built the research engine — not just the research',
-    decision: 'Closes the gap between insight speed and statistical validity without waiting weeks for live panels.',
-    metrics: ['React · TypeScript', 'GPT-4 Turbo', 'p-values + CIs in hours'],
-  },
+const FEATURED = [
   {
     slug: 'newdia',
-    tag: 'CLIENT WORK · MEASURED+MODELED',
-    tagColor: 'var(--accent-2)',
-    title: "Built a startup's entire analytics function from zero — rerouted 40% of a $1.2M budget",
-    decision: 'First-ever CAC and behavioral NPS funnel. Promotions budget moved from gut-feel to causal model.',
-    metrics: ['39,793 customers', 'Churn AUC 0.86', '2.3× ROAS channel found'],
+    chip: 'CLIENT WORK. MEASURED + MODELED',
+    chipColor: 'var(--accent)',
+    title: 'Built a startup\'s entire analytics function from zero, and rerouted 40% of a $1.2M budget.',
+    body: 'First ever CAC and behavioral NPS funnel. The promotions budget moved from gut feel to a causal model.',
+    metrics: ['39,793 customers', 'Churn AUC 0.86', '2.3x better ROAS channel found'],
+    thumbBg: 'linear-gradient(135deg, #0c1a14 0%, #0a2818 50%, #0c1a14 100%)',
+    thumbAccent: '#34d399',
   },
   {
     slug: 'starbucks',
-    tag: 'CAPSTONE · PROJECTED',
-    tagColor: 'var(--text-low)',
-    title: 'A 14% retention lift that lived entirely in one cohort the averages hid',
-    decision: 'Not a blanket menu change — a targeted intervention at the one segment the aggregates were masking.',
+    chip: 'CAPSTONE. PROJECTED',
+    chipColor: 'var(--text-low)',
+    title: 'A 14% retention lift that lived in one cohort the averages hid.',
+    body: 'Not a blanket menu change. A targeted intervention at the one segment the aggregates were masking, backed by a causal design.',
     metrics: ['3.2M loyalty records', 'DiD causal design', 'p < 0.01'],
+    thumbBg: 'linear-gradient(135deg, #0d1a0a 0%, #1a2d10 50%, #0d1a0a 100%)',
+    thumbAccent: '#6bcb77',
+  },
+  {
+    slug: 'rat-lab',
+    chip: 'TOOL I BUILT',
+    chipColor: 'var(--accent)',
+    title: 'Built the research engine, not just the research.',
+    body: 'LLM personas run as synthetic respondent cohorts and return p values, effect sizes, and confidence intervals in hours instead of weeks of live panels.',
+    metrics: ['React + TypeScript', 'GPT-4 Turbo', 'stats engine'],
+    thumbBg: 'linear-gradient(135deg, #0a0d1a 0%, #121a30 50%, #0a0d1a 100%)',
+    thumbAccent: '#7c5cff',
   },
 ]
 
-function WorkCard({ project, index }: { project: (typeof featured)[0]; index: number }) {
+function WorkCard({ project, index }: { project: typeof FEATURED[0], index: number }) {
   const [visible, setVisible] = useState(false)
-  const divRef = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLElement>(null)
 
   useEffect(() => {
     const obs = new IntersectionObserver(
       ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect() } },
       { threshold: 0.1 }
     )
-    if (divRef.current) obs.observe(divRef.current)
+    if (ref.current) obs.observe(ref.current)
     return () => obs.disconnect()
   }, [])
 
   return (
-    <div
-      ref={divRef}
-      className="transition-all duration-500"
+    <Link
+      ref={ref as unknown as React.RefObject<HTMLAnchorElement>}
+      href={'/work/' + project.slug}
       style={{
+        background: 'var(--bg-1)',
+        border: '1px solid var(--line)',
+        borderRadius: '16px',
+        overflow: 'hidden',
+        textDecoration: 'none',
+        display: 'block',
         opacity: visible ? 1 : 0,
-        transform: visible ? 'none' : 'translateY(20px)',
-        transitionDelay: `${index * 100}ms`,
+        transform: visible ? 'none' : 'translateY(16px)',
+        transition: 'opacity 450ms cubic-bezier(0.22,1,0.36,1) ' + (index * 100) + 'ms, transform 450ms cubic-bezier(0.22,1,0.36,1) ' + (index * 100) + 'ms, border-color 200ms ease-out',
       }}
+      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = project.chipColor === 'var(--accent)' ? 'rgba(52,211,153,0.4)' : 'var(--line)'; }}
+      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--line)'; }}
     >
-      <Link
-        href={`/work/${project.slug}`}
-        className="block p-6 rounded-[14px] transition-all duration-300 group"
-        style={{
-          background: 'var(--bg-1)',
-          border: '1px solid var(--line)',
-        }}
-        onMouseEnter={e => {
-          ;(e.currentTarget as HTMLElement).style.borderColor = 'rgba(110, 231, 183, 0.3)'
-          ;(e.currentTarget as HTMLElement).style.background = 'var(--bg-2)'
-        }}
-        onMouseLeave={e => {
-          ;(e.currentTarget as HTMLElement).style.borderColor = 'var(--line)'
-          ;(e.currentTarget as HTMLElement).style.background = 'var(--bg-1)'
-        }}
-      >
-        <div
-          className="font-mono text-[11px] uppercase tracking-[0.12em] mb-4 px-2 py-1 rounded-full inline-block"
-          style={{ background: `${project.tagColor}18`, color: project.tagColor, border: `1px solid ${project.tagColor}40` }}
-        >
-          {project.tag}
+      {/* Data viz thumbnail */}
+      <div style={{ height: '160px', background: project.thumbBg, position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <svg width="80%" height="80%" viewBox="0 0 300 120" aria-hidden="true">
+          <rect x="20" y="80" width="30" height="40" fill={project.thumbAccent} opacity="0.3" />
+          <rect x="60" y="55" width="30" height="65" fill={project.thumbAccent} opacity="0.5" />
+          <rect x="100" y="35" width="30" height="85" fill={project.thumbAccent} opacity="0.7" />
+          <rect x="140" y="20" width="30" height="100" fill={project.thumbAccent} opacity="0.9" />
+          <rect x="180" y="45" width="30" height="75" fill={project.thumbAccent} opacity="0.6" />
+          <rect x="220" y="65" width="30" height="55" fill={project.thumbAccent} opacity="0.4" />
+          <polyline points="35,80 75,55 115,35 155,20 195,45 235,65" fill="none" stroke={project.thumbAccent} strokeWidth="2" opacity="0.8" />
+        </svg>
+      </div>
+
+      {/* Body */}
+      <div style={{ padding: '24px' }}>
+        <div style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', color: project.chipColor, marginBottom: '12px', textTransform: 'uppercase' }}>
+          {project.chip}
         </div>
-        <h3
-          className="font-body font-semibold text-[17px] leading-snug mb-3"
-          style={{ color: 'var(--text-hi)' }}
-        >
+        <h3 style={{ fontFamily: 'var(--font-inter)', fontSize: '18px', fontWeight: 600, color: 'var(--text-hi)', lineHeight: 1.3, marginBottom: '10px' }}>
           {project.title}
         </h3>
-        <p className="font-body text-[14px] leading-[1.6] mb-4" style={{ color: 'var(--text-mid)' }}>
-          {project.decision}
+        <p style={{ fontFamily: 'var(--font-inter)', fontSize: '15px', color: 'var(--text-mid)', lineHeight: 1.5, marginBottom: '16px' }}>
+          {project.body}
         </p>
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '16px' }}>
           {project.metrics.map(m => (
-            <span
-              key={m}
-              className="font-mono text-[11px] px-2 py-1 rounded"
-              style={{ background: 'var(--bg-0)', border: '1px solid var(--line)', color: 'var(--text-low)' }}
-            >
+            <span key={m} style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '13px', color: 'var(--text-low)', background: 'var(--bg-2)', borderRadius: '6px', padding: '3px 10px' }}>
               {m}
             </span>
           ))}
         </div>
-        <div
-          className="font-body text-[13px] font-medium transition-colors"
-          style={{ color: 'var(--accent)' }}
-        >
-          View breakdown →
-        </div>
-      </Link>
-    </div>
+        <span style={{ fontFamily: 'var(--font-inter)', fontSize: '15px', fontWeight: 600, color: 'var(--accent)' }}>
+          View breakdown &#8594;
+        </span>
+      </div>
+    </Link>
   )
 }
 
 export default function SelectedWork() {
   return (
-    <section className="py-32" id="work" aria-labelledby="work-heading">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="mb-12">
-          <div className="font-mono text-[12px] uppercase tracking-[0.12em] mb-4" style={{ color: 'var(--text-low)' }}>
-            Selected Work
+    <section id="work" style={{ padding: '128px 0' }} aria-labelledby="work-heading">
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px' }}>
+        {/* Header */}
+        <div style={{ textAlign: 'center', marginBottom: '64px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '20px' }}>
+            <div style={{ width: '24px', height: '2px', background: 'var(--accent)' }} aria-hidden="true" />
+            <span style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '13px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-low)' }}>
+              Selected Work
+            </span>
           </div>
-          <h2
-            id="work-heading"
-            className="font-display mb-4"
-            style={{ fontSize: 'clamp(28px, 4vw, 40px)', color: 'var(--text-hi)', fontWeight: 400 }}
-          >
+          <h2 id="work-heading" style={{ fontFamily: 'var(--font-fraunces)', fontSize: 'clamp(30px, 4vw, 46px)', lineHeight: 1.08, letterSpacing: '-0.01em', fontWeight: 500, color: 'var(--text-hi)', marginBottom: '16px' }}>
             Analyses that changed a decision.
           </h2>
-          <p className="font-body text-[16px] max-w-[52ch]" style={{ color: 'var(--text-mid)' }}>
-            Three that show the range — the deep-data read, the pricing cliff, and the tooling I build when the research itself is the bottleneck.
+          <p style={{ fontFamily: 'var(--font-inter)', fontSize: '18px', color: 'var(--text-mid)', lineHeight: 1.6, maxWidth: '60ch', margin: '0 auto' }}>
+            Three that show the range. The deep data read, the pricing cliff, and the tool I build when the research itself is the bottleneck. Honest labels on each.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {featured.map((p, i) => <WorkCard key={p.slug} project={p} index={i} />)}
+        {/* Cards */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }} className="work-grid">
+          {FEATURED.map((p, i) => (
+            <WorkCard key={p.slug} project={p} index={i} />
+          ))}
         </div>
 
-        <div className="mt-10 text-center">
-          <Link
-            href="/work"
-            className="font-body font-medium text-[15px] px-6 py-3 rounded-[10px] border transition-all duration-150 inline-block"
-            style={{ borderColor: 'var(--line)', color: 'var(--text-mid)' }}
-            onMouseEnter={e => {
-              ;(e.currentTarget as HTMLElement).style.borderColor = 'var(--accent)'
-              ;(e.currentTarget as HTMLElement).style.color = 'var(--accent)'
-            }}
-            onMouseLeave={e => {
-              ;(e.currentTarget as HTMLElement).style.borderColor = 'var(--line)'
-              ;(e.currentTarget as HTMLElement).style.color = 'var(--text-mid)'
-            }}
-          >
-            See all 13 projects →
+        {/* Footer line */}
+        <div style={{ marginTop: '48px', paddingTop: '32px', borderTop: '1px solid var(--line)' }}>
+          <p style={{ fontFamily: 'var(--font-inter)', fontSize: '15px', color: 'var(--text-mid)', marginBottom: '8px' }}>
+            Also behind me: Newdia Co., Fenway growth analytics and a 30% promo cannibalization signal.
+            Count On Me, founder, 25+ client engagements and 35% average engagement lift. Sumedha IT,
+            semiconductor go to market and a stakeholder in the CYIENT acquisition.
+          </p>
+          <Link href="/work" style={{ fontFamily: 'var(--font-inter)', fontSize: '15px', fontWeight: 600, color: 'var(--accent)', textDecoration: 'none' }}>
+            See all 13 projects &#8594;
           </Link>
         </div>
       </div>
+      <style>{`
+        @media (max-width: 900px) { .work-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+        @media (max-width: 560px) { .work-grid { grid-template-columns: 1fr !important; } }
+      `}</style>
     </section>
   )
 }

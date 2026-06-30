@@ -8,7 +8,7 @@ const fraunces = Fraunces({
   subsets: ['latin'],
   variable: '--font-fraunces',
   display: 'swap',
-  weight: ['300', '400', '600'],
+  weight: ['400', '500', '600'],
   style: ['normal', 'italic'],
 })
 
@@ -16,31 +16,43 @@ const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
+  weight: ['400', '500', '600'],
 })
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-geist-mono',
   display: 'swap',
-  weight: ['300', '400', '500'],
+  weight: ['400', '500', '600'],
 })
 
 export const metadata: Metadata = {
-  title: 'Divyesh Annavarapu — Consumer Insights & Growth Analytics',
-  description: "I find the cohort, the churn signal, and the price cliff that aggregate dashboards smooth away — then turn it into a decision you can act on. BU MSBA '26.",
+  title: 'Divyesh Annavarapu. Consumer Insights and Growth Analytics. BU MSBA 26',
+  description: 'I help teams find the cohort, the churn signal, and the price cliff that dashboards average away. Then I turn it into a decision you can act on. BU MSBA 26. British Airways, Starbucks, Newdia.',
+  keywords: ['consumer insights', 'growth analytics', 'causal inference', 'customer segmentation', 'churn modeling', 'behavioral economics', 'marketing mix modeling', 'BU MSBA'],
   openGraph: {
-    title: 'Divyesh Annavarapu — Consumer Insights & Growth Analytics',
-    description: 'I find the cohort, the churn signal, and the price cliff that aggregate dashboards smooth away.',
+    title: 'Divyesh Annavarapu. Consumer Insights and Growth Analytics.',
+    description: 'I find the cohort, the churn signal, and the price cliff aggregate dashboards hide. British Airways, Starbucks, Newdia.',
     type: 'website',
-    url: 'https://divyesh.com',
+    url: 'https://divyesh-portfolio-v3.vercel.app',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Divyesh Annavarapu. Consumer Insights and Growth Analytics.',
+    description: 'I find the cohort, the churn signal, and the price cliff aggregate dashboards hide.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
   },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={fraunces.variable + ' ' + inter.variable + ' ' + jetbrainsMono.variable}>
       <body>
-        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-bg1 focus:text-accent focus:px-4 focus:py-2 focus:rounded-lg">
+        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-black focus:text-green-400 focus:px-4 focus:py-2 focus:rounded-lg">
           Skip to content
         </a>
         <Nav />

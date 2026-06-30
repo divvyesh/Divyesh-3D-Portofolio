@@ -1,0 +1,39 @@
+# Divyesh Annavarapu
+
+Consumer Insights and Growth Analyst. BU Questrom MSBA 2026.
+
+I help teams find the cohort, the churn signal, and the price cliff that dashboards average away. Then I turn it into a decision.
+
+## Specialties
+
+- Causal inference and incrementality testing (DiD, regression discontinuity, geo experiments)
+- Customer segmentation, lifetime value modeling, and churn prediction
+- Marketing Mix Modeling and cookieless attribution
+- Behavioral economics applied to buying decisions and pricing
+- First party and zero party data strategy
+- Consumer research design: conjoint, max diff, psychographic mapping
+- GenAI and agentic analytics workflows (built RAT Lab, an LLM-powered research tool)
+
+## Experience
+
+- British Airways: pricing elasticity, ROAS causal validation, retargeting saturation detection
+- Starbucks: 3.2M loyalty records, 14% projected retention lift via cohort intervention, DiD causal design
+- Newdia Co: built entire analytics function from zero, rerouted 40% of $1.2M budget, Churn AUC 0.86
+- Count On Me: founder, 25+ client engagements, 35% average engagement lift
+- Sumedha IT: semiconductor go to market, CYIENT acquisition stakeholder
+
+## Pages
+
+- Home: https://divyesh-portfolio-v3.vercel.app/
+- All work: https://divyesh-portfolio-v3.vercel.app/work
+- Newdia project: https://divyesh-portfolio-v3.vercel.app/work/newdia
+- Starbucks project: https://divyesh-portfolio-v3.vercel.app/work/starbucks
+- British Airways project: https://divyesh-portfolio-v3.vercel.app/work/british-airways
+- About: https://divyesh-portfolio-v3.vercel.app/about
+- Book a call: https://divyesh-portfolio-v3.vercel.app/#book
+
+## Contact
+
+- Email: divyesh.annavarapu@gmail.com
+- LinkedIn: https://www.linkedin.com/in/divyesh-sai-annavarapu/
+- GitHub: https://github.com/divvyesh

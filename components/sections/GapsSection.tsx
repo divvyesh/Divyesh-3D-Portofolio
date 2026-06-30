@@ -1,55 +1,56 @@
 'use client'
 import { useRef, useEffect, useState } from 'react'
+import Link from 'next/link'
 
-const gaps = [
+const GAPS = [
   {
     num: '01',
     lens: 'COHORT',
-    title: 'Your middle cohort is churning — and your dashboard is hiding it',
-    body: "Your top 20% mask the bleed. The middle cohort — highest growth potential, highest sensitivity to friction — drops off in silence while aggregate metrics stay green. That's the segment that moves the number.",
-    proof: 'Starbucks · 3.2M loyalty records — 14% retention lift invisible in aggregate',
+    title: 'Your middle cohort is churning, and your dashboard is hiding it.',
+    body: 'Your top 20% mask the bleed. The middle cohort, highest growth potential and highest sensitivity to friction, drops off in silence while aggregate metrics stay green. That is the segment that moves the number.',
+    tag: 'Starbucks. 3.2M loyalty records. 14% retention lift invisible in aggregate.',
     slug: 'starbucks',
     color: 'var(--accent)',
   },
   {
     num: '02',
-    lens: 'NON-LINEAR',
-    title: 'Price sensitivity is non-linear — you\'re missing the cliff',
-    body: "Average elasticity gives you a false ceiling. Demand breaks at a threshold, not a slope. By the time blended ROAS shows it, you've spent past the efficient return window.",
-    proof: 'British Airways · 12 fare classes — regression-discontinuity elasticity model',
+    lens: 'NON LINEAR',
+    title: 'Price sensitivity is not a slope, it is a cliff.',
+    body: 'Average elasticity gives you a false ceiling. Demand breaks at a threshold. By the time blended ROAS shows it, you have spent past the efficient return window. Segment level curves catch it weeks earlier.',
+    tag: 'British Airways. 12 fare classes. Regression discontinuity elasticity model.',
     slug: 'british-airways',
-    color: 'var(--accent-2)',
+    color: 'var(--warm)',
   },
   {
     num: '03',
     lens: 'CAUSAL',
-    title: 'Your attribution is backward-looking — every spend decision runs on stale signal',
-    body: "Most models tell you what correlated with a conversion. Without holdout groups and causal validation, you're measuring organic trend and calling it impact. MMM without a causal scaffold is the same error at a bigger budget.",
-    proof: 'British Airways · retargeting saturation — ROAS turned negative before detection',
+    title: 'Your attribution looks backward, so every spend decision runs on stale signal.',
+    body: 'Most models tell you what correlated with a conversion. Without holdout groups and causal validation, you are measuring organic trend and calling it impact. MMM without a causal scaffold is the same error at a bigger budget.',
+    tag: 'British Airways. Retargeting saturation. ROAS turned negative before detection.',
     slug: 'british-airways',
-    color: 'var(--accent)',
+    color: 'var(--pink)',
   },
   {
     num: '04',
     lens: 'BEHAVIORAL',
-    title: "Choice architecture is costing conversions you can't trace",
-    body: "Cognitive overload at decision points isn't a UX issue — it's behavioral economics. Too many options or high-friction flows trigger System 1 shutdown: people abandon because the decision is hard, not because they don't want the product.",
-    proof: 'Starbucks · DiD causal experiment — cognitive load at decision points suppresses conversion',
+    title: 'Choice overload is costing you conversions you cannot trace.',
+    body: 'Too many options or high friction flows trigger System 1 shutdown. People abandon because the decision is hard, not because they do not want the product. That is behavioral economics, not a UX bug.',
+    tag: 'Starbucks. Difference in differences experiment on decision complexity.',
     slug: 'starbucks',
-    color: 'var(--accent-2)',
+    color: 'var(--accent)',
   },
   {
     num: '05',
-    lens: 'STATED ≠ REAL',
-    title: 'NPS is a slide number — behavioral funnels are the actual signal',
-    body: "Stated preference and revealed behavior diverge under real conditions. A customer who scores you a 9 and churns two weeks later is common. Survey metrics without behavioral anchoring give you confidence in data that doesn't predict anything.",
-    proof: 'Newdia Co. · built the first behavioral NPS + CAC funnel the business ever had',
+    lens: 'STATED IS NOT REAL',
+    title: 'NPS is a slide number. Behavior is the real signal.',
+    body: 'Stated preference and revealed behavior split under real conditions. A customer who scores you a 9 and churns two weeks later is common. Survey metrics without behavioral anchoring give you confidence in data that does not predict anything.',
+    tag: 'Newdia Co. Built the first behavioral NPS and CAC funnel the business ever had.',
     slug: 'newdia',
-    color: 'var(--accent)',
+    color: 'var(--warm)',
   },
 ]
 
-function GapRow({ gap, index }: { gap: (typeof gaps)[0]; index: number }) {
+function GapRow({ gap, index }: { gap: typeof GAPS[0], index: number }) {
   const [visible, setVisible] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
@@ -65,37 +66,43 @@ function GapRow({ gap, index }: { gap: (typeof gaps)[0]; index: number }) {
   return (
     <div
       ref={ref}
-      className="py-8 border-b flex flex-col md:flex-row gap-6 md:gap-12 transition-all duration-500"
       style={{
-        borderColor: 'var(--line)',
+        display: 'flex',
+        gap: '32px',
+        paddingTop: index === 0 ? 0 : '48px',
+        paddingBottom: '48px',
+        borderBottom: index < GAPS.length - 1 ? '1px solid var(--line)' : 'none',
         opacity: visible ? 1 : 0,
-        transform: visible ? 'none' : 'translateY(20px)',
-        transitionDelay: `${index * 80}ms`,
+        transform: visible ? 'none' : 'translateY(12px)',
+        transition: 'opacity 450ms cubic-bezier(0.22,1,0.36,1), transform 450ms cubic-bezier(0.22,1,0.36,1)',
       }}
     >
-      <div className="flex-shrink-0 flex md:flex-col gap-3 md:gap-1 md:w-28">
-        <div className="font-mono font-medium text-[40px] leading-none tabular-nums" style={{ color: gap.color, opacity: 0.4 }}>
+      {/* Number + lens label */}
+      <div style={{ width: '120px', flexShrink: 0 }}>
+        <div style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '48px', fontWeight: 500, color: 'var(--text-low)', lineHeight: 1 }}>
           {gap.num}
         </div>
-        <div className="font-mono text-[11px] uppercase tracking-[0.12em] self-end md:self-start" style={{ color: 'var(--text-low)' }}>
+        <div style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '12px', fontWeight: 500, color: gap.color, letterSpacing: '0.1em', textTransform: 'uppercase', marginTop: '6px' }}>
           {gap.lens}
         </div>
       </div>
 
-      <div className="flex-1">
-        <h3 className="font-body font-semibold text-[18px] mb-3 leading-snug" style={{ color: 'var(--text-hi)' }}>
+      {/* Content */}
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <h3 style={{ fontFamily: 'var(--font-inter)', fontSize: '22px', fontWeight: 600, color: 'var(--text-hi)', lineHeight: 1.3, marginBottom: '8px' }}>
           {gap.title}
         </h3>
-        <p className="font-body text-[15px] leading-[1.7] mb-4" style={{ color: 'var(--text-mid)' }}>
+        <p style={{ fontFamily: 'var(--font-inter)', fontSize: '16px', color: 'var(--text-mid)', lineHeight: 1.55, maxWidth: '60ch', marginBottom: '12px' }}>
           {gap.body}
         </p>
-        <a
-          href={`/work/${gap.slug}`}
-          className="font-mono text-[12px] hover:underline"
-          style={{ color: 'var(--text-low)' }}
+        <Link
+          href={'/work/' + gap.slug}
+          style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '14px', color: 'var(--text-low)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+          onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.color = 'var(--accent)'; const arrow = el.querySelector('.arrow') as HTMLElement; if (arrow) arrow.style.transform = 'translateX(4px)'; }}
+          onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.color = 'var(--text-low)'; const arrow = el.querySelector('.arrow') as HTMLElement; if (arrow) arrow.style.transform = ''; }}
         >
-          {gap.proof} →
-        </a>
+          {gap.tag} <span className="arrow" style={{ transition: 'transform 150ms ease-out' }}>&#8594;</span>
+        </Link>
       </div>
     </div>
   )
@@ -103,36 +110,32 @@ function GapRow({ gap, index }: { gap: (typeof gaps)[0]; index: number }) {
 
 export default function GapsSection() {
   return (
-    <section className="py-32" id="gaps" style={{ background: 'var(--bg-1)' }} aria-labelledby="gaps-heading">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="mb-4">
-          <div className="font-mono text-[12px] uppercase tracking-[0.12em] mb-4" style={{ color: 'var(--text-low)' }}>
-            The Gaps I Look For
+    <section style={{ padding: '128px 0' }} aria-labelledby="gaps-heading">
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px' }}>
+        {/* Header */}
+        <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '20px' }}>
+            <div style={{ width: '24px', height: '2px', background: 'var(--accent)' }} aria-hidden="true" />
+            <span style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '13px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-low)' }}>
+              The Gaps I Look For
+            </span>
           </div>
           <h2
             id="gaps-heading"
-            className="font-display mb-4"
-            style={{ fontSize: 'clamp(28px, 4vw, 40px)', color: 'var(--text-hi)', fontWeight: 400 }}
+            style={{ fontFamily: 'var(--font-fraunces)', fontSize: 'clamp(30px, 4vw, 46px)', lineHeight: 1.08, letterSpacing: '-0.01em', fontWeight: 500, color: 'var(--text-hi)', marginBottom: '16px' }}
           >
-            Five reads hiding in plain sight — in data you already have.
+            Five reads hiding in plain sight, in data you already have.
           </h2>
-          <p className="font-body text-[16px] max-w-[52ch]" style={{ color: 'var(--text-mid)' }}>
-            Each one found in real data — and each was invisible in the aggregate metrics the team was already watching.
+          <p style={{ fontFamily: 'var(--font-inter)', fontSize: '18px', color: 'var(--text-mid)', lineHeight: 1.6, maxWidth: '60ch', margin: '0 auto' }}>
+            Each one found in real data. Each was invisible in the aggregate metrics the team was already watching.
           </p>
         </div>
 
-        <div className="mt-12">
-          {gaps.map((gap, i) => <GapRow key={gap.num} gap={gap} index={i} />)}
-        </div>
-
-        <div className="mt-12 text-center">
-          <a
-            href="/work"
-            className="font-body font-medium text-[15px] inline-flex items-center gap-2 transition-colors"
-            style={{ color: 'var(--accent)' }}
-          >
-            See all 13 analyses in full →
-          </a>
+        {/* Gap rows */}
+        <div>
+          {GAPS.map((gap, i) => (
+            <GapRow key={gap.num} gap={gap} index={i} />
+          ))}
         </div>
       </div>
     </section>

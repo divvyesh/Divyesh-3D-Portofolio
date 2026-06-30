@@ -1,0 +1,167 @@
+'use client'
+import { useRef, useEffect, useState } from 'react'
+
+const BAR_ROWS = [
+  { label: 'One time / discount buyers', pct: 18, fill: '#5b3a44', inside: 'Low CLV', value: '1x', valueColor: 'var(--danger)' },
+  { label: 'Repeat / satisfied customers', pct: 42, fill: '#8a7320', inside: '+67% spend/order', value: '2.4x', valueColor: 'var(--warm)' },
+  { label: 'Loyal brand advocates', pct: 72, fill: '#3f6b57', inside: '5.7x revenue', value: '4.1x', valueColor: 'var(--accent)' },
+  { label: 'Emotionally connected', pct: 100, fill: 'linear-gradient(90deg, #7c5cff 0%, #34d399 100%)', inside: '306% higher LTV', value: '5.7x', valueColor: 'var(--violet)' },
+]
+
+const QUOTES = [
+  { text: 'Companies that lead in CX outperform laggards by nearly 80% in revenue growth.', source: 'Forrester Customer Experience Index 2024', border: 'var(--pink)' },
+  { text: '51% of large enterprises say business goals, not customer feedback, drive product strategy.', source: 'Product Management Statistics, HaveIgnition 2024', border: 'var(--warm)' },
+  { text: 'Improving retention by just 2% drives profitability equal to cutting costs by 10%.', source: 'Bain & Company / Harvard Business Review', border: 'var(--accent)' },
+  { text: 'Customer centric companies are 60% more profitable than those not focused on customers.', source: 'Deloitte & Touche', border: 'var(--pink)' },
+  { text: '86% of buyers will pay more for a better experience, yet most companies still compete on price.', source: 'Walker Customers 2020 / SuperOffice CX Report', border: 'var(--warm)' },
+  { text: 'Organizations are 2x more likely to succeed when they redesign workflows first, then pick AI tools.', source: 'McKinsey Global AI Survey, Nov 2025', border: 'var(--accent)' },
+]
+
+function BarChart() {
+  const [animated, setAnimated] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setAnimated(true); obs.disconnect() } },
+      { threshold: 0.2 }
+    )
+    if (ref.current) obs.observe(ref.current)
+    return () => obs.disconnect()
+  }, [])
+
+  return (
+    <div
+      ref={ref}
+      style={{ background: 'var(--bg-1)', border: '1px solid var(--line)', borderRadius: '16px', padding: '40px' }}
+    >
+      <div style={{ fontFamily: 'var(--font-inter)', fontSize: '20px', fontWeight: 600, color: 'var(--text-hi)', marginBottom: '8px' }}>
+        The loyalty value gap. Why chasing cheap acquisition destroys growth.
+      </div>
+      <div style={{ fontFamily: 'var(--font-inter)', fontSize: '15px', color: 'var(--text-low)', marginBottom: '28px', lineHeight: 1.5 }}>
+        Relative value comparison. One time buyers vs returning customers vs loyal advocates.<br />
+        Sources: Qualtrics XM Institute, Bain &amp; Company, Motista.
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        {BAR_ROWS.map((row, i) => (
+          <div key={row.label} style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+            <div style={{ width: '200px', flexShrink: 0, fontFamily: 'var(--font-inter)', fontSize: '14px', color: 'var(--text-mid)', textAlign: 'right' }} className="bar-label">
+              {row.label}
+            </div>
+            <div style={{ flex: 1, position: 'relative', height: '34px' }}>
+              {/* track */}
+              <div style={{ position: 'absolute', inset: 0, background: 'var(--bg-2)', borderRadius: '8px' }} />
+              {/* fill */}
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  height: '100%',
+                  borderRadius: '8px',
+                  background: row.fill,
+                  width: animated ? `${row.pct}%` : '0%',
+                  transition: `width 800ms cubic-bezier(0.22,1,0.36,1) ${i * 100}ms`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  paddingLeft: '12px',
+                  overflow: 'hidden',
+                }}
+              >
+                <span style={{ fontFamily: 'var(--font-inter)', fontSize: '12px', fontWeight: 600, color: '#fff', whiteSpace: 'nowrap', opacity: animated ? 1 : 0, transition: `opacity 300ms ${i * 100 + 400}ms` }}>
+                  {row.inside}
+                </span>
+              </div>
+            </div>
+            <div style={{ width: '48px', flexShrink: 0, fontFamily: 'var(--font-geist-mono)', fontSize: '16px', fontWeight: 600, color: row.valueColor, textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>
+              {row.value}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export default function InsightsSection() {
+  return (
+    <section id="insights" style={{ padding: '128px 0' }} aria-labelledby="insights-heading">
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px' }}>
+        {/* Bar chart */}
+        <BarChart />
+
+        {/* Quote cards */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px', marginTop: '48px' }} className="quotes-grid">
+          {QUOTES.map((q, i) => (
+            <div
+              key={i}
+              style={{
+                background: 'var(--bg-1)',
+                borderRadius: '12px',
+                padding: '24px',
+                borderLeft: `3px solid ${q.border}`,
+              }}
+            >
+              <p style={{ fontFamily: 'var(--font-inter)', fontSize: '16px', fontWeight: 500, color: 'var(--text-hi)', lineHeight: 1.45, marginBottom: '16px' }}>
+                &ldquo;{q.text}&rdquo;
+              </p>
+              <p style={{ fontFamily: 'var(--font-inter)', fontSize: '14px', color: 'var(--text-low)' }}>
+                {q.source}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Closing band */}
+        <div
+          style={{
+            background: 'var(--bg-1)',
+            border: '1px solid var(--line)',
+            borderRadius: '16px',
+            padding: '64px 48px',
+            textAlign: 'center',
+            marginTop: '48px',
+          }}
+        >
+          <h2
+            id="insights-heading"
+            style={{ fontFamily: 'var(--font-fraunces)', fontSize: 'clamp(30px, 4vw, 46px)', lineHeight: 1.08, letterSpacing: '-0.01em', fontWeight: 500, color: 'var(--text-hi)', marginBottom: '16px' }}
+          >
+            Your best customers are hiding in your data.<br />
+            Most teams do not know how to find them.
+          </h2>
+          <p style={{ fontFamily: 'var(--font-inter)', fontSize: '19px', color: 'var(--text-mid)', lineHeight: 1.6, maxWidth: '64ch', margin: '0 auto 32px' }}>
+            I build the frameworks that surface them. Behavioral science, causal analytics, and deep consumer research, used to tell you exactly who to obsess over and why.
+          </p>
+          <a
+            href="#book"
+            style={{
+              height: '52px',
+              padding: '0 28px',
+              borderRadius: '12px',
+              background: 'var(--grad)',
+              color: '#fff',
+              fontFamily: 'var(--font-inter)',
+              fontSize: '16px',
+              fontWeight: 600,
+              textDecoration: 'none',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              transition: 'filter 150ms ease-out, transform 150ms ease-out',
+            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.filter = 'brightness(1.08)'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.filter = ''; (e.currentTarget as HTMLElement).style.transform = ''; }}
+          >
+            Book a free 15 min call <span aria-hidden="true">&#8594;</span>
+          </a>
+        </div>
+      </div>
+      <style>{`
+        @media (max-width: 900px) { .quotes-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+        @media (max-width: 560px) { .quotes-grid { grid-template-columns: 1fr !important; } .bar-label { display: none; } }
+      `}</style>
+    </section>
+  )
+}
