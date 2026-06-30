@@ -739,8 +739,7 @@ export const projects: Project[] = [
       { num: '04', title: 'Phase 2 Commercial Activation', desc: 'After regulatory establishment, execute commercial GTM per market - the correct sequence is the entire strategy.' }
     ]
   }
-]
-
+,
 
   // ── TOOLS I BUILT ────────────────────────────────────────────────────
   {
@@ -1000,6 +999,7 @@ export const projects: Project[] = [
       { num: '03', title: 'Anomaly Flagging', desc: 'Auto-flag statistical outliers in punch patterns (always 1 minute late, exits exactly at threshold) to surface potential timesheet gaming.' }
     ]
   },
+]
 
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find(p => p.slug === slug)
