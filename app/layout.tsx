@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Fraunces, Inter, Geist_Mono } from 'next/font/google'
+import { Fraunces, Inter, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
@@ -18,15 +18,16 @@ const inter = Inter({
   display: 'swap',
 })
 
-const geistMono = Geist_Mono({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-geist-mono',
   display: 'swap',
+  weight: ['300', '400', '500'],
 })
 
 export const metadata: Metadata = {
   title: 'Divyesh Annavarapu — Consumer Insights & Growth Analytics',
-  description: 'I find the cohort, the churn signal, and the price cliff that aggregate dashboards smooth away — then turn it into a decision you can act on. BU MSBA \'26.',
+  description: "I find the cohort, the churn signal, and the price cliff that aggregate dashboards smooth away — then turn it into a decision you can act on. BU MSBA '26.",
   openGraph: {
     title: 'Divyesh Annavarapu — Consumer Insights & Growth Analytics',
     description: 'I find the cohort, the churn signal, and the price cliff that aggregate dashboards smooth away.',
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${inter.variable} ${geistMono.variable}`}>
+    <html lang="en" className={`${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
       <body>
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-bg1 focus:text-accent focus:px-4 focus:py-2 focus:rounded-lg">
           Skip to content

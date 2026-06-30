@@ -1,80 +1,139 @@
+'use client'
+import { useState } from 'react'
 import Link from 'next/link'
-import { projects } from '@/data/projects'
+import { projects, ProjectTag } from '@/data/projects'
 
-export const metadata = {
-  title: 'Work — Divyesh Annavarapu',
-  description: '13 analyses across real datasets. Consumer cohorts, pricing, attribution, causal inference.',
+const FILTERS: { label: string; value: ProjectTag | 'all' }[] = [
+  { label: 'All', value: 'all' },
+  { label: 'Client work', value: 'client' },
+  { label: 'Capstone analyses', value: 'capstone' },
+  { label: 'Tools I built', value: 'tool' },
+]
+
+const TAG_COLORS: Record<ProjectTag, string> = {
+  client: 'var(--accent-2)',
+  capstone: 'var(--text-low)',
+  tool: 'var(--accent)',
 }
 
-const categories = ['All', ...Array.from(new Set(projects.map(p => p.category)))]
+const HONESTY_COLORS: Record<string, string> = {
+  'MEASURED': 'var(--accent)',
+  'MODELED': 'var(--text-mid)',
+  'PROJECTED': 'var(--text-low)',
+  'MEASURED+MODELED': 'var(--accent-2)',
+}
 
 export default function WorkPage() {
+  const [active, setActive] = useState<ProjectTag | 'all'>('all')
+  const filtered = active === 'all' ? projects : projects.filter(p => p.tag === active)
+
   return (
-    <div className="pt-28 pb-24 px-6">
-      <div className="max-w-5xl mx-auto">
+    <div style={{ paddingTop: '64px' }}>
+      <div className="max-w-6xl mx-auto px-6 py-20">
         {/* Header */}
-        <div className="mb-16">
-          <div className="font-mono text-[11px] uppercase tracking-widest mb-4" style={{ color: 'var(--accent)' }}>
-            All work
+        <div className="mb-12">
+          <div className="font-mono text-[12px] uppercase tracking-[0.12em] mb-4" style={{ color: 'var(--text-low)' }}>
+            All Work
           </div>
-          <h1 className="font-display font-semibold leading-tight mb-6" style={{ fontSize: 'clamp(32px, 5vw, 56px)', color: 'var(--text-hi)' }}>
-            13 analyses.<br />
-            <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>Real datasets. Real decisions.</span>
+          <h1
+            className="font-display mb-4"
+            style={{ fontSize: 'clamp(32px, 5vw, 56px)', color: 'var(--text-hi)', fontWeight: 400 }}
+          >
+            Every project behind the work.
           </h1>
-          <p className="font-body leading-relaxed max-w-2xl" style={{ color: 'var(--text-mid)', fontSize: '16px' }}>
-            Every project here started with a signal that aggregate views were averaging away.
-            Cohort churn masked by blended retention. Channel ROAS distorted by last-click. Price cliffs invisible in fare averages.
+          <p className="font-body text-[16px] max-w-[52ch]" style={{ color: 'var(--text-mid)' }}>
+            Problem, data, method, and the decision it changed. Honest labels on every project — client work, capstone analysis, or tool I built.
           </p>
         </div>
 
-        {/* Project grid */}
-        <div className="grid md:grid-cols-2 gap-6">
-          {projects.map((project) => (
+        {/* Filter chips */}
+        <div className="flex flex-wrap gap-3 mb-12">
+          {FILTERS.map(f => (
+            <button
+              key={f.value}
+              onClick={() => setActive(f.value)}
+              className="font-mono text-[12px] uppercase tracking-[0.1em] px-4 py-2 rounded-full border transition-all duration-150"
+              style={{
+                background: active === f.value ? 'var(--accent)' : 'transparent',
+                color: active === f.value ? '#050507' : 'var(--text-mid)',
+                borderColor: active === f.value ? 'var(--accent)' : 'var(--line)',
+              }}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Grid */}
+        <div
+          className="grid gap-6"
+          style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))' }}
+        >
+          {filtered.map(project => (
             <Link
               key={project.slug}
               href={`/work/${project.slug}`}
-              className="group block p-6 rounded-2xl transition-all duration-200"
-              style={{
-                background: 'var(--bg-1)',
-                border: '1px solid var(--line)',
+              className="block p-6 rounded-[14px] transition-all duration-200 group"
+              style={{ background: 'var(--bg-1)', border: '1px solid var(--line)' }}
+              onMouseEnter={e => {
+                ;(e.currentTarget as HTMLElement).style.borderColor = 'rgba(110,231,183,0.3)'
+                ;(e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'
+              }}
+              onMouseLeave={e => {
+                ;(e.currentTarget as HTMLElement).style.borderColor = 'var(--line)'
+                ;(e.currentTarget as HTMLElement).style.transform = ''
               }}
             >
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <div className="font-mono text-[10px] uppercase tracking-widest mb-1" style={{ color: 'var(--text-low)' }}>
-                    {project.category}
-                  </div>
-                  <div className="font-mono text-[10px]" style={{ color: 'var(--text-low)' }}>
-                    {project.year}
-                  </div>
+              <div className="flex items-start justify-between gap-4 mb-4">
+                <div
+                  className="font-mono text-[10px] uppercase tracking-[0.1em] px-2 py-1 rounded-full"
+                  style={{
+                    background: `${TAG_COLORS[project.tag]}18`,
+                    color: TAG_COLORS[project.tag],
+                    border: `1px solid ${TAG_COLORS[project.tag]}40`,
+                  }}
+                >
+                  {project.tagLabel}
                 </div>
-                {project.featured && (
-                  <span className="font-mono text-[9px] uppercase tracking-widest px-2 py-1 rounded-full" style={{ background: 'rgba(110,231,183,0.1)', color: 'var(--accent)', border: '1px solid rgba(110,231,183,0.2)' }}>
-                    Featured
-                  </span>
-                )}
+                <span className="font-mono text-[11px]" style={{ color: 'var(--text-low)' }}>{project.year}</span>
               </div>
 
-              <div className="font-display font-semibold mb-1" style={{ fontSize: '36px', color: 'var(--accent)', lineHeight: 1 }}>
-                {project.stat}
+              <div className="font-mono text-[11px] mb-2" style={{ color: 'var(--text-low)' }}>
+                {project.brand}
               </div>
-              <div className="font-mono text-[11px] mb-4" style={{ color: 'var(--text-low)' }}>
-                {project.statLabel}
-              </div>
-
-              <h2 className="font-display font-semibold text-[18px] mb-2 leading-snug" style={{ color: 'var(--text-hi)' }}>
-                {project.title}
+              <h2 className="font-body font-semibold text-[15px] leading-snug mb-3" style={{ color: 'var(--text-hi)' }}>
+                {project.outcomeTitle}
               </h2>
-              <p className="font-body text-[13px] leading-relaxed mb-5" style={{ color: 'var(--text-mid)' }}>
-                {project.summary}
+              <p className="font-body text-[13px] leading-[1.6] mb-4" style={{ color: 'var(--text-mid)' }}>
+                {project.oneLineDecision}
               </p>
 
-              <div className="flex flex-wrap gap-2">
-                {project.tags.slice(0, 4).map((tag) => (
-                  <span key={tag} className="font-mono text-[10px] px-2 py-1 rounded-full" style={{ background: 'var(--bg-2)', color: 'var(--text-low)', border: '1px solid var(--line)' }}>
-                    {tag}
+              <div className="flex flex-wrap gap-2 mb-4">
+                {project.metrics.map(m => (
+                  <span
+                    key={m}
+                    className="font-mono text-[10px] px-2 py-1 rounded"
+                    style={{ background: 'var(--bg-0)', border: '1px solid var(--line)', color: 'var(--text-low)' }}
+                  >
+                    {m}
                   </span>
                 ))}
+              </div>
+
+              <div className="flex items-center justify-between">
+                <span
+                  className="font-mono text-[10px] uppercase tracking-[0.08em] px-2 py-1 rounded"
+                  style={{
+                    background: `${HONESTY_COLORS[project.honesty]}18`,
+                    color: HONESTY_COLORS[project.honesty],
+                    border: `1px solid ${HONESTY_COLORS[project.honesty]}40`,
+                  }}
+                >
+                  {project.honesty}
+                </span>
+                <span className="font-body text-[13px]" style={{ color: 'var(--accent)' }}>
+                  View breakdown →
+                </span>
               </div>
             </Link>
           ))}

@@ -1,87 +1,138 @@
+'use client'
+import { useRef, useEffect, useState } from 'react'
+
 const gaps = [
   {
-    icon: '◎',
-    title: 'The cohort nobody flagged',
-    desc: 'Mid-frequency Starbucks customers churning at 2.3x the rate of the blended average — masked for months until segment-level clustering surfaced it.',
-    tag: 'Retention · Cohort Analysis',
+    num: '01',
+    lens: 'COHORT',
+    title: 'Your middle cohort is churning — and your dashboard is hiding it',
+    body: "Your top 20% mask the bleed. The middle cohort — highest growth potential, highest sensitivity to friction — drops off in silence while aggregate metrics stay green. That's the segment that moves the number.",
+    proof: 'Starbucks · 3.2M loyalty records — 14% retention lift invisible in aggregate',
+    slug: 'starbucks',
+    color: 'var(--accent)',
   },
   {
-    icon: '◈',
-    title: 'The price cliff in your fare class',
-    desc: 'British Airways leisure mid-tier segment generating negative ROAS while the blended channel number read positive. The cliff was there. The average hid it.',
-    tag: 'Pricing · Attribution',
+    num: '02',
+    lens: 'NON-LINEAR',
+    title: 'Price sensitivity is non-linear — you\'re missing the cliff',
+    body: "Average elasticity gives you a false ceiling. Demand breaks at a threshold, not a slope. By the time blended ROAS shows it, you've spent past the efficient return window.",
+    proof: 'British Airways · 12 fare classes — regression-discontinuity elasticity model',
+    slug: 'british-airways',
+    color: 'var(--accent-2)',
   },
   {
-    icon: '◉',
-    title: 'The attribution that was lying',
-    desc: 'Last-click overstating paid search ROAS by 3.2x. Organic and email were the actual conversion drivers — underinvested for months due to attribution blindness.',
-    tag: 'Attribution · Growth Analytics',
+    num: '03',
+    lens: 'CAUSAL',
+    title: 'Your attribution is backward-looking — every spend decision runs on stale signal',
+    body: "Most models tell you what correlated with a conversion. Without holdout groups and causal validation, you're measuring organic trend and calling it impact. MMM without a causal scaffold is the same error at a bigger budget.",
+    proof: 'British Airways · retargeting saturation — ROAS turned negative before detection',
+    slug: 'british-airways',
+    color: 'var(--accent)',
   },
   {
-    icon: '⬡',
-    title: 'The complexity suppressing conversion',
-    desc: 'Menu options above a cognitive threshold cut Starbucks conversion by 12% — statistically significant, invisible in aggregate sales data due to volume offsets.',
-    tag: 'Experimentation · Causal Inference',
+    num: '04',
+    lens: 'BEHAVIORAL',
+    title: "Choice architecture is costing conversions you can't trace",
+    body: "Cognitive overload at decision points isn't a UX issue — it's behavioral economics. Too many options or high-friction flows trigger System 1 shutdown: people abandon because the decision is hard, not because they don't want the product.",
+    proof: 'Starbucks · DiD causal experiment — cognitive load at decision points suppresses conversion',
+    slug: 'starbucks',
+    color: 'var(--accent-2)',
   },
   {
-    icon: '◇',
-    title: 'The segment buried in your NPS',
-    desc: 'Three Headway user archetypes — identical average NPS, entirely different retention drivers. One needs badges, one needs freshness, one needs friction removal.',
-    tag: 'Consumer Insights · Segmentation',
+    num: '05',
+    lens: 'STATED ≠ REAL',
+    title: 'NPS is a slide number — behavioral funnels are the actual signal',
+    body: "Stated preference and revealed behavior diverge under real conditions. A customer who scores you a 9 and churns two weeks later is common. Survey metrics without behavioral anchoring give you confidence in data that doesn't predict anything.",
+    proof: 'Newdia Co. · built the first behavioral NPS + CAC funnel the business ever had',
+    slug: 'newdia',
+    color: 'var(--accent)',
   },
 ]
 
+function GapRow({ gap, index }: { gap: (typeof gaps)[0]; index: number }) {
+  const [visible, setVisible] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect() } },
+      { threshold: 0.1 }
+    )
+    if (ref.current) obs.observe(ref.current)
+    return () => obs.disconnect()
+  }, [])
+
+  return (
+    <div
+      ref={ref}
+      className="py-8 border-b flex flex-col md:flex-row gap-6 md:gap-12 transition-all duration-500"
+      style={{
+        borderColor: 'var(--line)',
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'none' : 'translateY(20px)',
+        transitionDelay: `${index * 80}ms`,
+      }}
+    >
+      <div className="flex-shrink-0 flex md:flex-col gap-3 md:gap-1 md:w-28">
+        <div className="font-mono font-medium text-[40px] leading-none tabular-nums" style={{ color: gap.color, opacity: 0.4 }}>
+          {gap.num}
+        </div>
+        <div className="font-mono text-[11px] uppercase tracking-[0.12em] self-end md:self-start" style={{ color: 'var(--text-low)' }}>
+          {gap.lens}
+        </div>
+      </div>
+
+      <div className="flex-1">
+        <h3 className="font-body font-semibold text-[18px] mb-3 leading-snug" style={{ color: 'var(--text-hi)' }}>
+          {gap.title}
+        </h3>
+        <p className="font-body text-[15px] leading-[1.7] mb-4" style={{ color: 'var(--text-mid)' }}>
+          {gap.body}
+        </p>
+        <a
+          href={`/work/${gap.slug}`}
+          className="font-mono text-[12px] hover:underline"
+          style={{ color: 'var(--text-low)' }}
+        >
+          {gap.proof} →
+        </a>
+      </div>
+    </div>
+  )
+}
+
 export default function GapsSection() {
   return (
-    <section className="py-24 px-6" style={{ background: 'var(--bg-1)' }}>
-      <div className="max-w-5xl mx-auto">
-        <div className="font-mono text-[11px] uppercase tracking-widest mb-4" style={{ color: 'var(--accent)' }}>
-          Five reads hiding in plain sight
-        </div>
-        <h2 className="font-display font-semibold leading-tight mb-16" style={{ fontSize: 'clamp(28px, 4vw, 44px)', color: 'var(--text-hi)' }}>
-          In data you already have.
-        </h2>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {gaps.map(({ icon, title, desc, tag }) => (
-            <div
-              key={title}
-              className="p-6 rounded-2xl group"
-              style={{ background: 'var(--bg-2)', border: '1px solid var(--line)' }}
-            >
-              <div className="text-[28px] mb-4" style={{ color: 'var(--accent)', opacity: 0.7 }}>{icon}</div>
-              <h3 className="font-display font-semibold text-[17px] mb-3 leading-snug" style={{ color: 'var(--text-hi)' }}>
-                {title}
-              </h3>
-              <p className="font-body text-[13px] leading-relaxed mb-4" style={{ color: 'var(--text-mid)' }}>
-                {desc}
-              </p>
-              <span className="font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full" style={{ background: 'rgba(110,231,183,0.08)', color: 'var(--accent)', border: '1px solid rgba(110,231,183,0.15)' }}>
-                {tag}
-              </span>
-            </div>
-          ))}
-          {/* CTA card */}
-          <div
-            className="p-6 rounded-2xl flex flex-col justify-between"
-            style={{ background: 'linear-gradient(135deg, rgba(110,231,183,0.08) 0%, rgba(245,200,66,0.04) 100%)', border: '1px solid rgba(110,231,183,0.2)' }}
-          >
-            <div>
-              <div className="font-display font-semibold text-[17px] mb-3 leading-snug" style={{ color: 'var(--text-hi)' }}>
-                Is one hiding in yours?
-              </div>
-              <p className="font-body text-[13px] leading-relaxed mb-6" style={{ color: 'var(--text-mid)' }}>
-                15 minutes. I&apos;ll tell you if there&apos;s a signal worth pulling.
-              </p>
-            </div>
-            <a
-              href="#book"
-              className="font-body text-[14px] font-medium px-5 py-2.5 rounded-[10px] text-center"
-              style={{ background: 'var(--accent)', color: '#050507' }}
-            >
-              Book free session →
-            </a>
+    <section className="py-32" id="gaps" style={{ background: 'var(--bg-1)' }} aria-labelledby="gaps-heading">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="mb-4">
+          <div className="font-mono text-[12px] uppercase tracking-[0.12em] mb-4" style={{ color: 'var(--text-low)' }}>
+            The Gaps I Look For
           </div>
+          <h2
+            id="gaps-heading"
+            className="font-display mb-4"
+            style={{ fontSize: 'clamp(28px, 4vw, 40px)', color: 'var(--text-hi)', fontWeight: 400 }}
+          >
+            Five reads hiding in plain sight — in data you already have.
+          </h2>
+          <p className="font-body text-[16px] max-w-[52ch]" style={{ color: 'var(--text-mid)' }}>
+            Each one found in real data — and each was invisible in the aggregate metrics the team was already watching.
+          </p>
+        </div>
+
+        <div className="mt-12">
+          {gaps.map((gap, i) => <GapRow key={gap.num} gap={gap} index={i} />)}
+        </div>
+
+        <div className="mt-12 text-center">
+          <a
+            href="/work"
+            className="font-body font-medium text-[15px] inline-flex items-center gap-2 transition-colors"
+            style={{ color: 'var(--accent)' }}
+          >
+            See all 13 analyses in full →
+          </a>
         </div>
       </div>
     </section>

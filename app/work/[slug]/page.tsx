@@ -1,22 +1,27 @@
+import { projects, getProjectBySlug } from '@/data/projects'
 import { notFound } from 'next/navigation'
-import { projects } from '@/data/projects'
-import ProjectPageClient from './ProjectPageClient'
+import ProjectPageClient from '@/components/ProjectPageClient'
 
-export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }))
+export async function generateStaticParams() {
+  return projects.map(p => ({ slug: p.slug }))
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }) {
-  const project = projects.find((p) => p.slug === params.slug)
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  const project = getProjectBySlug(params.slug)
   if (!project) return {}
   return {
-    title: `${project.title} — Divyesh Annavarapu`,
-    description: project.summary,
+    title: `${project.brand} — ${project.outcomeTitle.slice(0, 60)} | Divyesh Annavarapu`,
+    description: project.decisionChanged.slice(0, 160),
   }
 }
 
 export default function ProjectPage({ params }: { params: { slug: string } }) {
-  const project = projects.find((p) => p.slug === params.slug)
+  const project = getProjectBySlug(params.slug)
   if (!project) notFound()
-  return <ProjectPageClient project={project} />
+
+  const idx = projects.findIndex(p => p.slug === params.slug)
+  const prev = idx > 0 ? projects[idx - 1] : null
+  const next = idx < projects.length - 1 ? projects[idx + 1] : null
+
+  return <ProjectPageClient project={project!} prev={prev} next={next} />
 }
