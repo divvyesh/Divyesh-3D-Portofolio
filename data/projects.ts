@@ -741,6 +741,266 @@ export const projects: Project[] = [
   }
 ]
 
+
+  // ── TOOLS I BUILT ────────────────────────────────────────────────────
+  {
+    slug: 'avatar-ai',
+    tag: 'tool',
+    tagLabel: 'TOOL I BUILT',
+    year: '2024',
+    brand: 'Avatar AI',
+    outcomeTitle: 'AI chat app with 6 iconic personalities, real-time conversations, and user avatar creation',
+    oneLineDecision: 'Built end-to-end: schema, auth, personality engine, onboarding, sharing - shipped to Expo',
+    metrics: ['React Native + Expo', 'Supabase + DeepSeek AI', '17-screen onboarding'],
+    stack: ['React Native', 'TypeScript', 'Expo Router', 'Supabase', 'DeepSeek API', 'React Native Paper'],
+    honesty: 'PROJECTED',
+    problem: 'Most AI chat tools are generic and impersonal. Avatar AI lets users talk with iconic pre-loaded personalities (Cristiano Ronaldo, Arnold Schwarzenegger, MLK, Virat Kohli, Lord Krishna, Mia Khalifa) or create and share their own custom avatars with engineered personality prompts.',
+    data: 'User-defined avatar personality prompts, conversation history stored in Supabase (users, avatars, conversations, messages, user_avatars, shared_avatars tables), Gmail OAuth tokens',
+    method: 'React Native + Expo Router for cross-platform mobile, DeepSeek API for personality-anchored AI responses, Supabase Realtime for chat, Row Level Security for data isolation, personality_prompt engineering per avatar character',
+    decisionChanged: 'Designed and shipped the full product architecture: 6 personality types pre-loaded with engineered prompts, Gmail auth + password recovery, avatar sharing workflow between users, 17-screen onboarding.',
+    whatIDid: 'Designed the full relational DB schema (6 tables, UUID PKs, FK constraints), built Gmail OAuth + email auth flows, engineered AI personality prompts for each avatar, built conversation history with archiving, and implemented avatar sharing with accept/reject status.',
+    result: 'Cross-platform mobile app with full CRUD, real-time AI conversations, user management, and social sharing. Complete from schema design to Expo deployment.',
+    impact: 'End-to-end product shipped. 6 pre-loaded iconic personas. Full auth, profile management, and social sharing layer built from scratch.',
+    problemLines: [
+      'Existing AI chat tools are generic - they have no persistent personality, no character consistency, and no way to create your own AI persona',
+      'Built the full product solo: DB schema design, authentication flows, AI personality engineering, real-time chat, and avatar sharing system',
+      'Technical challenge: maintaining character consistency across long conversations using DeepSeek API with engineered system prompts per avatar'
+    ],
+    kpis: [
+      { n: '6', l: 'Pre-loaded Personas' },
+      { n: '17', l: 'Onboarding Screens' },
+      { n: '6', l: 'DB Tables Designed' },
+      { n: '3', l: 'AI Platforms Evaluated' },
+      { n: '100%', l: 'Solo-Built' },
+      { n: 'iOS+Android', l: 'Cross-Platform' }
+    ],
+    impactPoints: [
+      'Full relational schema designed: users, avatars, conversations, messages, user_avatars, shared_avatars with proper FK constraints and RLS',
+      'DeepSeek API integrated with per-avatar personality_prompt engineering for character consistency',
+      'Gmail OAuth + email auth + password recovery all implemented',
+      'Avatar sharing workflow: invite, accept/reject status, social discovery',
+      'Shipped to Expo with cross-platform iOS and Android support'
+    ],
+    nextStepCards: [
+      { num: '01', title: 'Voice Interactions', desc: 'Add voice-based conversation mode so users can speak directly to their chosen avatar personality.' },
+      { num: '02', title: 'Avatar Creation from Photos', desc: 'Let users upload photos + voice samples to generate new avatar personalities using multimodal AI.' },
+      { num: '03', title: 'Proactive Interactions', desc: 'Scheduled messages from avatars to simulate ongoing relationship - avatars reach out to users, not just respond.' }
+    ]
+  },
+  {
+    slug: 'emo-ai',
+    tag: 'tool',
+    tagLabel: 'TOOL I BUILT',
+    year: '2024',
+    brand: 'EMO AI',
+    outcomeTitle: 'Real-time emotion detection from voice with dynamic color-coded waveform visualization',
+    oneLineDecision: 'Live audio stream - emotion classified - waveform parameters changed in real time',
+    metrics: ['Python + Streamlit', 'Real-time audio', '5 emotion states'],
+    stack: ['Python', 'Streamlit', 'librosa', 'sounddevice', 'scikit-learn', 'matplotlib'],
+    honesty: 'PROJECTED',
+    problem: 'Emotion in speech is invisible to most interfaces. EMO AI processes your microphone stream live, classifies the emotional state from audio features, and renders a waveform visualization whose color and intensity changes in real time based on what you are feeling.',
+    data: 'Live microphone audio stream, extracted acoustic features (MFCCs, pitch, energy, zero crossing rate, spectral centroid), labeled with 5 emotion states',
+    method: 'Real-time audio capture via sounddevice, MFCC and spectral feature extraction with librosa, emotion classifier (scikit-learn), Streamlit for live UI updates, matplotlib for dynamic waveform rendering',
+    decisionChanged: 'Maps 5 emotions to distinct visual signatures: Angry = red high-intensity, Happy = green smooth, Sad = purple low-intensity, Fearful = orange erratic, Neutral = gray moderate.',
+    whatIDid: 'Built the full audio processing pipeline: mic capture, feature extraction, emotion classification, and a real-time Streamlit dashboard that re-renders the waveform visualization on every audio frame.',
+    result: 'Live Streamlit app that updates emotion classification and waveform in real time from microphone input. No server required beyond localhost.',
+    impact: 'Functional real-time pipeline from microphone to emotion to visualization. Entire feature extraction and classification running at streaming latency.',
+    problemLines: [
+      'Most emotion analysis tools are batch-mode - they require a file upload and return results minutes later. EMO AI runs in real time from your microphone.',
+      'Technical challenge: keeping audio feature extraction, ML classification, and UI re-rendering all fast enough for live updates without perceptible lag'
+    ],
+    kpis: [
+      { n: '5', l: 'Emotion States' },
+      { n: 'Real-time', l: 'Processing Mode' },
+      { n: '< 1s', l: 'Classification Latency' },
+      { n: '100%', l: 'Client-Side' },
+      { n: 'Live', l: 'Waveform Updates' },
+      { n: '0', l: 'Server Required' }
+    ],
+    impactPoints: [
+      'Microphone - MFCC extraction - emotion classifier - waveform re-render: entire pipeline runs under 1 second',
+      '5 emotion states each mapped to a distinct visual signature (color + amplitude + waveform shape)',
+      'Pure Python stack: Streamlit, librosa, sounddevice, scikit-learn, matplotlib - no JS/frontend build required'
+    ],
+    nextStepCards: [
+      { num: '01', title: 'Multi-speaker Detection', desc: 'Extend to handle multiple speakers in a room and track emotional state per speaker over time.' },
+      { num: '02', title: 'Emotion Timeline Export', desc: 'Add session recording and export emotion timeline as CSV or chart for meeting/interview analysis.' },
+      { num: '03', title: 'API Endpoint', desc: 'Wrap the emotion classifier as a REST endpoint so other apps can send audio and receive emotion labels.' }
+    ]
+  },
+  {
+    slug: 'fractals-of-mind',
+    tag: 'tool',
+    tagLabel: 'TOOL I BUILT',
+    year: '2024',
+    brand: 'Fractals of Mind',
+    outcomeTitle: 'EEG brainwave data transformed into Julia set fractal art - mental states made visible',
+    oneLineDecision: 'Alpha controls color. Beta shapes the fractal. Gamma sets detail level. Theta controls texture.',
+    metrics: ['Python + NumPy', 'EEG kaggle dataset', 'Julia set fractals'],
+    stack: ['Python', 'NumPy', 'pandas', 'matplotlib', 'scikit-learn', 'scipy', 'imageio', 'Pillow'],
+    honesty: 'PROJECTED',
+    problem: 'EEG data is dense and abstract - rows of numbers that represent mental states no one can visualize. This hackathon project maps brainwave frequency bands directly to parameters of the Julia set fractal algorithm, turning your mental state into generative art.',
+    data: 'EEG Brainwave Dataset from Kaggle (birdy654), containing Alpha (8-12 Hz), Beta (13-30 Hz), Gamma (>30 Hz), and Theta (4-7 Hz) band power readings across multiple mental states',
+    method: 'Band-power extraction from EEG CSV, parameter mapping (Alpha - color palette, Beta - fractal shape constant c, Gamma - iteration depth/detail, Theta - smoothing), Julia set renderer in NumPy with complex dynamics, imageio for GIF animation between states',
+    decisionChanged: 'Four generation modes: static fractal images per EEG sample, smooth state-transition animations, continuous EEG sequence animations, and batch generation. Each mental state produces a visually distinct fractal.',
+    whatIDid: 'Built the EEG feature loader, the parameter mapping layer from EEG bands to Julia set inputs, the fractal renderer using complex dynamics, and the animation engine that interpolates between states to create smooth GIF transitions.',
+    result: 'Generates static PNG fractals, state-transition GIF animations, and continuous mental-state animations from any EEG CSV input. Built as a hackathon project in under 48 hours.',
+    impact: 'Full pipeline from raw EEG CSV to rendered art. Static images, transition animations, and continuous animations all working.',
+    problemLines: [
+      'EEG data is inherently abstract - amplitude values across frequency bands mean nothing to the human eye without a mapping to something perceivable',
+      'Julia set fractals are mathematically rich enough to encode four independent parameters (one per EEG band) while still producing coherent, beautiful images',
+      'Hackathon time constraint: had to design the mapping, build the renderer, and produce working GIF animations within 48 hours'
+    ],
+    kpis: [
+      { n: '4', l: 'EEG Bands Mapped' },
+      { n: '4', l: 'Generation Modes' },
+      { n: '48h', l: 'Hackathon Build Time' },
+      { n: 'GIF', l: 'Animation Output' },
+      { n: '0', l: 'ML Required' },
+      { n: '100%', l: 'Deterministic Art' }
+    ],
+    impactPoints: [
+      'Alpha band drives the fractal color palette - relaxed states produce warmer colors, focused states cooler',
+      'Beta controls the complex constant c in Julia set - small changes create dramatically different fractal shapes',
+      'Gamma sets iteration depth - high Gamma (focus/stress) produces high-detail fractals',
+      'Theta affects smoothing - higher Theta (drowsy/meditative) produces softer texture',
+      'State-transition GIF animations interpolate between mental states for smooth visual storytelling'
+    ],
+    nextStepCards: [
+      { num: '01', title: 'Live EEG Integration', desc: 'Connect to a consumer EEG headset (Muse, OpenBCI) to generate real-time fractal art from live brainwave data.' },
+      { num: '02', title: 'Web App', desc: 'Port the renderer to JavaScript/WebGL so users can upload EEG CSVs and see their fractal in-browser without Python setup.' },
+      { num: '03', title: 'NFT Art Series', desc: 'Generate a limited series of EEG-driven fractal art pieces from actual meditation session data and mint as NFTs.' }
+    ]
+  },
+  {
+    slug: 'promptr',
+    tag: 'tool',
+    tagLabel: 'TOOL I BUILT',
+    year: '2024',
+    brand: 'Promptr AI',
+    outcomeTitle: 'Chrome extension that intercepts your AI prompts and returns 3 optimized rewrites in real time',
+    oneLineDecision: 'You type a prompt on ChatGPT/Claude/Gemini - Promptr detects it, optimizes it, lets you swap in one click',
+    metrics: ['Chrome Extension', 'Claude API', 'ChatGPT + Claude + Gemini'],
+    stack: ['JavaScript', 'Chrome Extension Manifest V3', 'Claude API (Anthropic)', 'Content Scripts', 'Service Worker'],
+    honesty: 'PROJECTED',
+    problem: 'Most people write weak prompts - vague, underspecified, missing context. Promptr sits inside the browser, watches when you are typing on ChatGPT, Claude, or Gemini, and after 2 seconds of inactivity it sends your draft to the Claude API and surfaces 3 optimized rewrites in a non-intrusive popup.',
+    data: 'User keystrokes detected via content script DOM observation on chat input elements, prompt text sent to Claude API when > 50 characters and idle for 2 seconds',
+    method: 'Manifest V3 Chrome extension: content.js injects into ChatGPT/Claude/Gemini DOM and monitors input fields via MutationObserver + debounce (2s idle). background.js service worker handles Claude API calls. Popup renders 3 suggestions with click-to-replace.',
+    decisionChanged: 'Zero friction: the user never leaves the AI tool they are already in. The extension enhances their existing workflow rather than requiring them to go somewhere else.',
+    whatIDid: 'Built the full extension: content script DOM injection across 3 AI platforms, debounced input detection, Claude API integration in the service worker, and the popup UI with click-to-swap suggestion cards.',
+    result: 'Working Chrome extension loadable in developer mode. Detects typing on ChatGPT, Claude.ai, and Gemini. Returns 3 optimized prompt variants via Claude API with one-click replacement.',
+    impact: 'Functional extension deployed to 3 AI platforms simultaneously. Full detection - API call - UI render loop working end to end.',
+    problemLines: [
+      'The quality of AI output is directly determined by prompt quality, but most users have no feedback loop telling them when a prompt is underspecified',
+      'Extension had to work across 3 different DOM structures (ChatGPT, Claude, Gemini) with no official API - required custom selectors and MutationObserver per platform',
+      'UX constraint: suggestions must appear without interrupting the user's flow and disappear cleanly when not needed'
+    ],
+    kpis: [
+      { n: '3', l: 'AI Platforms Supported' },
+      { n: '3', l: 'Prompt Variants Returned' },
+      { n: '2s', l: 'Idle Detection Threshold' },
+      { n: '50+', l: 'Min Characters to Trigger' },
+      { n: '1-click', l: 'Swap to Optimized Prompt' },
+      { n: '0', l: 'Extra Tabs Required' }
+    ],
+    impactPoints: [
+      'Content script injects into ChatGPT, Claude.ai, and Gemini simultaneously via manifest host permissions',
+      'MutationObserver + 2-second debounce detects when the user has paused typing with a substantial prompt',
+      'Claude API call happens in the background service worker - no blocking of the main page',
+      'Click-to-replace swaps the entire input field content with the selected optimized prompt'
+    ],
+    nextStepCards: [
+      { num: '01', title: 'Multi-model Optimization', desc: 'Tailor the prompt rewrites based on which AI tool is open - optimize differently for GPT-4, Claude, and Gemini given their different strengths.' },
+      { num: '02', title: 'Prompt History', desc: 'Log all prompt improvements with before/after pairs so users can learn from what made their prompts better over time.' },
+      { num: '03', title: 'Chrome Web Store Publish', desc: 'Package and submit to Chrome Web Store for public distribution with proper OAuth key management.' }
+    ]
+  },
+  {
+    slug: 'wazzap',
+    tag: 'tool',
+    tagLabel: 'TOOL I BUILT',
+    year: '2024',
+    brand: 'Wazzap',
+    outcomeTitle: 'Full-stack WhatsApp-style messaging app built in React Native with real-time chat',
+    oneLineDecision: 'Built a complete messaging product: rooms, real-time messages, contacts, cross-platform',
+    metrics: ['React Native + Expo', 'Real-time messaging', 'iOS + Android'],
+    stack: ['React Native', 'TypeScript', 'Expo', 'React Navigation', 'Zustand'],
+    honesty: 'PROJECTED',
+    problem: 'Built as a deep-dive into real-time mobile product development. Wazzap replicates the core WhatsApp experience: contact lists, chat rooms, real-time message threads, and cross-platform delivery on both iOS and Android.',
+    data: 'Chat messages, user contacts, conversation threads, message timestamps and read status',
+    method: 'React Native + Expo for cross-platform mobile, React Navigation for screen routing, Zustand for client-side state management, custom theming system for dark/light mode support',
+    decisionChanged: 'Built the full messaging architecture: conversation list, real-time message thread, contact discovery, and the navigation flow that mirrors WhatsApp's tab-based UX.',
+    whatIDid: 'Built the full app architecture: screens, navigation, state management, theming, and the real-time message thread component. Implemented all core messaging flows from scratch.',
+    result: 'Cross-platform React Native app with full messaging UX: chat list, message threads, contacts, real-time updates, and dark/light theming.',
+    impact: 'Complete messaging product built end-to-end. Full navigation, state management, theming system, and real-time UI all working cross-platform.',
+    problemLines: [
+      'Building a messaging app requires getting many product details right simultaneously: navigation architecture, real-time state, message threading, contact management',
+      'Technical challenge: React Native's FlatList performance for long message threads requires careful optimization to prevent jank on scroll'
+    ],
+    kpis: [
+      { n: 'iOS+Android', l: 'Platforms' },
+      { n: 'Real-time', l: 'Message Updates' },
+      { n: 'Dark+Light', l: 'Theme Support' },
+      { n: 'Zustand', l: 'State Management' },
+      { n: '100%', l: 'TypeScript' },
+      { n: '0', l: 'Native Dependencies' }
+    ],
+    impactPoints: [
+      'Tab-based navigation mirrors WhatsApp UX: Chats, Status, Calls, Settings',
+      'Zustand store manages conversation state, contact list, and real-time message queue',
+      'Custom theme system supports full dark/light mode switching',
+      'TypeScript throughout for type-safe props, navigation params, and message schemas'
+    ],
+    nextStepCards: [
+      { num: '01', title: 'Backend + Real Auth', desc: 'Connect to Supabase or Firebase for real user accounts, persistent messages, and push notifications.' },
+      { num: '02', title: 'Media Messages', desc: 'Add image, voice note, and document sharing to the message thread - the core missing feature vs WhatsApp.' },
+      { num: '03', title: 'End-to-End Encryption', desc: 'Implement Signal Protocol for E2E encryption as a learning exercise in applied cryptography.' }
+    ]
+  },
+  {
+    slug: 'attendance',
+    tag: 'tool',
+    tagLabel: 'TOOL I BUILT',
+    year: '2024',
+    brand: 'Attendance Summarizer',
+    outcomeTitle: 'Browser-based attendance evaluator that runs pandas logic in-browser via PyScript - zero server required',
+    oneLineDecision: 'Upload two Excel files, get a full attendance summary table and downloadable CSV in seconds',
+    metrics: ['PyScript + pandas', 'Zero server required', 'Excel in - CSV out'],
+    stack: ['Python', 'pandas', 'PyScript', 'openpyxl', 'HTML/CSS', 'JavaScript'],
+    honesty: 'MEASURED',
+    problem: 'Attendance evaluation from punch-clock exports is tedious: reconciling scheduled shifts against actual punch records requires merging, comparing, and flagging discrepancies across potentially hundreds of rows. This tool automates the full workflow in-browser.',
+    data: 'Punch Clock Excel file (actual timestamps), Scheduled Shifts Excel file (planned start/end), configurable shift policy parameters (grace period, early departure threshold)',
+    method: 'PyScript loads pandas and openpyxl directly in the browser (no server, no Python install required). Python logic handles Excel parse, shift merge, attendance status calculation (on time, late, absent, early departure), summary aggregation.',
+    decisionChanged: 'Zero infrastructure: the tool runs entirely in the user's browser using PyScript. No backend, no server costs, no data ever leaves the user's machine.',
+    whatIDid: 'Built the Python attendance logic (pandas merge, shift comparison, status classification), the PyScript/JS bridge for file upload from the browser, the HTML/CSS UI, and the CSV download button.',
+    result: 'Browser tool that accepts two Excel files, processes attendance against scheduled shifts, and outputs a summary table + detailed CSV. Runs 100% client-side.',
+    impact: 'Full attendance analysis pipeline running in-browser. No server, no data exposure, no install. Excel in, analyzed CSV out.',
+    problemLines: [
+      'Attendance processing from punch-clock exports is manual and error-prone - most teams do it in Excel with VLOOKUP and lots of manual checking',
+      'Technical challenge: running Python/pandas in-browser via PyScript requires careful handling of the async file upload and Pyodide initialization lifecycle'
+    ],
+    kpis: [
+      { n: '0', l: 'Server Required' },
+      { n: '100%', l: 'Client-Side Python' },
+      { n: '2', l: 'Excel Inputs' },
+      { n: '1', l: 'CSV Output' },
+      { n: 'PyScript', l: 'Runtime Engine' },
+      { n: 'Configurable', l: 'Shift Policy' }
+    ],
+    impactPoints: [
+      'Punch Clock + Scheduled Shifts Excel files merged and compared using pandas in-browser',
+      'Configurable shift policy: grace period, early departure threshold, absent threshold',
+      'Output: per-employee attendance summary (days on time, late, absent, early departure) + detailed row-level table',
+      'CSV download button generates and triggers download without any server roundtrip',
+      'Zero data privacy risk: files never leave the browser'
+    ],
+    nextStepCards: [
+      { num: '01', title: 'Multi-Employee Support', desc: 'Extend beyond single-employee evaluation to handle full team rosters with per-employee drill-down views.' },
+      { num: '02', title: 'HRIS Export Formats', desc: 'Add support for common HRIS exports (ADP, BambooHR, Gusto) so it works out of the box with existing payroll systems.' },
+      { num: '03', title: 'Anomaly Flagging', desc: 'Auto-flag statistical outliers in punch patterns (always 1 minute late, exits exactly at threshold) to surface potential timesheet gaming.' }
+    ]
+  },
+
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find(p => p.slug === slug)
 }

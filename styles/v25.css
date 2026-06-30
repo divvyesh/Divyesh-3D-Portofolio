@@ -1,3 +1,20 @@
+.v25-wrap {
+  --surface: #0d0d14;
+  --surface2: #13131e;
+  --text: #e8e8f0;
+  --muted: rgba(232,232,240,0.60);
+  --muted2: rgba(232,232,240,0.38);
+  --border: rgba(255,255,255,0.09);
+  --teal: #00d4aa;
+  --purple: #7c3aed;
+  --purple-light: #a78bfa;
+  --gold: #f59e0b;
+  --danger: #ef4444;
+  background: #08080f;
+  color: #e8e8f0;
+}
+
+
 .v25-wrap nav a.back {
 
       color: var(--teal); text-decoration: none;

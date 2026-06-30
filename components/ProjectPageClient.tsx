@@ -128,21 +128,29 @@ const innerCard: React.CSSProperties = { padding: '14px 16px', borderRadius: '10
 
 // ── Nav + CTA wrapper (always shown) ─────────────────────────────────
 function PageShell({
-  project, prev, next, children,
+  project, prev, next, children, fullBleed = false,
 }: {
   project: Project
   prev: Project | null
   next: Project | null
   children: React.ReactNode
+  fullBleed?: boolean
 }) {
   return (
     <div style={{ paddingTop: '72px', minHeight: '100vh' }}>
-      <div style={{ maxWidth: '980px', margin: '0 auto', padding: '36px 16px 80px' }}>
-        <Link href="/work" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontFamily: 'var(--font-mono, monospace)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--glass-low)', textDecoration: 'none', marginBottom: '28px', opacity: 0.75 }}>
+      {/* Back nav strip */}
+      <div style={{ padding: '24px 40px 0', maxWidth: fullBleed ? undefined : '1400px', margin: fullBleed ? undefined : '0 auto' }}>
+        <Link href="/work" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontFamily: 'var(--font-mono, monospace)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--glass-low)', textDecoration: 'none', opacity: 0.75 }}>
           ← Back to work
         </Link>
+      </div>
+      {/* Main content — full bleed for v25, wide-padded for glass layout */}
+      <div style={fullBleed ? { width: '100%' } : { maxWidth: '1400px', margin: '0 auto', padding: '28px 40px 0' }}>
         {children}
-        <div style={{ padding: '40px 28px', borderRadius: '16px', textAlign: 'center', background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', border: '1px solid rgba(255,255,255,0.08)', marginBottom: '40px', marginTop: '32px' }}>
+      </div>
+      {/* CTA + prev/next */}
+      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '32px 40px 80px' }}>
+        <div style={{ padding: '40px 28px', borderRadius: '16px', textAlign: 'center', background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', border: '1px solid rgba(255,255,255,0.08)', marginBottom: '40px' }}>
           <p style={{ fontFamily: 'var(--font-body, sans-serif)', fontSize: '15px', color: 'var(--glass-mid)', marginBottom: '20px', marginTop: 0 }}>Want this kind of analysis for your business?</p>
           <a href="/#book" style={{ display: 'inline-block', fontFamily: 'var(--font-body, sans-serif)', fontWeight: 600, fontSize: '15px', padding: '12px 28px', borderRadius: '10px', background: 'linear-gradient(135deg, #34d399 0%, #059669 100%)', color: '#050507', textDecoration: 'none', boxShadow: '0 4px 20px rgba(52,211,153,0.26)' }}>
             Book 15 min &#8594;
@@ -163,7 +171,7 @@ export default function ProjectPageClient({ project, prev, next }: { project: Pr
   // ── V25 layout: render extracted HTML with scoped CSS ──────────────
   if (html) {
     return (
-      <PageShell project={project} prev={prev} next={next}>
+      <PageShell project={project} prev={prev} next={next} fullBleed>
         <V25Section html={html} />
       </PageShell>
     )
