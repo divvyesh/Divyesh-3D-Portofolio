@@ -934,7 +934,7 @@ export const projects: Project[] = [
     impact: 'Complete messaging product built end-to-end. Full navigation, state management, theming system, and real-time UI all working cross-platform.',
     problemLines: [
       'Building a messaging app requires getting many product details right simultaneously: navigation architecture, real-time state, message threading, contact management',
-      'Technical challenge: React Native's FlatList performance for long message threads requires careful optimization to prevent jank on scroll'
+      'Technical challenge: React Native\'s FlatList performance for long message threads requires careful optimization to prevent jank on scroll'
     ],
     kpis: [
       { n: 'iOS+Android', l: 'Platforms' },
@@ -970,7 +970,7 @@ export const projects: Project[] = [
     problem: 'Attendance evaluation from punch-clock exports is tedious: reconciling scheduled shifts against actual punch records requires merging, comparing, and flagging discrepancies across potentially hundreds of rows. This tool automates the full workflow in-browser.',
     data: 'Punch Clock Excel file (actual timestamps), Scheduled Shifts Excel file (planned start/end), configurable shift policy parameters (grace period, early departure threshold)',
     method: 'PyScript loads pandas and openpyxl directly in the browser (no server, no Python install required). Python logic handles Excel parse, shift merge, attendance status calculation (on time, late, absent, early departure), summary aggregation.',
-    decisionChanged: 'Zero infrastructure: the tool runs entirely in the user's browser using PyScript. No backend, no server costs, no data ever leaves the user's machine.',
+    decisionChanged: 'Zero infrastructure: the tool runs entirely in the user\'s browser using PyScript. No backend, no server costs, no data ever leaves the user\'s machine.',
     whatIDid: 'Built the Python attendance logic (pandas merge, shift comparison, status classification), the PyScript/JS bridge for file upload from the browser, the HTML/CSS UI, and the CSV download button.',
     result: 'Browser tool that accepts two Excel files, processes attendance against scheduled shifts, and outputs a summary table + detailed CSV. Runs 100% client-side.',
     impact: 'Full attendance analysis pipeline running in-browser. No server, no data exposure, no install. Excel in, analyzed CSV out.',
