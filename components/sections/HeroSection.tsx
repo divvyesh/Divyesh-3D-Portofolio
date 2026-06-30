@@ -3,9 +3,10 @@ import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-const STAT_TILES: { top: string; sub?: string; bottom: string }[] = [
+const STAT_TILES: { top: string; bottom: string }[] = [
   { top: 'BU MSBA', bottom: 'CLASS OF 2026' },
-  { top: '5 Yrs', sub: 'NEW YORK', bottom: 'EXPERIENCE' },
+  { top: '5 Yrs', bottom: 'EXPERIENCE' },
+  { top: 'New York', bottom: 'BASED' },
   { top: '3+ Yrs', bottom: 'WORK AUTH' },
 ]
 
@@ -67,17 +68,12 @@ export default function HeroSection() {
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', width: '100%', maxWidth: '380px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px', width: '100%', maxWidth: '380px' }}>
               {STAT_TILES.map(tile => (
                 <div key={tile.top} style={{ background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', border: '1px solid var(--glass-border)', boxShadow: 'var(--glass-shadow)', borderRadius: '14px', padding: '20px 12px', textAlign: 'center' }}>
                   <div style={{ fontFamily: 'var(--font-fraunces)', fontSize: '20px', color: 'var(--accent)', fontWeight: 500, lineHeight: 1.1 }}>
                     {tile.top}
                   </div>
-                  {tile.sub && (
-                    <div style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '9px', color: 'rgba(52,211,153,0.7)', letterSpacing: '0.1em', marginTop: '3px', textTransform: 'uppercase' }}>
-                      {tile.sub}
-                    </div>
-                  )}
                   <div style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '10px', color: 'var(--glass-low)', letterSpacing: '0.08em', marginTop: '6px', textTransform: 'uppercase' }}>
                     {tile.bottom}
                   </div>

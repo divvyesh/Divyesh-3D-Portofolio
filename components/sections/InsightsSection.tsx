@@ -10,12 +10,12 @@ const BAR_ROWS = [
 ]
 
 const QUOTES = [
-  { text: 'Companies that lead in CX outperform laggards by nearly 80% in revenue growth.', source: 'Forrester Customer Experience Index 2024', border: 'var(--pink)' },
-  { text: '51% of large enterprises say business goals, not customer feedback, drive product strategy.', source: 'Product Management Statistics, HaveIgnition 2024', border: 'var(--warm)' },
-  { text: 'Improving retention by just 2% drives profitability equal to cutting costs by 10%.', source: 'Bain & Company / Harvard Business Review', border: 'var(--accent)' },
-  { text: 'Customer centric companies are 60% more profitable than those not focused on customers.', source: 'Deloitte & Touche', border: 'var(--pink)' },
-  { text: '86% of buyers will pay more for a better experience, yet most companies still compete on price.', source: 'Walker Customers 2020 / SuperOffice CX Report', border: 'var(--warm)' },
-  { text: 'Organizations are 2x more likely to succeed when they redesign workflows first, then pick AI tools.', source: 'McKinsey Global AI Survey, Nov 2025', border: 'var(--accent)' },
+  { text: 'Companies that lead in CX outperform laggards by nearly 80% in revenue growth.', source: 'Forrester Customer Experience Index 2024', sourceUrl: 'https://www.forrester.com/report/the-forrester-customer-experience-index/', border: 'var(--pink)' },
+  { text: '51% of large enterprises say business goals, not customer feedback, drive product strategy.', source: 'Product Management Statistics, HaveIgnition 2024', sourceUrl: 'https://www.haveignition.com/statistics/product-management-statistics', border: 'var(--warm)' },
+  { text: 'Improving retention by just 2% drives profitability equal to cutting costs by 10%.', source: 'Bain & Company / Harvard Business Review', sourceUrl: 'https://hbr.org/2014/10/the-value-of-keeping-the-right-customers', border: 'var(--accent)' },
+  { text: 'Customer centric companies are 60% more profitable than those not focused on customers.', source: 'Deloitte & Touche', sourceUrl: 'https://www2.deloitte.com/us/en/pages/consumer-business/articles/navigating-the-new-digital-divide.html', border: 'var(--pink)' },
+  { text: '86% of buyers will pay more for a better experience, yet most companies still compete on price.', source: 'Walker Customers 2020 / SuperOffice CX Report', sourceUrl: 'https://www.superoffice.com/blog/customer-experience-statistics/', border: 'var(--warm)' },
+  { text: 'Organizations are 2x more likely to succeed when they redesign workflows first, then pick AI tools.', source: 'McKinsey Global AI Survey, Nov 2025', sourceUrl: 'https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai', border: 'var(--accent)' },
 ]
 
 function BarChart() {
@@ -63,7 +63,11 @@ export default function InsightsSection() {
           {QUOTES.map((q, i) => (
             <div key={i} style={{ background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', border: '1px solid var(--glass-border)', boxShadow: 'var(--glass-shadow)', borderRadius: '12px', padding: '24px', borderLeft: `3px solid ${q.border}` }}>
               <p style={{ fontFamily: 'var(--font-inter)', fontSize: '15px', fontWeight: 500, color: 'var(--glass-hi)', lineHeight: 1.45, marginBottom: '16px' }}>&ldquo;{q.text}&rdquo;</p>
-              <p style={{ fontFamily: 'var(--font-inter)', fontSize: '13px', color: 'var(--glass-low)' }}>{q.source}</p>
+              <a href={q.sourceUrl} target="_blank" rel="noopener noreferrer"
+                style={{ fontFamily: 'var(--font-inter)', fontSize: '13px', color: 'var(--glass-low)', textDecoration: 'none', borderBottom: '1px solid transparent', transition: 'color 150ms, border-color 150ms' }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'var(--accent)'; (e.currentTarget as HTMLElement).style.borderBottomColor = 'var(--accent)'; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'var(--glass-low)'; (e.currentTarget as HTMLElement).style.borderBottomColor = 'transparent'; }}
+              >{q.source} ↗</a>
             </div>
           ))}
         </div>

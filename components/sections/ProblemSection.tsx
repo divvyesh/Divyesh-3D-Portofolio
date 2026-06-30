@@ -3,12 +3,12 @@ import { useRef, useEffect, useState } from 'react'
 import CountUp from '@/components/CountUp'
 
 const CARDS = [
-  { countVal: 95, countSuffix: '%', color: 'var(--pink)', claim: 'of new products fail to meet market expectations', detail: 'Harvard Business School research across 30,000+ annual product launches. The leading cause is products built around internal assumptions, not validated customer need.', source: 'Inc. / Harvard Business School' },
-  { countVal: 80, countSuffix: '%', color: 'var(--warm)', claim: 'of companies believe they are customer centric', detail: 'Only 8% of their customers agree. The gap between internal conviction and customer reality is the most expensive blind spot in business today.', source: 'Bain & Company' },
-  { countVal: 42, countSuffix: '%', color: 'var(--accent)', claim: 'of marketers do not segment their customers at all', detail: 'Of those who do, most rely on demographics alone and ignore the behavior, motivation, and psychographic drivers that actually predict what someone buys.', source: 'NotifyVisitors 2025 Segmentation Report' },
-  { countVal: 3.7, countPrefix: '$', countSuffix: 'T', countDecimals: 1, color: 'var(--violet)', claim: 'in global revenue at risk from poor customer experience', detail: 'Bad CX is not a soft metric, it is a balance sheet problem. Customers leave, do not return, and tell others. The cost compounds quietly until it does not.', source: 'Emplifi 2024 CX Statistics' },
-  { countVal: 80, countSuffix: '%', color: 'var(--pink)', claim: 'of enterprise AI projects fail to deliver business value', detail: 'The number one reason is not bad technology. It is that companies picked tools before defining the problem or identifying who they were solving it for.', source: 'RAND Corporation / Gartner 2025' },
-  { countVal: 306, countSuffix: '%', color: 'var(--accent)', claim: 'higher lifetime value from emotionally connected customers', detail: 'Emotionally connected customers stay 5.1 years on average, spend 67% more per order, and recommend at 3x the rate of satisfied but not connected buyers.', source: 'Motista / Resonate CX' },
+  { countVal: 95, countSuffix: '%', color: 'var(--pink)', claim: 'of new products fail to meet market expectations', detail: 'Harvard Business School research across 30,000+ annual product launches. The leading cause is products built around internal assumptions, not validated customer need.', source: 'Inc. / Harvard Business School', sourceUrl: 'https://www.inc.com/marc-emmer/95-percent-of-new-products-fail-here-are-6-steps-to-make-sure-yours-dont.html' },
+  { countVal: 80, countSuffix: '%', color: 'var(--warm)', claim: 'of companies believe they are customer centric', detail: 'Only 8% of their customers agree. The gap between internal conviction and customer reality is the most expensive blind spot in business today.', source: 'Bain & Company', sourceUrl: 'https://www.bain.com/insights/closing-the-delivery-gap/' },
+  { countVal: 42, countSuffix: '%', color: 'var(--accent)', claim: 'of marketers do not segment their customers at all', detail: 'Of those who do, most rely on demographics alone and ignore the behavior, motivation, and psychographic drivers that actually predict what someone buys.', source: 'NotifyVisitors 2025 Segmentation Report', sourceUrl: 'https://www.notifyvisitors.com/blog/customer-segmentation-statistics/' },
+  { countVal: 3.7, countPrefix: '$', countSuffix: 'T', countDecimals: 1, color: 'var(--violet)', claim: 'in global revenue at risk from poor customer experience', detail: 'Bad CX is not a soft metric, it is a balance sheet problem. Customers leave, do not return, and tell others. The cost compounds quietly until it does not.', source: 'Emplifi 2024 CX Statistics', sourceUrl: 'https://emplifi.io/resources/blog/cx-statistics' },
+  { countVal: 80, countSuffix: '%', color: 'var(--pink)', claim: 'of enterprise AI projects fail to deliver business value', detail: 'The number one reason is not bad technology. It is that companies picked tools before defining the problem or identifying who they were solving it for.', source: 'RAND Corporation / Gartner 2025', sourceUrl: 'https://www.gartner.com/en/newsroom/press-releases/2022-09-29-gartner-survey-reveals-80-percent-of-organizations-ai' },
+  { countVal: 306, countSuffix: '%', color: 'var(--accent)', claim: 'higher lifetime value from emotionally connected customers', detail: 'Emotionally connected customers stay 5.1 years on average, spend 67% more per order, and recommend at 3x the rate of satisfied but not connected buyers.', source: 'Motista / Resonate CX', sourceUrl: 'https://motista.com/' },
 ]
 
 function StatCard({ card, delay }: { card: typeof CARDS[0]; delay: number }) {
@@ -26,7 +26,10 @@ function StatCard({ card, delay }: { card: typeof CARDS[0]; delay: number }) {
       </div>
       <div style={{ fontFamily: 'var(--font-inter)', fontSize: '17px', fontWeight: 600, color: 'var(--glass-hi)', marginBottom: '8px', lineHeight: 1.3 }}>{card.claim}</div>
       <div style={{ fontFamily: 'var(--font-inter)', fontSize: '15px', color: 'var(--glass-mid)', lineHeight: 1.55, marginBottom: '16px' }}>{card.detail}</div>
-      <div style={{ fontFamily: 'var(--font-inter)', fontSize: '13px', fontStyle: 'italic', color: 'var(--glass-low)' }}>Source: {card.source}</div>
+      <a href={card.sourceUrl} target="_blank" rel="noopener noreferrer" style={{ fontFamily: 'var(--font-inter)', fontSize: '13px', fontStyle: 'italic', color: 'var(--glass-low)', textDecoration: 'none', borderBottom: '1px solid transparent', transition: 'color 150ms, border-color 150ms' }}
+        onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'var(--accent)'; (e.currentTarget as HTMLElement).style.borderBottomColor = 'var(--accent)'; }}
+        onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'var(--glass-low)'; (e.currentTarget as HTMLElement).style.borderBottomColor = 'transparent'; }}
+      >Source: {card.source} ↗</a>
     </div>
   )
 }
