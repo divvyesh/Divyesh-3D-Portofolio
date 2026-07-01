@@ -110,14 +110,14 @@ function GapRow({ gap, index }: { gap: typeof GAPS[0]; index: number }) {
     return () => obs.disconnect()
   }, [])
   return (
-    <div ref={ref} style={{ background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', border: '1px solid var(--glass-border)', boxShadow: 'var(--glass-shadow)', borderRadius: '16px', padding: '32px', display: 'flex', gap: '32px', alignItems: 'center', marginBottom: '16px', opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(12px)', transition: 'opacity 450ms cubic-bezier(0.22,1,0.36,1), transform 450ms cubic-bezier(0.22,1,0.36,1)' }}>
-      <div style={{ width: '100px', flexShrink: 0 }}>
-        <div style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '44px', fontWeight: 500, color: 'var(--glass-low)', lineHeight: 1 }}>{gap.num}</div>
+    <div ref={ref} className="gap-row" style={{ background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', border: '1px solid var(--glass-border)', boxShadow: 'var(--glass-shadow)', borderRadius: '16px', padding: '32px', display: 'flex', gap: '32px', alignItems: 'center', marginBottom: '16px', opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(12px)', transition: 'opacity 450ms cubic-bezier(0.22,1,0.36,1), transform 450ms cubic-bezier(0.22,1,0.36,1)' }}>
+      <div className="gap-num-col" style={{ width: '100px', flexShrink: 0 }}>
+        <div className="gap-num-big" style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '44px', fontWeight: 500, color: 'var(--glass-low)', lineHeight: 1 }}>{gap.num}</div>
         <div style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '11px', fontWeight: 500, color: gap.color, letterSpacing: '0.1em', textTransform: 'uppercase', marginTop: '6px' }}>{gap.lens}</div>
       </div>
       <div style={{ flex: 1, minWidth: 0 }}>
-        <h3 style={{ fontFamily: 'var(--font-inter)', fontSize: '20px', fontWeight: 600, color: 'var(--glass-hi)', lineHeight: 1.3, marginBottom: '8px' }}>{gap.title}</h3>
-        <p style={{ fontFamily: 'var(--font-inter)', fontSize: '15px', color: 'var(--glass-mid)', lineHeight: 1.55, maxWidth: '60ch', marginBottom: '12px' }}>{gap.body}</p>
+        <h3 className="gap-title" style={{ fontFamily: 'var(--font-inter)', fontSize: '20px', fontWeight: 600, color: 'var(--glass-hi)', lineHeight: 1.3, marginBottom: '8px' }}>{gap.title}</h3>
+        <p className="gap-body" style={{ fontFamily: 'var(--font-inter)', fontSize: '15px', color: 'var(--glass-mid)', lineHeight: 1.55, maxWidth: '60ch', marginBottom: '12px' }}>{gap.body}</p>
         <Link href={'/work/' + gap.slug}
           style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '13px', color: 'var(--glass-low)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px', transition: 'color 150ms' }}
           onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'var(--accent)'; }}
@@ -135,8 +135,8 @@ function GapRow({ gap, index }: { gap: typeof GAPS[0]; index: number }) {
 
 export default function GapsSection() {
   return (
-    <section style={{ padding: '128px 0' }} aria-labelledby="gaps-heading">
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px' }}>
+    <section className="sec" style={{ padding: '128px 0' }} aria-labelledby="gaps-heading">
+      <div className="sec-in" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px' }}>
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '20px' }}>
             <div style={{ width: '24px', height: '2px', background: 'var(--accent)' }} aria-hidden="true" />

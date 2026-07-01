@@ -16,9 +16,10 @@ export default function HeroSection() {
   return (
     <section
       aria-label="Hero"
+      className="hero-section"
       style={{ minHeight: '88vh', paddingTop: '128px', paddingBottom: '96px', display: 'flex', alignItems: 'center' }}
     >
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px', width: '100%' }}>
+      <div className="sec-in" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px', width: '100%' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '7fr 5fr', gap: '64px', alignItems: 'center' }} className="hero-grid">
           {/* LEFT COLUMN */}
           <div>
@@ -28,10 +29,10 @@ export default function HeroSection() {
             <h1 style={{ fontFamily: 'var(--font-fraunces)', fontSize: 'clamp(44px, 6.5vw, 72px)', lineHeight: 1.04, letterSpacing: '-0.02em', color: 'var(--text-hi)', fontWeight: 500, marginBottom: '24px' }}>
               The customer truth your data is not showing you.
             </h1>
-            <p style={{ fontFamily: 'var(--font-inter)', fontSize: '19px', lineHeight: 1.6, color: 'var(--text-mid)', maxWidth: '52ch', marginBottom: '20px' }}>
+            <p className="hero-body" style={{ fontFamily: 'var(--font-inter)', fontSize: '19px', lineHeight: 1.6, color: 'var(--text-mid)', maxWidth: '52ch', marginBottom: '20px' }}>
               I help teams find the cohort, the churn signal, and the price cliff that dashboards average away. Then I turn it into a decision you can act on.
             </p>
-            <p style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '15px', color: 'var(--text-low)', marginBottom: '32px' }}>
+            <p className="hero-sub" style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '15px', color: 'var(--text-low)', marginBottom: '32px' }}>
               5 years experience. 10+ projects shipped. British Airways, Starbucks, Newdia.
             </p>
             <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'center', marginBottom: '14px' }}>
@@ -43,9 +44,9 @@ export default function HeroSection() {
                 Book a free 15 min call <span aria-hidden="true">&#8594;</span>
               </a>
               <a href="#work"
-                style={{ height: '52px', padding: '0 24px', borderRadius: '12px', background: 'transparent', border: '1px solid rgba(15,17,23,0.18)', color: 'var(--text-hi)', fontFamily: 'var(--font-inter)', fontSize: '16px', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', transition: 'border-color 150ms ease-out' }}
+                style={{ height: '52px', padding: '0 24px', borderRadius: '12px', background: 'transparent', border: '1px solid rgba(255,255,255,0.18)', color: 'var(--text-hi)', fontFamily: 'var(--font-inter)', fontSize: '16px', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', transition: 'border-color 150ms ease-out' }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor='var(--accent)'; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor='rgba(15,17,23,0.18)'; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor='rgba(255,255,255,0.18)'; }}
               >
                 See the work
               </a>
@@ -70,8 +71,8 @@ export default function HeroSection() {
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px', width: '100%', maxWidth: '380px' }}>
               {STAT_TILES.map(tile => (
-                <div key={tile.top} style={{ background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', border: '1px solid var(--glass-border)', boxShadow: 'var(--glass-shadow)', borderRadius: '14px', padding: '20px 12px', textAlign: 'center' }}>
-                  <div style={{ fontFamily: 'var(--font-fraunces)', fontSize: '20px', color: 'var(--accent)', fontWeight: 500, lineHeight: 1.1 }}>
+                <div key={tile.top} className="hero-stat-tile" style={{ background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', border: '1px solid var(--glass-border)', boxShadow: 'var(--glass-shadow)', borderRadius: '14px', padding: '20px 12px', textAlign: 'center' }}>
+                  <div className="hero-stat-top" style={{ fontFamily: 'var(--font-fraunces)', fontSize: '20px', color: 'var(--accent)', fontWeight: 500, lineHeight: 1.1 }}>
                     {tile.top}
                   </div>
                   <div style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '10px', color: 'var(--glass-low)', letterSpacing: '0.08em', marginTop: '6px', textTransform: 'uppercase' }}>

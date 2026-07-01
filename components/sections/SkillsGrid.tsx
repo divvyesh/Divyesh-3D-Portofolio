@@ -31,11 +31,12 @@ function SkillCard({ skill, delay }: { skill: typeof SKILLS[0]; delay: number })
   }, [])
   return (
     <div ref={ref} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+      className="skill-card"
       style={{ background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', border: hovered ? `1px solid ${skill.color}66` : '1px solid var(--glass-border)', boxShadow: 'var(--glass-shadow)', borderRadius: '14px', padding: '24px', minHeight: '260px', display: 'flex', flexDirection: 'column', opacity: visible ? 1 : 0, transform: hovered ? 'translateY(-2px)' : (visible ? 'none' : 'translateY(16px)'), transition: `opacity 450ms cubic-bezier(0.22,1,0.36,1) ${delay}ms, transform 200ms ease-out, border-color 200ms ease-out` }}
     >
       <div style={{ width: '44px', height: '44px', borderRadius: '10px', background: skill.color + '20', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px', fontSize: '22px' }}>{skill.icon}</div>
-      <div style={{ fontFamily: 'var(--font-inter)', fontSize: '17px', fontWeight: 600, color: 'var(--glass-hi)', lineHeight: 1.3, marginBottom: '8px' }}>{skill.title}</div>
-      <div style={{ fontFamily: 'var(--font-inter)', fontSize: '14px', color: 'var(--glass-mid)', lineHeight: 1.5, flex: 1, marginBottom: '16px' }}>{skill.body}</div>
+      <div className="skill-card-title" style={{ fontFamily: 'var(--font-inter)', fontSize: '17px', fontWeight: 600, color: 'var(--glass-hi)', lineHeight: 1.3, marginBottom: '8px' }}>{skill.title}</div>
+      <div className="skill-card-body" style={{ fontFamily: 'var(--font-inter)', fontSize: '14px', color: 'var(--glass-mid)', lineHeight: 1.5, flex: 1, marginBottom: '16px' }}>{skill.body}</div>
       <div style={{ alignSelf: 'flex-start', fontFamily: 'var(--font-geist-mono)', fontSize: '11px', fontWeight: 500, color: skill.color, background: skill.color + '20', borderRadius: '999px', padding: '4px 10px' }}>{skill.tag}</div>
     </div>
   )
@@ -43,8 +44,8 @@ function SkillCard({ skill, delay }: { skill: typeof SKILLS[0]; delay: number })
 
 export default function SkillsGrid() {
   return (
-    <section id="skills" style={{ padding: '128px 0' }} aria-labelledby="skills-heading">
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px' }}>
+    <section id="skills" className="sec" style={{ padding: '128px 0' }} aria-labelledby="skills-heading">
+      <div className="sec-in" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px' }}>
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '20px' }}>
             <div style={{ width: '24px', height: '2px', background: 'var(--accent)' }} aria-hidden="true" />

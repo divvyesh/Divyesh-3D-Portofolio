@@ -72,8 +72,8 @@ function WorkCard({ project, index }: { project: typeof FEATURED[0]; index: numb
 
 export default function SelectedWork() {
   return (
-    <section id="work" style={{ padding: '128px 0' }} aria-labelledby="work-heading">
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px' }}>
+    <section id="work" className="sec" style={{ padding: '128px 0' }} aria-labelledby="work-heading">
+      <div className="sec-in" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px' }}>
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '20px' }}>
             <div style={{ width: '24px', height: '2px', background: 'var(--accent)' }} aria-hidden="true" />
@@ -85,7 +85,7 @@ export default function SelectedWork() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }} className="work-grid">
           {FEATURED.map((p, i) => <WorkCard key={p.slug} project={p} index={i} />)}
         </div>
-        <div style={{ marginTop: '48px', paddingTop: '32px', borderTop: '1px solid rgba(15,17,23,0.09)' }}>
+        <div style={{ marginTop: '48px', paddingTop: '32px', borderTop: '1px solid rgba(255,255,255,0.09)' }}>
           <p style={{ fontFamily: 'var(--font-inter)', fontSize: '15px', color: 'var(--text-mid)', marginBottom: '8px' }}>
             Also behind me: Newdia Co., Fenway growth analytics and a 30% promo cannibalization signal. Count On Me, founder, 25+ client engagements and 35% average engagement lift. Sumedha IT, semiconductor go to market and a stakeholder in the CYIENT acquisition.
           </p>

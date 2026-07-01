@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --bg-0:    #ffffff;
-  --bg-1:    #f7f8fc;
-  --bg-2:    #eef0f8;
-  --bg-light:#f7f8fc;
-  --line:    rgba(15,17,23,0.09);
-  --text-hi: #0f1117;
-  --text-mid:#4a4f6a;
-  --text-low:#8891aa;
-  --ink:     #0f1117;
+  --bg-0:    #07080f;
+  --bg-1:    #0c0d1a;
+  --bg-2:    #12131f;
+  --bg-light:#0c0d1a;
+  --line:    rgba(255,255,255,0.08);
+  --text-hi: #eeeef4;
+  --text-mid:#9097b4;
+  --text-low:#6a7090;
+  --ink:     #eeeef4;
   --accent:  #34d399;
   --grad:    linear-gradient(90deg, #7c5cff 0%, #34d399 100%);
   --warm:    #f5a35c;
@@ -45,8 +45,8 @@ main, section, nav, footer, header { position: relative; z-index: 1; }
 
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg-0); }
-::-webkit-scrollbar-thumb { background: rgba(15,17,23,0.15); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(15,17,23,0.25); }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.22); }
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -62,4 +62,56 @@ main, section, nav, footer, header { position: relative; z-index: 1; }
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* ═══ MOBILE LAYOUT ════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Section vertical rhythm */
+  .sec    { padding-top: 56px !important; padding-bottom: 56px !important; }
+  .sec-in { padding-left: 18px !important; padding-right: 18px !important; }
+
+  /* Hero */
+  .hero-section { padding-top: 80px !important; padding-bottom: 40px !important; min-height: auto !important; }
+  .hero-body    { font-size: 16px !important; }
+  .hero-sub     { font-size: 13px !important; }
+  .hero-stat-tile { padding: 14px 8px !important; }
+  .hero-stat-top  { font-size: 17px !important; }
+
+  /* Stat cards (ProblemSection) */
+  .stat-card   { padding: 20px 16px !important; }
+  .stat-num    { font-size: clamp(28px, 9vw, 40px) !important; }
+  .stat-claim  { font-size: 14px !important; }
+  .stat-detail { font-size: 12px !important; line-height: 1.5 !important; }
+
+  /* Bar chart */
+  .bar-box   { padding: 18px 16px !important; }
+  .bar-title { font-size: 14px !important; line-height: 1.35 !important; }
+  .bar-sub   { font-size: 11px !important; margin-bottom: 16px !important; }
+
+  /* Quote cards */
+  .quote-card { padding: 14px 12px !important; }
+  .quote-text { font-size: 13px !important; line-height: 1.4 !important; margin-bottom: 10px !important; }
+
+  /* Insights CTA */
+  .insights-cta { padding: 28px 18px !important; }
+
+  /* Gap rows */
+  .gap-row     { padding: 16px 14px !important; gap: 12px !important; }
+  .gap-num-col { width: 48px !important; }
+  .gap-num-big { font-size: 24px !important; }
+  .gap-title   { font-size: 15px !important; margin-bottom: 6px !important; }
+  .gap-body    { font-size: 13px !important; }
+
+  /* Skill cards */
+  .skill-card       { min-height: auto !important; padding: 16px !important; }
+  .skill-card-title { font-size: 15px !important; }
+  .skill-card-body  { font-size: 12px !important; }
+
+  /* Section desc text */
+  .sec-desc { font-size: 15px !important; }
+
+  /* Booking body text */
+  .book-body { font-size: 15px !important; }
+  .book-sub  { font-size: 14px !important; }
+  .book-li   { font-size: 14px !important; }
 }

@@ -27,11 +27,11 @@ function BarChart() {
     return () => obs.disconnect()
   }, [])
   return (
-    <div ref={ref} style={{ background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', border: '1px solid var(--glass-border)', boxShadow: 'var(--glass-shadow)', borderRadius: '16px', padding: '40px' }}>
-      <div style={{ fontFamily: 'var(--font-inter)', fontSize: '20px', fontWeight: 600, color: 'var(--glass-hi)', marginBottom: '8px' }}>
+    <div ref={ref} className="bar-box" style={{ background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', border: '1px solid var(--glass-border)', boxShadow: 'var(--glass-shadow)', borderRadius: '16px', padding: '40px' }}>
+      <div className="bar-title" style={{ fontFamily: 'var(--font-inter)', fontSize: '20px', fontWeight: 600, color: 'var(--glass-hi)', marginBottom: '8px' }}>
         Are you stuck on one-time buyers and low repeat rate? Here is why it stays that way.
       </div>
-      <div style={{ fontFamily: 'var(--font-inter)', fontSize: '15px', color: 'var(--glass-low)', marginBottom: '28px', lineHeight: 1.5 }}>
+      <div className="bar-sub" style={{ fontFamily: 'var(--font-inter)', fontSize: '15px', color: 'var(--glass-low)', marginBottom: '28px', lineHeight: 1.5 }}>
         Relative value comparison: price-driven buyers vs returning customers vs loyal advocates vs emotionally connected. Sources: Qualtrics XM, Bain, Motista.
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -56,13 +56,13 @@ function BarChart() {
 
 export default function InsightsSection() {
   return (
-    <section id="insights" style={{ padding: '128px 0' }} aria-labelledby="insights-heading">
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px' }}>
+    <section id="insights" className="sec" style={{ padding: '128px 0' }} aria-labelledby="insights-heading">
+      <div className="sec-in" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px' }}>
         <BarChart />
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px', marginTop: '48px' }} className="quotes-grid">
           {QUOTES.map((q, i) => (
-            <div key={i} style={{ background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', border: '1px solid var(--glass-border)', boxShadow: 'var(--glass-shadow)', borderRadius: '12px', padding: '24px', borderLeft: `3px solid ${q.border}` }}>
-              <p style={{ fontFamily: 'var(--font-inter)', fontSize: '15px', fontWeight: 500, color: 'var(--glass-hi)', lineHeight: 1.45, marginBottom: '16px' }}>&ldquo;{q.text}&rdquo;</p>
+            <div key={i} className="quote-card" style={{ background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', border: '1px solid var(--glass-border)', boxShadow: 'var(--glass-shadow)', borderRadius: '12px', padding: '24px', borderLeft: `3px solid ${q.border}` }}>
+              <p className="quote-text" style={{ fontFamily: 'var(--font-inter)', fontSize: '15px', fontWeight: 500, color: 'var(--glass-hi)', lineHeight: 1.45, marginBottom: '16px' }}>&ldquo;{q.text}&rdquo;</p>
               <a href={q.sourceUrl} target="_blank" rel="noopener noreferrer"
                 style={{ fontFamily: 'var(--font-inter)', fontSize: '13px', color: 'var(--glass-low)', textDecoration: 'none', borderBottom: '1px solid transparent', transition: 'color 150ms, border-color 150ms' }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'var(--accent)'; (e.currentTarget as HTMLElement).style.borderBottomColor = 'var(--accent)'; }}
@@ -71,7 +71,7 @@ export default function InsightsSection() {
             </div>
           ))}
         </div>
-        <div style={{ background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', border: '1px solid var(--glass-border)', boxShadow: 'var(--glass-shadow)', borderRadius: '16px', padding: '64px 48px', textAlign: 'center', marginTop: '48px' }}>
+        <div className="insights-cta" style={{ background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', border: '1px solid var(--glass-border)', boxShadow: 'var(--glass-shadow)', borderRadius: '16px', padding: '64px 48px', textAlign: 'center', marginTop: '48px' }}>
           <h2 id="insights-heading" style={{ fontFamily: 'var(--font-fraunces)', fontSize: 'clamp(30px, 4vw, 46px)', lineHeight: 1.08, letterSpacing: '-0.01em', fontWeight: 500, color: 'var(--glass-hi)', marginBottom: '16px' }}>
             Your best customers are hiding in your data.<br />Most teams do not know how to find them.
           </h2>

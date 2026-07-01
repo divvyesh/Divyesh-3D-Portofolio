@@ -8,8 +8,8 @@ export default function SocialProof() {
   const [lightbox, setLightbox] = useState<string|null>(null)
 
   return (
-    <section style={{ padding: '128px 0' }} aria-labelledby="proof-heading">
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px' }}>
+    <section className="sec" style={{ padding: '128px 0' }} aria-labelledby="proof-heading">
+      <div className="sec-in" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px' }}>
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '20px' }}>
             <div style={{ width: '24px', height: '2px', background: 'var(--accent)' }} aria-hidden="true" />
@@ -45,10 +45,10 @@ export default function SocialProof() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '16px' }}>
           {SCREENSHOTS.map(t => (
             <button key={t} onClick={() => setLightbox(t)}
-              style={{ padding: 0, border: '1px solid #000', borderRadius: '12px', overflow: 'hidden', cursor: 'zoom-in', background: 'none', display: 'block', width: '100%', transition: 'border-color 200ms, transform 200ms' }}
+              style={{ padding: 0, border: '1px solid rgba(255,255,255,0.12)', borderRadius: '12px', overflow: 'hidden', cursor: 'zoom-in', background: 'none', display: 'block', width: '100%', transition: 'border-color 200ms, transform 200ms' }}
               aria-label={'View evaluation screenshot ' + t}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor='var(--accent)'; (e.currentTarget as HTMLElement).style.transform='scale(1.01)'; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor='#000'; (e.currentTarget as HTMLElement).style.transform=''; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor='rgba(255,255,255,0.12)'; (e.currentTarget as HTMLElement).style.transform=''; }}
             >
               <Image src={'/images/testimonials/' + t + '.png'} alt={'Peer and instructor evaluation from BU MSBA, screenshot ' + t} width={400} height={300} style={{ width: '100%', height: 'auto', display: 'block' }} loading="lazy" />
             </button>

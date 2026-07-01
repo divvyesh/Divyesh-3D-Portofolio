@@ -20,12 +20,12 @@ function StatCard({ card, delay }: { card: typeof CARDS[0]; delay: number }) {
     return () => obs.disconnect()
   }, [])
   return (
-    <div ref={ref} style={{ background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', border: '1px solid var(--glass-border)', borderTop: `2px solid ${card.color}`, boxShadow: 'var(--glass-shadow)', borderRadius: '16px', padding: '32px', opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(16px)', transition: `opacity 450ms cubic-bezier(0.22,1,0.36,1) ${delay}ms, transform 450ms cubic-bezier(0.22,1,0.36,1) ${delay}ms` }}>
-      <div style={{ fontFamily: 'var(--font-geist-mono)', fontSize: 'clamp(40px, 5vw, 60px)', fontWeight: 500, color: card.color, marginBottom: '12px', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>
+    <div ref={ref} className="stat-card" style={{ background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', border: '1px solid var(--glass-border)', borderTop: `2px solid ${card.color}`, boxShadow: 'var(--glass-shadow)', borderRadius: '16px', padding: '32px', opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(16px)', transition: `opacity 450ms cubic-bezier(0.22,1,0.36,1) ${delay}ms, transform 450ms cubic-bezier(0.22,1,0.36,1) ${delay}ms` }}>
+      <div className="stat-num" style={{ fontFamily: 'var(--font-geist-mono)', fontSize: 'clamp(40px, 5vw, 60px)', fontWeight: 500, color: card.color, marginBottom: '12px', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>
         <CountUp value={card.countVal} prefix={card.countPrefix || ''} suffix={card.countSuffix || ''} decimals={card.countDecimals || 0} />
       </div>
-      <div style={{ fontFamily: 'var(--font-inter)', fontSize: '17px', fontWeight: 600, color: 'var(--glass-hi)', marginBottom: '8px', lineHeight: 1.3 }}>{card.claim}</div>
-      <div style={{ fontFamily: 'var(--font-inter)', fontSize: '15px', color: 'var(--glass-mid)', lineHeight: 1.55, marginBottom: '16px' }}>{card.detail}</div>
+      <div className="stat-claim" style={{ fontFamily: 'var(--font-inter)', fontSize: '17px', fontWeight: 600, color: 'var(--glass-hi)', marginBottom: '8px', lineHeight: 1.3 }}>{card.claim}</div>
+      <div className="stat-detail" style={{ fontFamily: 'var(--font-inter)', fontSize: '15px', color: 'var(--glass-mid)', lineHeight: 1.55, marginBottom: '16px' }}>{card.detail}</div>
       <a href={card.sourceUrl} target="_blank" rel="noopener noreferrer" style={{ fontFamily: 'var(--font-inter)', fontSize: '13px', fontStyle: 'italic', color: 'var(--glass-low)', textDecoration: 'none', borderBottom: '1px solid transparent', transition: 'color 150ms, border-color 150ms' }}
         onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'var(--accent)'; (e.currentTarget as HTMLElement).style.borderBottomColor = 'var(--accent)'; }}
         onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'var(--glass-low)'; (e.currentTarget as HTMLElement).style.borderBottomColor = 'transparent'; }}
@@ -36,8 +36,8 @@ function StatCard({ card, delay }: { card: typeof CARDS[0]; delay: number }) {
 
 export default function ProblemSection() {
   return (
-    <section id="problem" style={{ padding: '128px 0' }} aria-labelledby="problem-heading">
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px' }}>
+    <section id="problem" className="sec" style={{ padding: '128px 0' }} aria-labelledby="problem-heading">
+      <div className="sec-in" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px' }}>
         <div style={{ maxWidth: '760px', margin: '0 auto', textAlign: 'center', marginBottom: '64px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '20px' }}>
             <div style={{ width: '24px', height: '2px', background: 'var(--accent)' }} aria-hidden="true" />
