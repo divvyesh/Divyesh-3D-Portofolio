@@ -8,7 +8,7 @@ export default function SocialProof() {
   const [lightbox, setLightbox] = useState<string|null>(null)
 
   return (
-    <section className="sec" style={{ padding: '128px 0' }} aria-labelledby="proof-heading">
+    <section className="sec" style={{ padding: '88px 0' }} aria-labelledby="proof-heading">
       <div className="sec-in" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px' }}>
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '20px' }}>

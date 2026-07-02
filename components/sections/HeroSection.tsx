@@ -17,7 +17,7 @@ export default function HeroSection() {
     <section
       aria-label="Hero"
       className="hero-section"
-      style={{ minHeight: '88vh', paddingTop: '128px', paddingBottom: '96px', display: 'flex', alignItems: 'center' }}
+      style={{ paddingTop: '108px', paddingBottom: '56px', display: 'flex', alignItems: 'center' }}
     >
       <div className="sec-in" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px', width: '100%' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '7fr 5fr', gap: '64px', alignItems: 'center' }} className="hero-grid">
@@ -26,13 +26,13 @@ export default function HeroSection() {
             <p style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '13px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-low)', marginBottom: '24px' }}>
               Consumer Insights and Growth Analytics. BU Questrom MSBA &apos;26
             </p>
-            <h1 style={{ fontFamily: 'var(--font-fraunces)', fontSize: 'clamp(44px, 6.5vw, 72px)', lineHeight: 1.04, letterSpacing: '-0.02em', color: 'var(--text-hi)', fontWeight: 500, marginBottom: '24px' }}>
+            <h1 style={{ fontFamily: 'var(--font-fraunces)', fontSize: 'clamp(36px, 5vw, 56px)', lineHeight: 1.06, letterSpacing: '-0.02em', color: 'var(--text-hi)', fontWeight: 500, marginBottom: '16px' }}>
               The customer truth your data is not showing you.
             </h1>
-            <p className="hero-body" style={{ fontFamily: 'var(--font-inter)', fontSize: '19px', lineHeight: 1.6, color: 'var(--text-mid)', maxWidth: '52ch', marginBottom: '20px' }}>
-              I help teams find the cohort, the churn signal, and the price cliff that dashboards average away. Then I turn it into a decision you can act on.
+            <p className="hero-body" style={{ fontFamily: 'var(--font-inter)', fontSize: '16px', lineHeight: 1.55, color: 'var(--text-mid)', maxWidth: '52ch', marginBottom: '14px' }}>
+              I find the cohort, the churn signal, and the price cliff dashboards average away, then turn it into a decision you can act on.
             </p>
-            <p className="hero-sub" style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '15px', color: 'var(--text-low)', marginBottom: '32px' }}>
+            <p className="hero-sub" style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '13px', color: 'var(--text-low)', marginBottom: '24px' }}>
               5 years experience. 10+ projects shipped. British Airways, Starbucks, Newdia.
             </p>
             <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'center', marginBottom: '14px' }}>
@@ -51,14 +51,11 @@ export default function HeroSection() {
                 See the work
               </a>
             </div>
-            <p style={{ fontFamily: 'var(--font-inter)', fontSize: '14px', color: 'var(--text-low)' }}>
-              No pitch. If there is nothing worth fixing, you will know in 15 minutes.
-            </p>
           </div>
 
           {/* RIGHT COLUMN */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px' }} className="hero-photo-col">
-            <div style={{ position: 'relative', width: '100%', maxWidth: '380px', aspectRatio: '1' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '18px' }} className="hero-photo-col">
+            <div style={{ position: 'relative', width: '100%', maxWidth: '280px', aspectRatio: '1' }}>
               <div
                 style={{ position: 'absolute', inset: 0, borderRadius: '50%', background: 'conic-gradient(from 0deg, #ff6b6b, #ffd93d, #6bcb77, #4d96ff, #a855f7, #ec4899, #ff6b6b)', animation: reduced ? 'none' : 'ringRotate 40s linear infinite' }}
                 aria-hidden="true"
@@ -69,10 +66,10 @@ export default function HeroSection() {
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px', width: '100%', maxWidth: '380px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px', width: '100%', maxWidth: '280px' }}>
               {STAT_TILES.map(tile => (
-                <div key={tile.top} className="hero-stat-tile" style={{ background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', border: '1px solid var(--glass-border)', boxShadow: 'var(--glass-shadow)', borderRadius: '14px', padding: '20px 12px', textAlign: 'center' }}>
-                  <div className="hero-stat-top" style={{ fontFamily: 'var(--font-fraunces)', fontSize: '20px', color: 'var(--accent)', fontWeight: 500, lineHeight: 1.1 }}>
+                <div key={tile.top} className="hero-stat-tile" style={{ background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', border: '1px solid var(--glass-border)', boxShadow: 'var(--glass-shadow)', borderRadius: '12px', padding: '14px 10px', textAlign: 'center' }}>
+                  <div className="hero-stat-top" style={{ fontFamily: 'var(--font-fraunces)', fontSize: '16px', color: 'var(--accent)', fontWeight: 500, lineHeight: 1.1 }}>
                     {tile.top}
                   </div>
                   <div style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '10px', color: 'var(--glass-low)', letterSpacing: '0.08em', marginTop: '6px', textTransform: 'uppercase' }}>

@@ -1,8 +1,6 @@
 import HeroSection from '@/components/sections/HeroSection'
 import ProblemSection from '@/components/sections/ProblemSection'
-import InsightsSection from '@/components/sections/InsightsSection'
 import GapsSection from '@/components/sections/GapsSection'
-import SkillsGrid from '@/components/sections/SkillsGrid'
 import SelectedWork from '@/components/sections/SelectedWork'
 import SocialProof from '@/components/sections/SocialProof'
 import BookingSection from '@/components/sections/BookingSection'
@@ -97,9 +95,7 @@ export default function HomePage() {
       />
       <HeroSection />
       <ProblemSection />
-      <InsightsSection />
       <GapsSection />
-      <SkillsGrid />
       <SelectedWork />
       <SocialProof />
       <BookingSection />

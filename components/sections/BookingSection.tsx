@@ -31,7 +31,7 @@ export default function BookingSection() {
   const inputStyle: React.CSSProperties = { width: '100%', height: '48px', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.15)', padding: '0 16px', fontSize: '16px', fontFamily: 'var(--font-inter)', color: 'var(--glass-hi)', background: 'rgba(255,255,255,0.07)', outline: 'none' }
 
   return (
-    <section id="book" aria-labelledby="book-heading" className="sec" style={{ padding: '128px 0' }}>
+    <section id="book" aria-labelledby="book-heading" className="sec" style={{ padding: '88px 0' }}>
       <div className="sec-in" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '7fr 5fr', gap: '64px', alignItems: 'start' }} className="book-grid">
           <div>
