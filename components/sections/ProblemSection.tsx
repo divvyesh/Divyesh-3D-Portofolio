@@ -6,6 +6,9 @@ const CARDS = [
   { countVal: 95, countSuffix: '%', color: 'var(--pink)', claim: 'of new products fail to meet market expectations', source: 'HBS', sourceUrl: 'https://www.inc.com/marc-emmer/95-percent-of-new-products-fail-here-are-6-steps-to-make-sure-yours-dont.html' },
   { countVal: 3.7, countPrefix: '$', countSuffix: 'T', countDecimals: 1, color: 'var(--violet)', claim: 'in global revenue at risk from poor CX', source: 'Emplifi 2024', sourceUrl: 'https://emplifi.io/resources/blog/cx-statistics' },
   { countVal: 306, countSuffix: '%', color: 'var(--accent)', claim: 'higher LTV from emotionally connected customers', source: 'Motista', sourceUrl: 'https://motista.com/' },
+  { countVal: 5, countSuffix: 'x', color: 'var(--warm)', claim: 'more expensive to acquire a new customer than to retain one', source: 'Invesp', sourceUrl: 'https://www.invespcro.com/blog/customer-acquisition-retention/' },
+  { countVal: 96, countSuffix: '%', color: 'var(--danger)', claim: 'of unhappy customers never complain, they just leave', source: 'Esteban Kolsky, ThinkJar', sourceUrl: 'https://thinkjar.com/' },
+  { countVal: 70, countSuffix: '%', color: 'var(--pink)', claim: "of the customer experience is shaped by how people feel they were treated", source: 'McKinsey', sourceUrl: 'https://www.mckinsey.com/' },
 ]
 
 const BAR_ROWS = [
