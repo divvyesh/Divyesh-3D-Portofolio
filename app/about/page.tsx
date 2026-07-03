@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 export default function AboutPage() {
   const timeline = [
     { year: '2022–23', role: 'GTM Analyst', company: 'Sumedha IT', desc: 'Semiconductor training GTM. Stakeholder in CYIENT acquisition.' },
@@ -35,6 +37,19 @@ export default function AboutPage() {
             <p style={{ color: 'var(--accent-2)' }} className="font-display italic">
               The clock did not stop for any of it. Neither did I.
             </p>
+          </div>
+
+          <div style={{ marginTop: '40px', borderRadius: '16px', overflow: 'hidden', border: '1px solid var(--line)', maxWidth: '560px' }}>
+            <Image
+              src="/images/about/bu-project-team.jpg"
+              alt="Divyesh with his BU Questrom MSBA project team after a class presentation"
+              width={1200}
+              height={900}
+              style={{ width: '100%', height: 'auto', display: 'block' }}
+            />
+            <div style={{ padding: '12px 16px', fontFamily: 'var(--font-inter)', fontSize: '13px', color: 'var(--text-low)' }}>
+              With my BU Questrom MSBA project team, right after we presented.
+            </div>
           </div>
         </div>
 
