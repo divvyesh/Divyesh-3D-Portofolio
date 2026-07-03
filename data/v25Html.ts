@@ -397,7 +397,7 @@ export const v25Html: Record<string, string> = {
 
 
 <div style="text-align:center;margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);">
-  <a href="index.html#book" class="btn btn-primary" style="font-size:13px;">Discuss this project →</a>
+  <a href="/#book" class="btn btn-primary" style="font-size:13px;">Discuss this project →</a>
 </div>
 </section></section></div>`,
 
@@ -623,7 +623,7 @@ export const v25Html: Record<string, string> = {
 
 
 <div style="text-align:center;margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);">
-  <a href="index.html#book" class="btn btn-primary" style="font-size:13px;">Discuss this project →</a>
+  <a href="/#book" class="btn btn-primary" style="font-size:13px;">Discuss this project →</a>
 </div>
 </section>
 <div class="sec-div"><hr></div>
@@ -930,7 +930,7 @@ export const v25Html: Record<string, string> = {
 
 
 <div style="text-align:center;margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);">
-  <a href="index.html#book" class="btn btn-primary" style="font-size:13px;">Discuss this project →</a>
+  <a href="/#book" class="btn btn-primary" style="font-size:13px;">Discuss this project →</a>
 </div>
 </section>
 <div class="sec-div"><hr></div>
@@ -1215,7 +1215,7 @@ export const v25Html: Record<string, string> = {
 
 
 <div style="text-align:center;margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);">
-  <a href="index.html#book" class="btn btn-primary" style="font-size:13px;">Discuss this project →</a>
+  <a href="/#book" class="btn btn-primary" style="font-size:13px;">Discuss this project →</a>
 </div>
 </section>
 <div class="sec-div"><hr></div>
@@ -1447,7 +1447,7 @@ export const v25Html: Record<string, string> = {
 
 
 <div style="text-align:center;margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);">
-  <a href="index.html#book" class="btn btn-primary" style="font-size:13px;">Discuss this project →</a>
+  <a href="/#book" class="btn btn-primary" style="font-size:13px;">Discuss this project →</a>
 </div>
 </section>
 <div class="sec-div"><hr></div>
@@ -1667,7 +1667,7 @@ export const v25Html: Record<string, string> = {
   </div><!-- /ba-split -->
 
 <div style="text-align:center;margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);">
-  <a href="index.html#book" class="btn btn-primary" style="font-size:13px;">Discuss this project →</a>
+  <a href="/#book" class="btn btn-primary" style="font-size:13px;">Discuss this project →</a>
 </div>
 </section>
 <div class="sec-div"><hr></div>
@@ -2003,7 +2003,7 @@ export const v25Html: Record<string, string> = {
   </div><!-- /ba-split -->
 
 <div style="text-align:center;margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);">
-  <a href="index.html#book" class="btn btn-primary" style="font-size:13px;">Discuss this project →</a>
+  <a href="/#book" class="btn btn-primary" style="font-size:13px;">Discuss this project →</a>
 </div>
 </section>
 <div class="sec-div"><hr></div>
@@ -2309,7 +2309,7 @@ export const v25Html: Record<string, string> = {
   </div><!-- /ba-split -->
 
 <div style="text-align:center;margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);">
-  <a href="index.html#book" class="btn btn-primary" style="font-size:13px;">Discuss this project →</a>
+  <a href="/#book" class="btn btn-primary" style="font-size:13px;">Discuss this project →</a>
 </div>
 </section>
 <div class="sec-div"><hr></div>
@@ -2641,7 +2641,7 @@ export const v25Html: Record<string, string> = {
   </div><!-- /ba-split -->
 
 <div style="text-align:center;margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);">
-  <a href="index.html#book" class="btn btn-primary" style="font-size:13px;">Discuss this project →</a>
+  <a href="/#book" class="btn btn-primary" style="font-size:13px;">Discuss this project →</a>
 </div>
 </section>
 <div class="sec-div"><hr></div>
@@ -2911,7 +2911,7 @@ export const v25Html: Record<string, string> = {
   </div><!-- /ba-split -->
 
 <div style="text-align:center;margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);">
-  <a href="index.html#book" class="btn btn-primary" style="font-size:13px;">Discuss this project →</a>
+  <a href="/#book" class="btn btn-primary" style="font-size:13px;">Discuss this project →</a>
 </div>
 </section>
 <div class="sec-div"><hr></div>
