@@ -23,6 +23,30 @@ const HONESTY_COLORS: Record<string, string> = {
   'MEASURED+MODELED': 'var(--accent-2)',
 }
 
+const CERTIFICATIONS = [
+  {
+    name: 'Google Analytics Certification',
+    issuer: 'Google',
+    detail: 'Issued April 2025 · GA4 setup, events, audiences, and reporting.',
+    pdfUrl: '/pdfs/Google_Analytics_Certification.pdf',
+    cta: 'View certificate',
+  },
+  {
+    name: 'Google Cloud Skills Boost',
+    issuer: 'Google Cloud',
+    detail: '26 hands-on labs completed, most scored 100%: BigQuery, Cloud SQL, BigQuery ML, Looker Studio, Cloud Shell.',
+    pdfUrl: '/pdfs/Google_Cloud_Skills_Boost.pdf',
+    cta: 'View activity log',
+  },
+  {
+    name: 'DataCamp',
+    issuer: 'DataCamp',
+    detail: '21 courses completed across SQL, Python, machine learning, data visualization, statistics, and Git.',
+    pdfUrl: '/pdfs/DataCamp_Certifications.pdf',
+    cta: 'View certificates',
+  },
+]
+
 export default function WorkPage() {
   const [active, setActive] = useState<ProjectTag | 'all'>('all')
   const filtered = active === 'all' ? projects : projects.filter(p => p.tag === active)
@@ -137,6 +161,41 @@ export default function WorkPage() {
               </div>
             </Link>
           ))}
+        </div>
+
+        {/* Certifications */}
+        <div className="mt-20">
+          <div className="font-mono text-[12px] uppercase tracking-[0.12em] mb-4" style={{ color: 'var(--text-low)' }}>
+            Certifications
+          </div>
+          <h2 className="font-display mb-8" style={{ fontSize: 'clamp(22px, 2.6vw, 30px)', color: 'var(--text-hi)', fontWeight: 400 }}>
+            Kept building the fundamentals alongside the projects.
+          </h2>
+          <div className="grid gap-6" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))' }}>
+            {CERTIFICATIONS.map(cert => (
+              <a
+                key={cert.name}
+                href={cert.pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-6 rounded-[14px] transition-all duration-200"
+                style={{ background: 'var(--bg-1)', border: '1px solid var(--line)' }}
+                onMouseEnter={e => {
+                  ;(e.currentTarget as HTMLElement).style.borderColor = 'rgba(110,231,183,0.3)'
+                  ;(e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'
+                }}
+                onMouseLeave={e => {
+                  ;(e.currentTarget as HTMLElement).style.borderColor = 'var(--line)'
+                  ;(e.currentTarget as HTMLElement).style.transform = ''
+                }}
+              >
+                <div className="font-mono text-[11px] mb-2" style={{ color: 'var(--text-low)' }}>{cert.issuer}</div>
+                <h3 className="font-body font-semibold text-[15px] leading-snug mb-3" style={{ color: 'var(--text-hi)' }}>{cert.name}</h3>
+                <p className="font-body text-[13px] leading-[1.6] mb-4" style={{ color: 'var(--text-mid)' }}>{cert.detail}</p>
+                <span className="font-body text-[13px]" style={{ color: 'var(--accent)' }}>{cert.cta} →</span>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </div>
