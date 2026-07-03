@@ -53,6 +53,66 @@ export default function AboutPage() {
           </div>
         </div>
 
+        {/* Personal roadmap — a lineage, not a resume */}
+        <div className="mb-20">
+          <div className="font-mono text-[12px] uppercase tracking-[0.12em] mb-4" style={{ color: 'var(--text-low)' }}>
+            Where This Actually Comes From
+          </div>
+          <h2
+            className="font-display mb-6"
+            style={{ fontSize: 'clamp(24px, 3.2vw, 34px)', color: 'var(--text-hi)', fontWeight: 400, maxWidth: '32ch' }}
+          >
+            Not a resume. A lineage.
+          </h2>
+          <p className="font-body text-[16px] leading-[1.7] max-w-[68ch] mb-10" style={{ color: 'var(--text-mid)' }}>
+            The career timeline below has my name on it. None of it happened alone. This is the shorter, truer list, the people who actually built the person doing that work. I was told once that you are who you are around, mostly. Here is who I have been around.
+          </p>
+
+          <div className="space-y-0">
+            {[
+              {
+                who: 'Dad',
+                body: 'Never finished a degree. Built a business anyway, from nothing, because no one was going to build it for him. Then spent years making sure I finished what he didn’t get to. I’m closing out a Master’s in Business Analytics partly because he needed me to.',
+              },
+              {
+                who: 'Mom',
+                body: 'Never called herself a businessperson. Started her own bakeries anyway. Then, separately, her own Zumba studio. Two ventures from zero, in fields she had no formal background in, because she wanted something that was hers. That is the second half of wherever my stubbornness comes from.',
+              },
+              {
+                who: 'Me, before any of this',
+                body: 'Long before spreadsheets, I was the kid who drew constantly, obsessively, people called me a prodigy at it. That instinct never actually left. It just moved from sketchbooks to data: the same pattern-chasing, detail-obsessed way of seeing that used to fill notebooks now finds the signal other people miss in a few million rows.',
+              },
+              {
+                who: 'Everyone since',
+                body: '25+ small business owners through Count On Me. A startup trusting me with its first real analytics function. Classmates and professors at Boston University. Enterprise-scale problems at Starbucks and British Airways data. Different rooms, wildly different stakes, same question every time: what is actually true here, and can I say it plainly enough that someone acts on it.',
+              },
+              {
+                who: 'You, right now',
+                body: 'If you’re reading this, you’re probably deciding whether to send an email, book a call, or close the tab. Either way, you’re already on this list. That is genuinely how I got here: one person, one room, one problem at a time. Yours could be next.',
+              },
+            ].map((item, i, arr) => (
+              <div
+                key={item.who}
+                className="flex gap-8 relative"
+                style={{ borderLeft: i === arr.length - 1 ? 'none' : '1px solid var(--line)', paddingLeft: '24px', marginLeft: '8px', paddingBottom: i === arr.length - 1 ? 0 : '28px' }}
+              >
+                <div
+                  className="absolute left-0 top-1.5 w-2 h-2 rounded-full -translate-x-[4.5px]"
+                  style={{ background: 'var(--violet)' }}
+                />
+                <div>
+                  <div className="font-body font-semibold text-[15px] mb-2" style={{ color: 'var(--violet)' }}>
+                    {item.who}
+                  </div>
+                  <div className="font-body text-[15.5px] leading-[1.7] max-w-[62ch]" style={{ color: 'var(--text-mid)' }}>
+                    {item.body}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Timeline */}
         <div className="mb-20">
           <div className="font-mono text-[12px] uppercase tracking-[0.12em] mb-8" style={{ color: 'var(--text-low)' }}>
