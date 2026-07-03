@@ -547,7 +547,7 @@ export const projects: Project[] = [
     slug: 'clark-school',
     tag: 'client',
     tagLabel: 'CLIENT WORK',
-    year: '2025',
+    year: '2026',
     brand: 'Clark School',
     outcomeTitle: "Built the first enrollment funnel and GTM strategy for a special-education school's remote program",
     oneLineDecision: 'Lead with the 47% price advantage and conference pipeline  -  not paid ads  -  for the first 12 months',
@@ -739,8 +739,81 @@ export const projects: Project[] = [
       { num: '03', title: 'Local Partner Identification', desc: 'Identify in-country partners with existing government relationships - access cost drops by 60% with the right local partner in place.' },
       { num: '04', title: 'Phase 2 Commercial Activation', desc: 'After regulatory establishment, execute commercial GTM per market - the correct sequence is the entire strategy.' }
     ]
-  }
-,
+  },
+  {
+    slug: 'sr-soft',
+    tag: 'client',
+    tagLabel: 'CLIENT WORK',
+    year: '2026',
+    brand: 'SR Soft',
+    outcomeTitle: 'Turned scattered ERP workflows into KPI dashboards across 4 regulated industries',
+    oneLineDecision: 'Document the undocumented process first  -  half of every "we need a dashboard" request was actually a missing standard operating procedure',
+    metrics: ['4 industries analyzed', '3 ERP systems mapped', 'KPI dashboards delivered'],
+    stack: ['Workday', 'Oracle', 'SAP', 'Business Process Analysis', 'KPI Dashboard Design'],
+    honesty: 'PROJECTED',
+    decisionChanged: 'Every client came in asking for a dashboard. Most actually needed their process documented first  -  you cannot visualize a workflow that has never been written down. Sequencing process mapping before dashboard design cut rework on every engagement.',
+    whatIDid: 'Mapped business processes and workflows across pharma, manufacturing, healthcare, and retail clients running on Workday, Oracle, and SAP. Ran analytics-capability assessments to find measurement gaps. Translated documented workflows into KPI dashboards. Delivered technology-stack recommendations and governance frameworks.',
+    result: 'Documented workflows across 3 ERP ecosystems for 4 client industries. KPI dashboards built from previously undocumented processes. Analytics governance frameworks delivered alongside every dashboard.',
+    problem: 'Clients across pharma, manufacturing, healthcare, and retail kept requesting dashboards for processes that had never been formally documented  -  the actual gap was upstream of the reporting layer.',
+    data: 'Client ERP exports (Workday, Oracle, SAP), stakeholder process interviews, existing (undocumented) workflow artifacts, performance data by function.',
+    method: 'Business process analysis, workflow documentation, analytics-capability assessment, KPI dashboard design, governance framework design.',
+    impact: 'Process-first methodology applied across 4 industries and 3 ERP ecosystems. Every dashboard now sits on top of a documented, governed process instead of a guess.',
+    kpis: [
+      { n: '4', l: 'Industries Served' },
+      { n: '3', l: 'ERP Systems Mapped' },
+      { n: '1st', l: 'Process-Before-Dashboard Framework' },
+      { n: 'Onsite', l: 'Houston, TX' }
+    ],
+    impactPoints: [
+      'Process documentation sequenced before dashboard design  -  cut rework by catching missing SOPs before they became reporting gaps',
+      'Workday, Oracle, and SAP workflows mapped and reconciled across 4 regulated industries with different compliance requirements',
+      'Analytics-capability assessments identified measurement gaps clients did not know they had',
+      'Governance frameworks delivered alongside every dashboard so the reporting layer stays accurate as the process evolves'
+    ],
+    nextStepCards: [
+      { num: '01', title: 'Cross-Industry Process Library', desc: 'Turn the 4 industry-specific process maps into a reusable library  -  the next onboarding takes days, not weeks.' },
+      { num: '02', title: 'Automated ERP Reconciliation', desc: 'Build a lightweight reconciliation check between Workday, Oracle, and SAP exports  -  catch data drift before it reaches the dashboard.' },
+      { num: '03', title: 'Governance Framework Rollout', desc: 'Standardize the governance framework across all active clients, not just the newest engagements.' },
+      { num: '04', title: 'Self-Serve KPI Requests', desc: 'Give client teams a request template that forces the process-documentation step before any new dashboard gets scoped.' }
+    ]
+  },
+  {
+    slug: 'blue-horse',
+    tag: 'client',
+    tagLabel: 'CLIENT WORK',
+    year: '2026',
+    brand: 'Blue Horse Digital',
+    outcomeTitle: "Built an SEO agency's entire analytics and AI-visibility stack from zero, reporting straight to the CEO",
+    oneLineDecision: 'Report the KPI that predicts revenue, not the one that is easiest to screenshot  -  GA4 engagement quality over raw session count',
+    metrics: ['GA4 + GTM stack built', 'LLM visibility pipeline shipped', 'CEO-facing KPI dashboards'],
+    stack: ['GA4', 'Google Tag Manager', 'Google Search Console', 'Looker Studio', 'Agentic AI / LLM Automation'],
+    honesty: 'MODELED',
+    decisionChanged: 'Client reporting was scattered across screenshots and gut feel. Standardizing on one GA4 and Search Console pipeline, feeding one Looker Studio dashboard per client, made the CEO pitch deck a five-minute build instead of a two-day scramble.',
+    whatIDid: 'Built GA4 properties, custom events, and conversion tracking from scratch for agency clients. Deployed Google Tag Manager and integrated GA4, Search Console, and Google Business Profile into unified Looker Studio dashboards. Designed an LLM-visibility framework and agentic AI content-automation pipeline. Built local SEO heatmaps and keyword-research workflows. Reported directly to the CEO on digital analytics strategy.',
+    result: 'End-to-end GA4 and GTM analytics stack live across client accounts. LLM-visibility and content-automation pipeline shipped. Local SEO heatmaps and keyword workflows built. CEO-facing KPI dashboards standardized across all clients.',
+    problem: 'The agency had no standardized analytics stack  -  client reporting was manual, inconsistent, and disconnected from the emerging reality that AI search (ChatGPT, Perplexity, Gemini) was starting to route traffic outside traditional GA4 tracking.',
+    data: 'GA4 event streams, Google Search Console queries, Google Business Profile insights, keyword research data, competitor content and backlink data.',
+    method: 'GA4 implementation, Google Tag Manager deployment, cross-channel data integration, LLM-visibility framework design, agentic AI automation, local SEO heatmap analysis.',
+    impact: 'Built the agency’s first true analytics function: a single source of truth spanning GA4, Search, and emerging LLM-visibility signals, reported directly to the CEO.',
+    kpis: [
+      { n: '1st', l: 'Agency-Wide Analytics Stack' },
+      { n: '3', l: 'Data Sources Unified (GA4, GSC, GBP)' },
+      { n: 'New', l: 'LLM Visibility Framework Shipped' },
+      { n: 'Direct', l: 'CEO Reporting Line' }
+    ],
+    impactPoints: [
+      'Unified GA4, Search Console, and Business Profile data into one Looker Studio KPI dashboard per client, replacing manual screenshot reporting',
+      'Shipped an LLM-visibility framework tracking how client content surfaces in ChatGPT, Perplexity, and Gemini, ahead of most agencies treating this as a blind spot',
+      'Built an agentic AI content-automation pipeline that cut manual reporting time and surfaced high-intent local SEO opportunities',
+      'Automated cold-outreach and client-reporting workflows, reducing manual analysis overhead agency-wide'
+    ],
+    nextStepCards: [
+      { num: '01', title: 'LLM Visibility Benchmark Report', desc: 'Turn the LLM-visibility framework into a recurring client-facing benchmark  -  show movement in AI-search presence month over month.' },
+      { num: '02', title: 'Predictive Client Churn Signal', desc: 'Feed the unified GA4/GSC dataset into a churn-risk score per client account, flag accounts before the renewal conversation.' },
+      { num: '03', title: 'Automated Pitch Deck Generator', desc: 'Template the CEO pitch deck build so any account manager can generate a client-ready deck from the dashboard in minutes.' },
+      { num: '04', title: 'Local SEO Heatmap Productization', desc: 'Package the local SEO heatmap workflow as a standalone deliverable agencies can sell separately from full-service retainers.' }
+    ]
+  },
 
   // ── TOOLS I BUILT ────────────────────────────────────────────────────
   {

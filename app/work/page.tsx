@@ -52,6 +52,8 @@ const PROJECT_ICONS: Record<string, React.ReactNode> = {
   promptr: <Icon path={<><polyline points="4 17 10 11 4 5" /><line x1="12" y1="19" x2="20" y2="19" /></>} />,
   wazzap: <Icon path={<path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />} />,
   attendance: <Icon path={<><rect x="3" y="4" width="18" height="18" rx="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /><path d="M9 16l2 2 4-4" /></>} />,
+  'sr-soft': <Icon path={<><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" /></>} />,
+  'blue-horse': <Icon path={<><circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" /></>} />,
 }
 
 const CERTIFICATIONS = [
@@ -169,13 +171,13 @@ export default function WorkPage() {
                 </div>
               </div>
 
-              <div className="font-mono text-[11px] mb-2" style={{ color: 'var(--text-low)' }}>
+              <div className="font-mono text-[11px] mb-2" style={{ color: 'var(--text-mid)' }}>
                 {project.brand}
               </div>
               <h2 className="font-body font-semibold text-[15px] leading-snug mb-3" style={{ color: 'var(--text-hi)' }}>
                 {project.outcomeTitle}
               </h2>
-              <p className="font-body text-[13px] leading-[1.6] mb-4" style={{ color: 'var(--text-mid)' }}>
+              <p className="font-body text-[13px] leading-[1.6] mb-4" style={{ color: 'var(--text-hi)' }}>
                 {project.oneLineDecision}
               </p>
 
@@ -184,7 +186,7 @@ export default function WorkPage() {
                   <span
                     key={m}
                     className="font-mono text-[10px] px-2 py-1 rounded"
-                    style={{ background: 'var(--bg-0)', border: '1px solid var(--line)', color: 'var(--text-low)' }}
+                    style={{ background: 'var(--bg-0)', border: '1px solid var(--line)', color: 'var(--text-mid)' }}
                   >
                     {m}
                   </span>
@@ -236,9 +238,9 @@ export default function WorkPage() {
                   ;(e.currentTarget as HTMLElement).style.transform = ''
                 }}
               >
-                <div className="font-mono text-[11px] mb-2" style={{ color: 'var(--text-low)' }}>{cert.issuer}</div>
+                <div className="font-mono text-[11px] mb-2" style={{ color: 'var(--text-mid)' }}>{cert.issuer}</div>
                 <h3 className="font-body font-semibold text-[15px] leading-snug mb-3" style={{ color: 'var(--text-hi)' }}>{cert.name}</h3>
-                <p className="font-body text-[13px] leading-[1.6] mb-4" style={{ color: 'var(--text-mid)' }}>{cert.detail}</p>
+                <p className="font-body text-[13px] leading-[1.6] mb-4" style={{ color: 'var(--text-hi)' }}>{cert.detail}</p>
                 <span className="font-body text-[13px]" style={{ color: 'var(--accent)' }}>{cert.cta} →</span>
               </a>
             ))}
