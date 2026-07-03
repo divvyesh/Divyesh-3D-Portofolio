@@ -475,6 +475,7 @@ export const projects: Project[] = [
     data: 'MBTA rider survey data, trip frequency records, service reliability logs.',
     method: 'K-means clustering, churn sensitivity modeling, service failure attribution analysis.',
     impact: 'Behavioral segmentation of MBTA ridership. Reliability-churn link quantified per segment. Commuter retention as highest-priority intervention.',
+    pdfUrl: '/pdfs/MBTA_Consumer_Presentation.pdf',
     kpis: [
       { n: '45K', l: 'Customer Records' },
       { n: '4', l: 'ML Methods Applied' },
