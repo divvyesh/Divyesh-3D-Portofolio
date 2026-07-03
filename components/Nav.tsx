@@ -4,8 +4,7 @@ import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 
 const navLinks = [
-  { href: '/#problem', label: 'Problem' },
-  { href: '/#insights', label: 'Insights' },
+  { href: '/#problem', label: 'Insights' },
   { href: '/#skills', label: 'Skills' },
   { href: '/#work', label: 'Work' },
   { href: '/about', label: 'About' },
@@ -32,8 +31,8 @@ export default function Nav() {
         }}
       >
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <Link href="/" style={{ fontFamily: 'var(--font-inter)', fontSize: '20px', fontWeight: 600, color: '#f0f1f5', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}>
-            Div<span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--accent)', display: 'inline-block', marginLeft: '1px', verticalAlign: 'baseline', position: 'relative', top: '-1px' }} aria-hidden="true" />
+          <Link href="/" style={{ fontFamily: 'var(--font-inter)', fontSize: '18px', fontWeight: 600, color: '#f0f1f5', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px', whiteSpace: 'nowrap' }}>
+            Divyesh A.<span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--accent)', display: 'inline-block', marginLeft: '1px', verticalAlign: 'baseline', position: 'relative', top: '-1px' }} aria-hidden="true" />
           </Link>
 
           <div className="hidden md:flex" style={{ gap: '32px', alignItems: 'center' }}>

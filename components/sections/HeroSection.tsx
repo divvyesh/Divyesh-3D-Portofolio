@@ -5,9 +5,9 @@ import Image from 'next/image'
 
 const STAT_TILES: { top: string; bottom: string }[] = [
   { top: 'BU MSBA', bottom: 'CLASS OF 2026' },
-  { top: '5 Yrs', bottom: 'EXPERIENCE' },
+  { top: '4', bottom: 'ORGANIZATIONS' },
   { top: 'New York', bottom: 'BASED' },
-  { top: '3+ Yrs', bottom: 'WORK AUTH' },
+  { top: '4+ Yrs', bottom: 'WORK AUTH' },
 ]
 
 export default function HeroSection() {
@@ -30,10 +30,10 @@ export default function HeroSection() {
               The customer truth your data is not showing you.
             </h1>
             <p className="hero-body" style={{ fontFamily: 'var(--font-inter)', fontSize: '16px', lineHeight: 1.55, color: 'var(--text-mid)', maxWidth: '52ch', marginBottom: '14px' }}>
-              I find the cohort, the churn signal, and the price cliff dashboards average away, then turn it into a decision you can act on.
+              I found a 14% retention lift Starbucks&apos; own dashboards were averaging away. That is the kind of miss I look for.
             </p>
             <p className="hero-sub" style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '13px', color: 'var(--text-low)', marginBottom: '24px' }}>
-              5 years experience. 10+ projects shipped. British Airways, Starbucks, Newdia.
+              10+ projects shipped. British Airways, Starbucks, Newdia.
             </p>
             <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'center', marginBottom: '14px' }}>
               <a href="#book"

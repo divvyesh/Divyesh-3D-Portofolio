@@ -4,10 +4,7 @@ import CountUp from '@/components/CountUp'
 
 const CARDS = [
   { countVal: 95, countSuffix: '%', color: 'var(--pink)', claim: 'of new products fail to meet market expectations', source: 'HBS', sourceUrl: 'https://www.inc.com/marc-emmer/95-percent-of-new-products-fail-here-are-6-steps-to-make-sure-yours-dont.html' },
-  { countVal: 80, countSuffix: '%', color: 'var(--warm)', claim: 'call themselves customer centric. Only 8% of their customers agree', source: 'Bain & Company', sourceUrl: 'https://www.bain.com/insights/closing-the-delivery-gap/' },
-  { countVal: 42, countSuffix: '%', color: 'var(--accent)', claim: 'of marketers do not segment customers at all', source: 'NotifyVisitors 2025', sourceUrl: 'https://www.notifyvisitors.com/blog/customer-segmentation-statistics/' },
   { countVal: 3.7, countPrefix: '$', countSuffix: 'T', countDecimals: 1, color: 'var(--violet)', claim: 'in global revenue at risk from poor CX', source: 'Emplifi 2024', sourceUrl: 'https://emplifi.io/resources/blog/cx-statistics' },
-  { countVal: 80, countSuffix: '%', color: 'var(--pink)', claim: 'of enterprise AI projects fail to deliver value', source: 'RAND / Gartner', sourceUrl: 'https://www.gartner.com/en/newsroom/press-releases/2022-09-29-gartner-survey-reveals-80-percent-of-organizations-ai' },
   { countVal: 306, countSuffix: '%', color: 'var(--accent)', claim: 'higher LTV from emotionally connected customers', source: 'Motista', sourceUrl: 'https://motista.com/' },
 ]
 
@@ -33,14 +30,16 @@ function StatCard({ card, delay }: { card: typeof CARDS[0]; delay: number }) {
     return () => obs.disconnect()
   }, [])
   return (
-    <div ref={ref} className="stat-card" style={{ background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', border: '1px solid var(--glass-border)', borderTop: `2px solid ${card.color}`, boxShadow: 'var(--glass-shadow)', borderRadius: '14px', padding: '18px 16px', opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(12px)', transition: `opacity 400ms cubic-bezier(0.22,1,0.36,1) ${delay}ms, transform 400ms cubic-bezier(0.22,1,0.36,1) ${delay}ms` }}>
-      <div className="stat-num" style={{ fontFamily: 'var(--font-geist-mono)', fontSize: 'clamp(26px, 3vw, 34px)', fontWeight: 500, color: card.color, marginBottom: '6px', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>
+    <div ref={ref} className="stat-card" style={{ background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', border: '1px solid var(--glass-border)', borderLeft: `3px solid ${card.color}`, boxShadow: 'var(--glass-shadow)', borderRadius: '14px', padding: '22px 22px', display: 'flex', alignItems: 'center', gap: '18px', opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(12px)', transition: `opacity 400ms cubic-bezier(0.22,1,0.36,1) ${delay}ms, transform 400ms cubic-bezier(0.22,1,0.36,1) ${delay}ms` }}>
+      <div className="stat-num" style={{ fontFamily: 'var(--font-geist-mono)', fontSize: 'clamp(34px, 4vw, 44px)', fontWeight: 500, color: card.color, lineHeight: 1, fontVariantNumeric: 'tabular-nums', flexShrink: 0 }}>
         <CountUp value={card.countVal} prefix={card.countPrefix || ''} suffix={card.countSuffix || ''} decimals={card.countDecimals || 0} />
       </div>
-      <div className="stat-claim" style={{ fontFamily: 'var(--font-inter)', fontSize: '13px', fontWeight: 500, color: 'var(--glass-mid)', lineHeight: 1.35, marginBottom: '8px' }}>{card.claim}</div>
-      <a href={card.sourceUrl} target="_blank" rel="noopener noreferrer" style={{ fontFamily: 'var(--font-inter)', fontSize: '10.5px', fontStyle: 'italic', color: 'var(--glass-low)', textDecoration: 'none' }}>
-        {card.source} ↗
-      </a>
+      <div>
+        <div className="stat-claim" style={{ fontFamily: 'var(--font-inter)', fontSize: '14px', fontWeight: 500, color: 'var(--glass-mid)', lineHeight: 1.35, marginBottom: '4px' }}>{card.claim}</div>
+        <a href={card.sourceUrl} target="_blank" rel="noopener noreferrer" style={{ fontFamily: 'var(--font-inter)', fontSize: '10.5px', fontStyle: 'italic', color: 'var(--glass-low)', textDecoration: 'none' }}>
+          {card.source} ↗
+        </a>
+      </div>
     </div>
   )
 }
@@ -96,7 +95,7 @@ export default function ProblemSection() {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px', alignItems: 'start' }} className="split-grid">
           {/* LEFT: the problem, in numbers */}
           <div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '14px' }} className="stat-grid-c">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }} className="stat-grid-c">
               {CARDS.map((card, i) => <StatCard key={card.claim} card={card} delay={i * 50} />)}
             </div>
           </div>
@@ -117,10 +116,10 @@ export default function ProblemSection() {
 
         <div style={{ textAlign: 'center', marginTop: '48px' }}>
           <h3 style={{ fontFamily: 'var(--font-fraunces)', fontSize: 'clamp(20px, 2.4vw, 26px)', color: 'var(--text-hi)', fontWeight: 500, marginBottom: '10px' }}>
-            Your best customers are hiding in your data.
+            That is the gap. I get paid to close it.
           </h3>
           <p style={{ fontFamily: 'var(--font-inter)', fontSize: '14px', color: 'var(--text-mid)', lineHeight: 1.5, maxWidth: '52ch', margin: '0 auto 20px' }}>
-            I build the frameworks that surface them, so you know exactly who to obsess over and why.
+            Behavioral science, causal analytics, and consumer research, turned into the one decision worth making next.
           </p>
           <a href="#book"
             style={{ height: '46px', padding: '0 24px', borderRadius: '10px', background: 'var(--grad)', color: '#fff', fontFamily: 'var(--font-inter)', fontSize: '14px', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px', transition: 'filter 150ms ease-out, transform 150ms ease-out' }}
@@ -133,7 +132,6 @@ export default function ProblemSection() {
       </div>
       <style>{`
         @media (max-width: 900px) { .split-grid { grid-template-columns: 1fr !important; gap: 32px !important; } }
-        @media (max-width: 480px) { .stat-grid-c { grid-template-columns: 1fr !important; } }
       `}</style>
     </section>
   )

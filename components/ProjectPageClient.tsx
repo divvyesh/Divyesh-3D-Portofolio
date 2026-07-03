@@ -1,11 +1,9 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
-import dynamic from 'next/dynamic'
 import { Project } from '@/data/projects'
 import { v25Html } from '@/data/v25Html'
-
-const V25Section = dynamic(() => import('@/components/V25Section'), { ssr: false })
+import V25Section from '@/components/V25Section'
 
 // ── SVG Icons ─────────────────────────────────────────────────────────
 const ProblemIcon = () => (

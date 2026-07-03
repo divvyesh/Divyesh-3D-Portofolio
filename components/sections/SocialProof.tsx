@@ -4,6 +4,13 @@ import Image from 'next/image'
 
 const SCREENSHOTS = ['t1','t2','t3','t4','t5','t6','t7','t8']
 
+const QUOTES = [
+  { text: 'A well-researched memo with excellent insights. Clear inductive logic, ample evidence backed by high-quality sources, and a professional, executive-neutral tone.', name: 'Course Instructor', role: 'BU Questrom MSBA', src: 't6' },
+  { text: 'He is a dependable and proactive team member who consistently delivers high-quality work. His ability to approach challenges with creativity and a calm demeanor makes him a pleasure to collaborate with.', name: 'Project Teammate', role: 'BU Questrom MSBA', src: 't3' },
+  { text: 'He always showed a keen interest in understanding the intricacies of the underlying data, instead of blindly looking for basic insights.', name: 'Project Teammate', role: 'BU Questrom MSBA', src: 't8' },
+  { text: 'He contributed thoughtful suggestions that strengthened our final presentation, especially in refining the storyline and transitions.', name: 'Project Teammate', role: 'BU Questrom MSBA', src: 't7' },
+]
+
 export default function SocialProof() {
   const [lightbox, setLightbox] = useState<string|null>(null)
 
@@ -36,10 +43,22 @@ export default function SocialProof() {
           </a>
         </div>
 
+        {/* Real quotes, pulled straight from the evaluations below */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px', marginBottom: '48px' }} className="quote-text-grid">
+          {QUOTES.map((q, i) => (
+            <button key={i} onClick={() => setLightbox(q.src)}
+              style={{ textAlign: 'left', cursor: 'zoom-in', background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', border: '1px solid var(--glass-border)', boxShadow: 'var(--glass-shadow)', borderRadius: '12px', padding: '20px 22px', borderLeft: '3px solid var(--accent)' }}
+            >
+              <p style={{ fontFamily: 'var(--font-inter)', fontSize: '14.5px', fontWeight: 500, color: 'var(--glass-hi)', lineHeight: 1.5, marginBottom: '10px' }}>&ldquo;{q.text}&rdquo;</p>
+              <div style={{ fontFamily: 'var(--font-inter)', fontSize: '12px', color: 'var(--glass-low)' }}>{q.name} &middot; {q.role}</div>
+            </button>
+          ))}
+        </div>
+
         {/* Evaluations */}
         <div style={{ marginBottom: '24px' }}>
           <div style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '13px', fontWeight: 500, letterSpacing: '0.1em', color: 'var(--text-low)', textTransform: 'uppercase', marginBottom: '8px' }}>Unedited. Straight from MSBA Project Teams.</div>
-          <p style={{ fontFamily: 'var(--font-inter)', fontSize: '16px', color: 'var(--text-mid)' }}>No cleanup, no cherry picking. Actual peer and instructor evaluations from BU MSBA project teams.</p>
+          <p style={{ fontFamily: 'var(--font-inter)', fontSize: '16px', color: 'var(--text-mid)' }}>No cleanup, no cherry picking. Click any quote above, or a screenshot below, to read the full evaluation.</p>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '16px' }}>
@@ -55,6 +74,8 @@ export default function SocialProof() {
           ))}
         </div>
       </div>
+
+      <style>{`@media (max-width: 640px) { .quote-text-grid { grid-template-columns: 1fr !important; } }`}</style>
 
       {lightbox && (
         <div onClick={() => setLightbox(null)} role="dialog" aria-modal="true" aria-label="Evaluation screenshot enlarged"

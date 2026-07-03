@@ -5,28 +5,27 @@ import Link from 'next/link'
 const GAPS = [
   { num: '01', lens: 'COHORT', title: 'Your middle cohort is churning, and your dashboard is hiding it.', tag: 'Starbucks · 3.2M records · 14% retention lift', slug: 'starbucks', color: 'var(--accent)' },
   { num: '02', lens: 'NON LINEAR', title: 'Price sensitivity is not a slope, it is a cliff.', tag: 'British Airways · 12 fare classes · RD elasticity model', slug: 'british-airways', color: 'var(--warm)' },
-  { num: '03', lens: 'CAUSAL', title: 'Your attribution looks backward, so spend runs on stale signal.', tag: 'British Airways · retargeting saturation caught early', slug: 'british-airways', color: 'var(--pink)' },
-  { num: '04', lens: 'BEHAVIORAL', title: 'Choice overload is costing you conversions you cannot trace.', tag: 'Starbucks · DiD experiment on decision complexity', slug: 'starbucks', color: 'var(--accent)' },
+  { num: '03', lens: 'DISTRIBUTION', title: 'One customer at a time is not a growth model. A partner channel is.', tag: 'Count On Me · school-district partnerships · 10x reach per dollar', slug: 'count-on-me', color: 'var(--pink)' },
+  { num: '04', lens: 'SEQUENCING', title: 'In a regulated market, the commercial pitch is not the first move.', tag: 'Sumedha IT · 6 global markets · regulatory-first GTM', slug: 'sumedha', color: 'var(--violet)' },
   { num: '05', lens: 'STATED ≠ REAL', title: 'NPS is a slide number. Behavior is the real signal.', tag: 'Newdia Co. · first behavioral NPS + CAC funnel', slug: 'newdia', color: 'var(--warm)' },
 ]
 
-const SKILLS = [
-  { icon: '\u{1F50D}', title: 'Consumer Behavior Science', color: '#34d399' },
-  { icon: '\u{1F333}', title: 'Causal Measurement', color: '#7c5cff' },
-  { icon: '\u{1F4B0}', title: 'Pricing & Revenue Strategy', color: '#f5a35c' },
-  { icon: '\u{1F3AF}', title: 'Growth & GTM Analytics', color: '#34d399' },
-  { icon: '\u{1F4CA}', title: 'ML Segmentation', color: '#9b7cff' },
-  { icon: '\u{1F5FA}', title: 'Journey & Heatmap Intel', color: '#f5a35c' },
-  { icon: '\u{1F4CA}', title: 'Data Storytelling', color: '#34d399' },
-  { icon: '\u{1F9E0}', title: 'Psychographic Intelligence', color: '#ef6f8e' },
-  { icon: '\u{1F6E1}', title: 'First & Zero Party Data', color: '#9b7cff' },
-  { icon: '\u{1F4C9}', title: 'Retention & Churn Architecture', color: '#34d399' },
-  { icon: '\u{1F4CB}', title: 'Survey & Research Design', color: '#f5a35c' },
-  { icon: '\u{1F916}', title: 'AI Augmented Analytics', color: '#9b7cff' },
-  { icon: '\u{1F310}', title: 'Search & LLM Visibility (GEO/AEO)', color: '#34d399' },
-  { icon: '\u{1F9E9}', title: 'Knowledge Graph & Entity SEO', color: '#7c5cff' },
-  { icon: '\u{1F4CE}', title: 'AI Citation Architecture', color: '#f5a35c' },
-  { icon: '\u{1F504}', title: 'Multi-Index Brand Presence', color: '#ef6f8e' },
+const SKILL_CLUSTERS = [
+  {
+    label: 'Causal & Measurement',
+    color: '#7c5cff',
+    items: ['Causal inference: DiD, regression discontinuity, synthetic control', 'Behavioral economics & psychographic segmentation'],
+  },
+  {
+    label: 'Segmentation & Retention',
+    color: '#34d399',
+    items: ['ML segmentation: K-means, DBSCAN, PCA', 'Churn modeling & retention architecture'],
+  },
+  {
+    label: 'Growth & AI Ops',
+    color: '#f5a35c',
+    items: ['Pricing, GTM, and growth analytics', 'AI-augmented analytics & LLM visibility (GEO/AEO)'],
+  },
 ]
 
 function GapRow({ gap, index }: { gap: typeof GAPS[0]; index: number }) {
@@ -55,7 +54,7 @@ function GapRow({ gap, index }: { gap: typeof GAPS[0]; index: number }) {
   )
 }
 
-function SkillChip({ skill, delay }: { skill: typeof SKILLS[0]; delay: number }) {
+function SkillCluster({ cluster, delay }: { cluster: typeof SKILL_CLUSTERS[0]; delay: number }) {
   const [visible, setVisible] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
   useEffect(() => {
@@ -64,9 +63,19 @@ function SkillChip({ skill, delay }: { skill: typeof SKILLS[0]; delay: number })
     return () => obs.disconnect()
   }, [])
   return (
-    <div ref={ref} className="skill-card" style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '11px 13px', borderRadius: '10px', background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', border: '1px solid var(--glass-border)', opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(8px)', transition: `opacity 350ms cubic-bezier(0.22,1,0.36,1) ${delay}ms, transform 350ms cubic-bezier(0.22,1,0.36,1) ${delay}ms` }}>
-      <div style={{ width: '28px', height: '28px', borderRadius: '8px', background: skill.color + '20', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', flexShrink: 0 }}>{skill.icon}</div>
-      <span className="skill-card-title" style={{ fontFamily: 'var(--font-inter)', fontSize: '12.5px', fontWeight: 600, color: 'var(--glass-hi)', lineHeight: 1.25 }}>{skill.title}</span>
+    <div ref={ref} className="skill-card" style={{ padding: '18px 20px', borderRadius: '12px', background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', border: '1px solid var(--glass-border)', opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(8px)', transition: `opacity 350ms cubic-bezier(0.22,1,0.36,1) ${delay}ms, transform 350ms cubic-bezier(0.22,1,0.36,1) ${delay}ms` }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+        <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: cluster.color, flexShrink: 0 }} aria-hidden="true" />
+        <span className="skill-card-title" style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '12px', fontWeight: 600, letterSpacing: '0.04em', color: 'var(--glass-hi)' }}>{cluster.label}</span>
+      </div>
+      <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+        {cluster.items.map(item => (
+          <li key={item} style={{ fontFamily: 'var(--font-inter)', fontSize: '13px', color: 'var(--glass-mid)', lineHeight: 1.4, paddingLeft: '14px', position: 'relative' }}>
+            <span style={{ position: 'absolute', left: 0, color: cluster.color }}>&#183;</span>
+            {item}
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
@@ -84,7 +93,7 @@ export default function GapsSection() {
             Reads hiding in plain sight, and the lens that finds them.
           </h2>
           <p style={{ fontFamily: 'var(--font-inter)', fontSize: '15px', color: 'var(--text-mid)', lineHeight: 1.5, maxWidth: '54ch', margin: '0 auto' }}>
-            Five real client gaps on the left. The toolkit that surfaces them on the right.
+            Five real client gaps on the left, each from a different engagement. The toolkit that surfaces them on the right.
           </p>
         </div>
 
@@ -96,8 +105,8 @@ export default function GapsSection() {
 
           {/* RIGHT: the toolkit */}
           <div id="skills">
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }} className="skills-grid-c">
-              {SKILLS.map((skill, i) => <SkillChip key={skill.title} skill={skill} delay={i * 25} />)}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              {SKILL_CLUSTERS.map((cluster, i) => <SkillCluster key={cluster.label} cluster={cluster} delay={i * 60} />)}
             </div>
           </div>
         </div>

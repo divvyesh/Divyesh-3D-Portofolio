@@ -86,15 +86,25 @@ export default function SelectedWork() {
           {FEATURED.map((p, i) => <WorkCard key={p.slug} project={p} index={i} />)}
         </div>
         <div style={{ marginTop: '48px', paddingTop: '32px', borderTop: '1px solid rgba(255,255,255,0.09)' }}>
-          <p style={{ fontFamily: 'var(--font-inter)', fontSize: '15px', color: 'var(--text-mid)', marginBottom: '8px' }}>
-            Also behind me: Newdia Co., Fenway growth analytics and a 30% promo cannibalization signal. Count On Me, founder, 25+ client engagements and 35% average engagement lift. Sumedha IT, semiconductor go to market and a stakeholder in the CYIENT acquisition.
-          </p>
+          <div style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-low)', marginBottom: '14px' }}>Also behind me</div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '24px' }} className="also-behind-grid">
+            {[
+              { name: 'Newdia Co.', desc: 'Fenway growth analytics, 30% promo-cannibalization signal found.' },
+              { name: 'Count On Me', desc: 'Founder. 25+ client engagements, 35% average engagement lift.' },
+              { name: 'Sumedha IT', desc: 'Semiconductor GTM. Stakeholder in the CYIENT acquisition.' },
+            ].map(item => (
+              <div key={item.name}>
+                <div style={{ fontFamily: 'var(--font-inter)', fontSize: '14px', fontWeight: 600, color: 'var(--text-hi)', marginBottom: '4px' }}>{item.name}</div>
+                <div style={{ fontFamily: 'var(--font-inter)', fontSize: '13px', color: 'var(--text-mid)', lineHeight: 1.45 }}>{item.desc}</div>
+              </div>
+            ))}
+          </div>
           <Link href="/work" style={{ fontFamily: 'var(--font-inter)', fontSize: '15px', fontWeight: 600, color: 'var(--accent)', textDecoration: 'none' }}>See all 13 projects &#8594;</Link>
         </div>
       </div>
       <style>{`
         @media (max-width: 900px) { .work-grid { grid-template-columns: repeat(2, 1fr) !important; } }
-        @media (max-width: 560px) { .work-grid { grid-template-columns: 1fr !important; } }
+        @media (max-width: 560px) { .work-grid { grid-template-columns: 1fr !important; } .also-behind-grid { grid-template-columns: 1fr !important; } }
       `}</style>
     </section>
   )
