@@ -19,24 +19,21 @@ export default function AboutPage() {
             className="font-display mb-8"
             style={{ fontSize: 'clamp(32px, 5vw, 56px)', color: 'var(--text-hi)', fontWeight: 400 }}
           >
-            The analyst who used to draw.
+            Everything here happened on a clock.
           </h1>
 
           <div className="space-y-5 font-body text-[17px] leading-[1.75] max-w-[68ch]" style={{ color: 'var(--text-mid)' }}>
             <p>
-              Before I ever ran a regression, I was recognized by the Government of Andhra Pradesh as an art prodigy — Bala Chitra Ratna and Kala Ratna. What that actually trained was pattern recognition: noticing the structure underneath what everyone else sees as visual noise.
+              I left Hyderabad for Boston with one suitcase and a laptop, the same year I was still closing GTM decks for a semiconductor client three time zones away. That gap, deadlines by day, an ocean between me and everyone I grew up with by night, is where I actually learned what matters under pressure. Not the tool. Not the framework. The decision waiting on the other end of the work.
             </p>
             <p>
-              That skill transferred completely. When I look at 3.2M Starbucks loyalty records, I&apos;m looking for the same thing I looked for when I drew — the pattern that isn&apos;t immediately obvious, the structure hiding under the surface. The difference is the output: instead of a painting, it&apos;s a 14% retention lift hiding in a cohort that aggregate metrics were smoothing away.
+              Every line on the timeline below happened against a visa clock I could not negotiate with. F-1, then OPT, then the countdown to STEM OPT and beyond. I built a 25+ client consulting practice, then a startup&apos;s first CAC funnel, then walked into Boston University with the same urgency: figure out what is real in the data, fast, because the runway is not infinite for someone in my position.
             </p>
             <p>
-              I&apos;m finishing my MS in Business Analytics at Boston University Questrom School of Business in 2026. Before that: four years building analytics across a semiconductor GTM desk in Hyderabad, a 25+ client consulting practice, a cannabis startup, and a digital agency — plus a behavioral research tool I built from scratch that runs LLM personas as synthetic consumer panels.
-            </p>
-            <p>
-              I&apos;m actively looking for full-time roles in consumer insights, growth analytics, or data science. Moving to Florida in July 2026. US work-authorized for 4+ years, no sponsorship needed.
+              I&apos;m finishing my MS in Business Analytics at Boston University Questrom School of Business in 2026, and moving to Florida after, because the work has to keep moving too. I&apos;m actively looking for full-time roles in consumer insights, growth analytics, or data science. US work-authorized for 4+ years, no sponsorship needed.
             </p>
             <p style={{ color: 'var(--accent-2)' }} className="font-display italic">
-              If you can find the pattern nobody else sees — it doesn&apos;t matter whether the canvas is a sketchpad or a dataset.
+              The clock did not stop for any of it. Neither did I.
             </p>
           </div>
         </div>
