@@ -56,27 +56,68 @@ const PROJECT_ICONS: Record<string, React.ReactNode> = {
   'blue-horse': <Icon path={<><circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" /></>} />,
 }
 
-const CERTIFICATIONS = [
+const GITHUB_CERTS_URL = 'https://github.com/divvyesh/BU-MSBA-2026/tree/main/Certifications'
+const LINKEDIN_CERTS_URL = 'https://www.linkedin.com/in/divyesh-annavarapu/details/certifications/'
+
+const CERT_GROUPS: { issuer: string; proofs?: { label: string; url: string }[]; items: string[] }[] = [
   {
-    name: 'Google Analytics Certification',
-    issuer: 'Google',
-    detail: 'Issued April 2025 · GA4 setup, events, audiences, and reporting.',
-    pdfUrl: '/pdfs/Google_Analytics_Certification.pdf',
-    cta: 'View certificate',
-  },
-  {
-    name: 'Google Cloud Skills Boost',
-    issuer: 'Google Cloud',
-    detail: '26 hands-on labs completed, most scored 100%: BigQuery, Cloud SQL, BigQuery ML, Looker Studio, Cloud Shell.',
-    pdfUrl: '/pdfs/Google_Cloud_Skills_Boost.pdf',
-    cta: 'View activity log',
-  },
-  {
-    name: 'DataCamp',
     issuer: 'DataCamp',
-    detail: '21 courses completed across SQL, Python, machine learning, data visualization, statistics, and Git.',
-    pdfUrl: '/pdfs/DataCamp_Certifications.pdf',
-    cta: 'View certificates',
+    proofs: [{ label: 'View certificates', url: '/pdfs/DataCamp_Certifications.pdf' }],
+    items: [
+      'Introduction to SQL',
+      'Intermediate SQL',
+      'Joining Data in SQL',
+      'Data Manipulation in SQL',
+      'Analyzing Business Data in SQL',
+      'Introduction to Python',
+      'Intermediate Python',
+      'Introduction to Functions in Python',
+      'Introduction to Data Science in Python',
+      'Introduction to Statistics in Python',
+      'Statistical Simulation in Python',
+      'Supervised Learning with scikit-learn',
+      'Linear Classifiers in Python',
+      'Machine Learning with Tree-Based Models in Python',
+      'Hyperparameter Tuning in Python',
+      'Introduction to Data Visualization with Matplotlib',
+      'Introduction to Data Visualization with Seaborn',
+      'Interactive Data Visualization with Bokeh',
+      'Introduction to NumPy',
+      'Foundations of Git',
+      'Introduction to GitHub Concepts',
+    ],
+  },
+  {
+    issuer: 'Google',
+    proofs: [
+      { label: 'GA4 certificate', url: '/pdfs/Google_Analytics_Certification.pdf' },
+      { label: 'Cloud Skills Boost activity log', url: '/pdfs/Google_Cloud_Skills_Boost.pdf' },
+    ],
+    items: [
+      'Google Analytics 4 Certification',
+      'Advanced Data Analytics',
+      'Analytics Individual Certification',
+      'AI for Data Analysis',
+      'AI for Content Creation and for Writing and Communication',
+      'AI for Research and Insights',
+      'AI for Brainstorming and Planning',
+    ],
+  },
+  {
+    issuer: 'Anthropic',
+    items: ['Claude 101', 'AI Fluency Framework & Foundations'],
+  },
+  {
+    issuer: "Moody's Analytics",
+    items: ['Applied Excel for Business Analytics'],
+  },
+  {
+    issuer: 'CalArts',
+    items: ['Fundamentals of Graphic Design'],
+  },
+  {
+    issuer: 'CFI',
+    items: ['Finance Exchange Essentials'],
   },
 ]
 
@@ -212,37 +253,83 @@ export default function WorkPage() {
           ))}
         </div>
 
-        {/* Certifications */}
-        <div className="mt-20">
-          <div className="font-mono text-[12px] uppercase tracking-[0.12em] mb-4" style={{ color: 'var(--text-low)' }}>
-            Certifications
+        {/* Certifications — full breakdown, same pattern as a project breakdown */}
+        <div className="mt-20 pt-14" style={{ borderTop: '1px solid var(--line)' }}>
+          <div className="flex items-start justify-between gap-4 mb-4 flex-wrap">
+            <div
+              className="font-mono text-[10px] uppercase tracking-[0.1em] px-2 py-1 rounded-full"
+              style={{ background: 'rgba(110,231,183,0.1)', color: 'var(--accent)', border: '1px solid rgba(110,231,183,0.4)' }}
+            >
+              CERTIFICATIONS BREAKDOWN
+            </div>
+            <span className="font-mono text-[11px]" style={{ color: 'var(--text-low)' }}>33 total</span>
           </div>
-          <h2 className="font-display mb-8" style={{ fontSize: 'clamp(22px, 2.6vw, 30px)', color: 'var(--text-hi)', fontWeight: 400 }}>
-            Kept building the fundamentals alongside the projects.
+          <h2 className="font-display mb-4" style={{ fontSize: 'clamp(24px, 3vw, 34px)', color: 'var(--text-hi)', fontWeight: 400 }}>
+            Kept building the fundamentals alongside every project above.
           </h2>
-          <div className="grid gap-6" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))' }}>
-            {CERTIFICATIONS.map(cert => (
-              <a
-                key={cert.name}
-                href={cert.pdfUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block p-6 rounded-[14px] transition-all duration-200"
-                style={{ background: 'var(--bg-1)', border: '1px solid var(--line)' }}
-                onMouseEnter={e => {
-                  ;(e.currentTarget as HTMLElement).style.borderColor = 'rgba(110,231,183,0.3)'
-                  ;(e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'
-                }}
-                onMouseLeave={e => {
-                  ;(e.currentTarget as HTMLElement).style.borderColor = 'var(--line)'
-                  ;(e.currentTarget as HTMLElement).style.transform = ''
-                }}
-              >
-                <div className="font-mono text-[11px] mb-2" style={{ color: 'var(--text-mid)' }}>{cert.issuer}</div>
-                <h3 className="font-body font-semibold text-[15px] leading-snug mb-3" style={{ color: 'var(--text-hi)' }}>{cert.name}</h3>
-                <p className="font-body text-[13px] leading-[1.6] mb-4" style={{ color: 'var(--text-hi)' }}>{cert.detail}</p>
-                <span className="font-body text-[13px]" style={{ color: 'var(--accent)' }}>{cert.cta} →</span>
-              </a>
+          <p className="font-body text-[15px] leading-[1.6] max-w-[62ch] mb-6" style={{ color: 'var(--text-mid)' }}>
+            33 courses and certifications across SQL, Python, machine learning, analytics, and AI tooling, completed alongside the client work and capstone projects on this page.
+          </p>
+
+          <div className="flex flex-wrap gap-3 mb-12">
+            <a
+              href={GITHUB_CERTS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-[11px] uppercase tracking-[0.08em] px-4 py-2 rounded-full border"
+              style={{ borderColor: 'var(--line)', color: 'var(--text-mid)' }}
+            >
+              Source folder on GitHub →
+            </a>
+            <a
+              href={LINKEDIN_CERTS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-[11px] uppercase tracking-[0.08em] px-4 py-2 rounded-full border"
+              style={{ borderColor: 'var(--line)', color: 'var(--text-mid)' }}
+            >
+              Verified on LinkedIn →
+            </a>
+          </div>
+
+          <div className="space-y-10">
+            {CERT_GROUPS.map(group => (
+              <div key={group.issuer}>
+                <div className="flex items-center gap-3 mb-4 flex-wrap">
+                  <h3 className="font-body font-semibold text-[16px]" style={{ color: 'var(--text-hi)' }}>
+                    {group.issuer}
+                  </h3>
+                  <span
+                    className="font-mono text-[10px] px-2 py-1 rounded-full"
+                    style={{ background: 'var(--bg-0)', border: '1px solid var(--line)', color: 'var(--text-mid)' }}
+                  >
+                    {group.items.length}
+                  </span>
+                  {group.proofs?.map(proof => (
+                    <a
+                      key={proof.url}
+                      href={proof.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-body text-[12px]"
+                      style={{ color: 'var(--accent)' }}
+                    >
+                      {proof.label} →
+                    </a>
+                  ))}
+                </div>
+                <div className="grid gap-2" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))' }}>
+                  {group.items.map(item => (
+                    <div
+                      key={item}
+                      className="font-body text-[13.5px] leading-snug px-4 py-3 rounded-[10px]"
+                      style={{ background: 'var(--bg-1)', border: '1px solid var(--line)', color: 'var(--text-hi)' }}
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>
