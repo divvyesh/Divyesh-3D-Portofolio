@@ -3,12 +3,12 @@ import { useRef, useEffect, useState } from 'react'
 import CountUp from '@/components/CountUp'
 
 const CARDS = [
-  { countVal: 95, countSuffix: '%', color: 'var(--pink)', claim: 'of new products fail to meet market expectations', source: 'HBS', sourceUrl: 'https://www.inc.com/marc-emmer/95-percent-of-new-products-fail-here-are-6-steps-to-make-sure-yours-dont.html' },
-  { countVal: 3.7, countPrefix: '$', countSuffix: 'T', countDecimals: 1, color: 'var(--violet)', claim: 'in global revenue at risk from poor CX', source: 'Emplifi 2024', sourceUrl: 'https://emplifi.io/resources/blog/cx-statistics' },
-  { countVal: 306, countSuffix: '%', color: 'var(--accent)', claim: 'higher LTV from emotionally connected customers', source: 'Motista', sourceUrl: 'https://motista.com/' },
+  { countVal: 95, countSuffix: '%', color: 'var(--pink)', claim: 'of new products fail to meet market expectations', source: 'Clayton Christensen, HBS', sourceUrl: 'https://www.inc.com/marc-emmer/95-percent-of-new-products-fail-here-are-6-steps-to-make-sure-yours-dont.html' },
+  { countVal: 3.7, countPrefix: '$', countSuffix: 'T', countDecimals: 1, color: 'var(--violet)', claim: 'in global revenue at risk from poor CX', source: 'Qualtrics XM Institute, 2024', sourceUrl: 'https://www.qualtrics.com/articles/news/trillion-sales-at-risk-2024/' },
+  { countVal: 306, countSuffix: '%', color: 'var(--accent)', claim: 'higher LTV from emotionally connected customers', source: 'Motista', sourceUrl: 'https://www.prnewswire.com/news-releases/new-retail-study-shows-marketers-under-leverage-emotional-connection-300720049.html' },
   { countVal: 5, countSuffix: 'x', color: 'var(--warm)', claim: 'more expensive to acquire a new customer than to retain one', source: 'Invesp', sourceUrl: 'https://www.invespcro.com/blog/customer-acquisition-retention/' },
-  { countVal: 96, countSuffix: '%', color: 'var(--danger)', claim: 'of unhappy customers never complain, they just leave', source: 'Esteban Kolsky, ThinkJar', sourceUrl: 'https://thinkjar.com/' },
-  { countVal: 70, countSuffix: '%', color: 'var(--pink)', claim: "of the customer experience is shaped by how people feel they were treated", source: 'McKinsey', sourceUrl: 'https://www.mckinsey.com/' },
+  { countVal: 96, countSuffix: '%', color: 'var(--danger)', claim: 'of unhappy customers never complain, they just leave', source: 'Esteban Kolsky, cited by Brainfish', sourceUrl: 'https://www.brainfishai.com/blog/the-silent-96-what-your-users-never-tell-support' },
+  { countVal: 140, countSuffix: '%', color: 'var(--pink)', claim: 'more spend from customers who rate their experience a perfect 10/10', source: 'SuperOffice', sourceUrl: 'https://www.superoffice.com/blog/customer-experience-statistics/' },
 ]
 
 const BAR_ROWS = [
@@ -19,8 +19,8 @@ const BAR_ROWS = [
 ]
 
 const QUOTES = [
-  { text: 'Companies that lead in CX outperform laggards by nearly 80% in revenue growth.', source: 'Forrester CX Index 2024', sourceUrl: 'https://www.forrester.com/report/the-forrester-customer-experience-index/', border: 'var(--pink)' },
-  { text: 'Improving retention by just 2% drives profitability equal to cutting costs by 10%.', source: 'Bain / Harvard Business Review', sourceUrl: 'https://hbr.org/2014/10/the-value-of-keeping-the-right-customers', border: 'var(--accent)' },
+  { text: 'CX leaders achieve 17% compound annual revenue growth, versus just 3% for laggards.', source: 'Forrester', sourceUrl: 'https://www.forrester.com/press-newsroom/customer-experience-leaders-crush-laggards-on-revenue-growth/', border: 'var(--pink)' },
+  { text: 'A 5% increase in customer retention can increase profits by 25% to 95%.', source: 'Bain & Company / Harvard Business Review', sourceUrl: 'https://hbr.org/2014/10/the-value-of-keeping-the-right-customers', border: 'var(--accent)' },
   { text: '86% of buyers will pay more for a better experience, yet most companies compete on price.', source: 'Walker / SuperOffice CX Report', sourceUrl: 'https://www.superoffice.com/blog/customer-experience-statistics/', border: 'var(--warm)' },
 ]
 
