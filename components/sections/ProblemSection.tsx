@@ -57,8 +57,15 @@ function BarChart() {
   }, [])
   return (
     <div ref={ref} className="bar-box" style={{ background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', border: '1px solid var(--glass-border)', boxShadow: 'var(--glass-shadow)', borderRadius: '14px', padding: '22px 20px' }}>
-      <div className="bar-title" style={{ fontFamily: 'var(--font-inter)', fontSize: '15px', fontWeight: 600, color: 'var(--glass-hi)', marginBottom: '18px', lineHeight: 1.3 }}>
+      <div className="bar-title" style={{ fontFamily: 'var(--font-inter)', fontSize: '15px', fontWeight: 600, color: 'var(--glass-hi)', marginBottom: '6px', lineHeight: 1.3 }}>
         One-time buyers vs emotionally connected customers, by relative value
+      </div>
+      <div style={{ fontFamily: 'var(--font-inter)', fontSize: '11px', fontStyle: 'italic', color: 'var(--glass-low)', marginBottom: '16px', lineHeight: 1.4 }}>
+        Illustrative synthesis, not one single study  -  informed by{' '}
+        <a href="https://www.prnewswire.com/news-releases/new-retail-study-shows-marketers-under-leverage-emotional-connection-300720049.html" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>Motista</a>
+        {' '}retail LTV research and{' '}
+        <a href="https://www.qualtrics.com/articles/customer-experience/capture-financial-value-customer-emotions/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>Qualtrics</a>
+        {' '}emotion-loyalty research.
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
         {BAR_ROWS.map((row, i) => (
