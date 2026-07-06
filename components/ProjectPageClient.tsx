@@ -176,27 +176,8 @@ export default function ProjectPageClient({ project, prev, next }: { project: Pr
   }
 
   // ── Fallback: glass-dark layout for projects without v25 HTML ──────
-  return (
-    <PageShell project={project} prev={prev} next={next}>
-
-      {/* Header white card */}
-      <div style={{ background: 'rgba(255,255,255,0.93)', backdropFilter: 'blur(28px)', border: '1px solid rgba(15,17,23,0.09)', borderRadius: '18px', padding: '28px 28px 24px', marginBottom: '14px', boxShadow: '0 4px 40px rgba(0,0,0,0.07)' }}>
-        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '8px', marginBottom: '18px' }}>
-          <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.12em', padding: '4px 12px', borderRadius: '9999px', background: `${TAG_COLORS[project.tag]}1a`, color: TAG_COLORS[project.tag], border: `1px solid ${TAG_COLORS[project.tag]}3c` }}>{project.tagLabel}</span>
-          <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '10px', color: '#8a8fa8' }}>{project.year}</span>
-          <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.08em', padding: '3px 8px', borderRadius: '6px', background: `${HONESTY_COLORS[project.honesty]}14`, color: HONESTY_COLORS[project.honesty], border: `1px solid ${HONESTY_COLORS[project.honesty]}30` }}>{project.honesty}</span>
-        </div>
-        <div style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '12px', color: '#9ba0b4', marginBottom: '8px' }}>{project.brand}</div>
-        <h1 style={{ fontFamily: 'var(--font-display, serif)', fontSize: 'clamp(20px, 3.5vw, 40px)', fontWeight: 400, lineHeight: 1.1, color: '#0f1117', marginBottom: '22px', marginTop: 0 }}>{project.outcomeTitle}</h1>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '10px' }}>
-          {project.metrics.map((m, i) => (
-            <div key={i} style={{ borderRadius: '10px', padding: '11px 14px', textAlign: 'center', background: 'rgba(15,17,23,0.05)', border: '1px solid rgba(15,17,23,0.07)' }}>
-              <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '12px', color: '#1a1f2e' }}>{m}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
+  const middleSections = (
+    <>
       {(project.problemLines || project.problem) && (
         <div style={redGlass}>
           <SectionLabel icon={<ProblemIcon />} label="Problem Statement" color="rgba(220,75,75,0.88)" />
@@ -322,11 +303,41 @@ export default function ProjectPageClient({ project, prev, next }: { project: Pr
         </div>
       )}
 
-      {project.pdfUrl && (
-        <div style={{ marginBottom: '14px' }}>
-          <SectionLabel icon={<SlidesIcon />} label="Presentation Slides" color="var(--glass-mid)" />
-          <SlideViewer pdfUrl={project.pdfUrl} />
+    </>
+  )
+
+  return (
+    <PageShell project={project} prev={prev} next={next}>
+
+      {/* Header white card */}
+      <div style={{ background: 'rgba(255,255,255,0.93)', backdropFilter: 'blur(28px)', border: '1px solid rgba(15,17,23,0.09)', borderRadius: '18px', padding: '28px 28px 24px', marginBottom: '14px', boxShadow: '0 4px 40px rgba(0,0,0,0.07)' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '8px', marginBottom: '18px' }}>
+          <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.12em', padding: '4px 12px', borderRadius: '9999px', background: `${TAG_COLORS[project.tag]}1a`, color: TAG_COLORS[project.tag], border: `1px solid ${TAG_COLORS[project.tag]}3c` }}>{project.tagLabel}</span>
+          <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '10px', color: '#8a8fa8' }}>{project.year}</span>
+          <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.08em', padding: '3px 8px', borderRadius: '6px', background: `${HONESTY_COLORS[project.honesty]}14`, color: HONESTY_COLORS[project.honesty], border: `1px solid ${HONESTY_COLORS[project.honesty]}30` }}>{project.honesty}</span>
         </div>
+        <div style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '12px', color: '#9ba0b4', marginBottom: '8px' }}>{project.brand}</div>
+        <h1 style={{ fontFamily: 'var(--font-display, serif)', fontSize: 'clamp(20px, 3.5vw, 40px)', fontWeight: 400, lineHeight: 1.1, color: '#0f1117', marginBottom: '22px', marginTop: 0 }}>{project.outcomeTitle}</h1>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '10px' }}>
+          {project.metrics.map((m, i) => (
+            <div key={i} style={{ borderRadius: '10px', padding: '11px 14px', textAlign: 'center', background: 'rgba(15,17,23,0.05)', border: '1px solid rgba(15,17,23,0.07)' }}>
+              <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '12px', color: '#1a1f2e' }}>{m}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Content — slides pinned to the right, like the v25 project breakdowns (Newdia, British Airways, Airbnb) */}
+      {project.pdfUrl ? (
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_380px] gap-5 items-start">
+          <div>{middleSections}</div>
+          <div className="lg:sticky" style={{ top: '100px' }}>
+            <SectionLabel icon={<SlidesIcon />} label="Presentation Slides" color="var(--glass-mid)" />
+            <SlideViewer pdfUrl={project.pdfUrl} />
+          </div>
+        </div>
+      ) : (
+        middleSections
       )}
 
       {project.deckButtons && (
