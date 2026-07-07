@@ -6,6 +6,7 @@ export default function BookingSection() {
   const [email, setEmail] = useState('')
   const [company, setCompany] = useState('')
   const [role, setRole] = useState('')
+  const [phone, setPhone] = useState('')
   const [status, setStatus] = useState<'idle'|'loading'|'sent'|'error'>('idle')
 
   const valid = name.trim().length > 0 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())
@@ -13,7 +14,7 @@ export default function BookingSection() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault(); if (!valid) return; setStatus('loading')
     try {
-      await fetch('https://formsubmit.co/ajax/divyesh.annavarapu@gmail.com', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ _subject: 'Slot Booking from ' + name + (company ? ' @ ' + company : ''), _template: 'table', _captcha: 'false', Name: name, Email: email, Company: company || '(not provided)', Role: role || '(not provided)' }) })
+      await fetch('https://formsubmit.co/ajax/divyesh.annavarapu@gmail.com', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ _subject: 'Slot Booking from ' + name + (company ? ' @ ' + company : ''), _template: 'table', _captcha: 'false', Name: name, Email: email, Company: company || '(not provided)', Role: role || '(not provided)', Phone: phone || '(not provided)' }) })
       const url = 'https://calendly.com/divyesh-annavarapu/30min?name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email)
       window.open(url, '_blank'); setStatus('sent')
     } catch { setStatus('error') }
@@ -22,7 +23,7 @@ export default function BookingSection() {
   async function handleCallback() {
     if (!valid) return; setStatus('loading')
     try {
-      await fetch('https://formsubmit.co/ajax/divyesh.annavarapu@gmail.com', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ _subject: 'Callback request from ' + name + (company ? ' @ ' + company : ''), _template: 'table', _captcha: 'false', Type: 'Callback request', Name: name, Email: email, Company: company || '(not provided)', Role: role || '(not provided)' }) })
+      await fetch('https://formsubmit.co/ajax/divyesh.annavarapu@gmail.com', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ _subject: 'Callback request from ' + name + (company ? ' @ ' + company : ''), _template: 'table', _captcha: 'false', Type: 'Callback request', Name: name, Email: email, Company: company || '(not provided)', Role: role || '(not provided)', Phone: phone || '(not provided)' }) })
       setStatus('sent')
     } catch { setStatus('error') }
   }
@@ -82,6 +83,7 @@ export default function BookingSection() {
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '24px' }}>
                     <div><label htmlFor="book-name" style={labelStyle}>First name <span style={{ color: '#ef4444' }}>*</span></label><input id="book-name" type="text" required value={name} onChange={e => setName(e.target.value)} placeholder="Alex" style={inputStyle} /></div>
                     <div><label htmlFor="book-email" style={labelStyle}>Work email <span style={{ color: '#ef4444' }}>*</span></label><input id="book-email" type="email" required value={email} onChange={e => setEmail(e.target.value)} placeholder="alex@company.com" style={inputStyle} /></div>
+                    <div><label htmlFor="book-phone" style={labelStyle}>Phone number <span style={{ color: 'var(--glass-low)', fontWeight: 400 }}>(optional)</span></label><input id="book-phone" type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="(555) 123-4567" style={inputStyle} /></div>
                     <div><label htmlFor="book-company" style={labelStyle}>Company <span style={{ color: 'var(--glass-low)', fontWeight: 400 }}>(optional)</span></label><input id="book-company" type="text" value={company} onChange={e => setCompany(e.target.value)} placeholder="Acme Inc." style={inputStyle} /></div>
                     <div><label htmlFor="book-role" style={labelStyle}>Role or title <span style={{ color: 'var(--glass-low)', fontWeight: 400 }}>(optional)</span></label><input id="book-role" type="text" value={role} onChange={e => setRole(e.target.value)} placeholder="Head of Growth" style={inputStyle} /></div>
                   </div>
