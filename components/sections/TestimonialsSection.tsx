@@ -26,7 +26,7 @@ export default function TestimonialsSection() {
         </div>
         <div
           className="grid gap-4"
-          style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))' }}
+          style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(min(280px, 100%), 1fr))' }}
         >
           {screenshots.map(t => (
             <img

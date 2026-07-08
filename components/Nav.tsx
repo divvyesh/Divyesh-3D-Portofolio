@@ -30,7 +30,7 @@ export default function Nav() {
           borderBottom: '1px solid rgba(255,255,255,0.08)',
         }}
       >
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div className="nav-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Link href="/" style={{ fontFamily: 'var(--font-inter)', fontSize: '18px', fontWeight: 600, color: '#f0f1f5', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px', whiteSpace: 'nowrap' }}>
             Divyesh A.<span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--accent)', display: 'inline-block', marginLeft: '1px', verticalAlign: 'baseline', position: 'relative', top: '-1px' }} aria-hidden="true" />
           </Link>
@@ -69,6 +69,12 @@ export default function Nav() {
           </div>
         </div>
       </nav>
+
+      <style>{`
+        @media (max-width: 420px) {
+          .nav-inner { padding: 0 16px !important; }
+        }
+      `}</style>
 
       {open && (
         <div className="md:hidden" onClick={() => setOpen(false)}

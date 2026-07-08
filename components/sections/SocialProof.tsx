@@ -61,7 +61,7 @@ export default function SocialProof() {
           <p style={{ fontFamily: 'var(--font-inter)', fontSize: '16px', color: 'var(--text-mid)' }}>No cleanup, no cherry picking. Click any quote above, or a screenshot below, to read the full evaluation.</p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '16px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(280px, 100%), 1fr))', gap: '16px' }}>
           {SCREENSHOTS.map(t => (
             <button key={t} onClick={() => setLightbox(t)}
               style={{ padding: 0, border: '1px solid rgba(255,255,255,0.12)', borderRadius: '12px', overflow: 'hidden', cursor: 'zoom-in', background: 'none', display: 'block', width: '100%', transition: 'border-color 200ms, transform 200ms' }}

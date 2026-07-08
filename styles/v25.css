@@ -1433,3 +1433,40 @@
   .v25-wrap .nc-data-row span:last-child {
  display: none;   }
 }
+
+/* ── Fixed-ratio data tables (variable dictionaries, model/tool comparisons) ──
+   These use narrow fr-columns (e.g. 0.7fr, 0.8fr) that squeeze unreadably on
+   phone widths. Instead of losing columns, let the table scroll horizontally
+   inside its own card so the row grid keeps its column alignment. ────────── */
+@media (max-width: 640px) {
+  .v25-wrap .sb-tc-table,
+  .v25-wrap .ab-var-table,
+  .v25-wrap .ab-model-table,
+  .v25-wrap .sb-feat-table,
+  .v25-wrap .gt-model-table,
+  .v25-wrap .sf-tool-table,
+  .v25-wrap .ba-ds-table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -4px;
+    padding: 0 4px;
+  }
+  .v25-wrap .sb-tc-row,
+  .v25-wrap .ab-model-row,
+  .v25-wrap .sb-feat-row,
+  .v25-wrap .gt-model-row,
+  .v25-wrap .ba-ds-row {
+    min-width: 460px;
+  }
+  .v25-wrap .ab-var-row,
+  .v25-wrap .mbta-var-row,
+  .v25-wrap .sf-tool-row {
+    min-width: 480px;
+  }
+  .v25-wrap .banco-var-row {
+    min-width: 560px;
+  }
+  .v25-wrap .sf-cat-row {
+    grid-template-columns: 1fr;
+  }
+}

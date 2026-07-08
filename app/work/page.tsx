@@ -165,7 +165,7 @@ export default function WorkPage() {
         {/* Grid */}
         <div
           className="grid gap-6"
-          style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))' }}
+          style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(min(300px, 100%), 1fr))' }}
         >
           {filtered.map(project => (
             <Link
@@ -318,7 +318,7 @@ export default function WorkPage() {
                     </a>
                   ))}
                 </div>
-                <div className="grid gap-2" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))' }}>
+                <div className="grid gap-2" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(min(260px, 100%), 1fr))' }}>
                   {group.items.map(item => (
                     <div
                       key={item}

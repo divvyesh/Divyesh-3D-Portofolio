@@ -137,28 +137,33 @@ function PageShell({
   return (
     <div style={{ paddingTop: '72px', minHeight: '100vh' }}>
       {/* Back nav strip */}
-      <div style={{ padding: '24px 40px 0', maxWidth: fullBleed ? undefined : '1400px', margin: fullBleed ? undefined : '0 auto' }}>
+      <div className="pp-pad" style={{ padding: '24px 40px 0', maxWidth: fullBleed ? undefined : '1400px', margin: fullBleed ? undefined : '0 auto' }}>
         <Link href="/work" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontFamily: 'var(--font-mono, monospace)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--glass-low)', textDecoration: 'none', opacity: 0.75 }}>
           ← Back to work
         </Link>
       </div>
       {/* Main content — full bleed for v25, wide-padded for glass layout */}
-      <div style={fullBleed ? { width: '100%' } : { maxWidth: '1400px', margin: '0 auto', padding: '28px 40px 0' }}>
+      <div className={fullBleed ? undefined : 'pp-pad'} style={fullBleed ? { width: '100%' } : { maxWidth: '1400px', margin: '0 auto', padding: '28px 40px 0' }}>
         {children}
       </div>
       {/* CTA + prev/next */}
-      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '32px 40px 80px' }}>
+      <div className="pp-pad" style={{ maxWidth: '1400px', margin: '0 auto', padding: '32px 40px 80px' }}>
         <div style={{ padding: '40px 28px', borderRadius: '16px', textAlign: 'center', background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', border: '1px solid rgba(255,255,255,0.08)', marginBottom: '40px' }}>
           <p style={{ fontFamily: 'var(--font-body, sans-serif)', fontSize: '15px', color: 'var(--glass-mid)', marginBottom: '20px', marginTop: 0 }}>Want this kind of analysis for your business?</p>
           <a href="/#book" style={{ display: 'inline-block', fontFamily: 'var(--font-body, sans-serif)', fontWeight: 600, fontSize: '15px', padding: '12px 28px', borderRadius: '10px', background: 'linear-gradient(135deg, #34d399 0%, #059669 100%)', color: '#050507', textDecoration: 'none', boxShadow: '0 4px 20px rgba(52,211,153,0.26)' }}>
             Book 15 min &#8594;
           </a>
         </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '20px', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'space-between', paddingTop: '20px', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
           {prev ? <Link href={`/work/${prev.slug}`} style={{ fontFamily: 'var(--font-body, sans-serif)', fontSize: '14px', color: 'var(--glass-mid)', textDecoration: 'none', opacity: 0.8 }}>&#8592; {prev.brand}</Link> : <div />}
           {next ? <Link href={`/work/${next.slug}`} style={{ fontFamily: 'var(--font-body, sans-serif)', fontSize: '14px', color: 'var(--glass-mid)', textDecoration: 'none', opacity: 0.8 }}>{next.brand} &#8594;</Link> : <div />}
         </div>
       </div>
+      <style>{`
+        @media (max-width: 640px) {
+          .pp-pad { padding-left: 18px !important; padding-right: 18px !important; }
+        }
+      `}</style>
     </div>
   )
 }
@@ -218,7 +223,7 @@ export default function ProjectPageClient({ project, prev, next }: { project: Pr
       {project.segments && (
         <div style={glass}>
           <SectionLabel icon={<SegmentsIcon />} label="Customer Segments" color="var(--glass-mid)" />
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: '10px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(230px, 100%), 1fr))', gap: '10px' }}>
             {project.segments.map((seg, i) => (
               <div key={i} style={innerCard}>
                 <div style={{ fontFamily: 'var(--font-body, sans-serif)', fontWeight: 600, fontSize: '14px', marginBottom: '4px', color: 'var(--glass-hi)' }}>{seg.name}</div>
@@ -232,7 +237,7 @@ export default function ProjectPageClient({ project, prev, next }: { project: Pr
       {project.analyses && (
         <div style={glass}>
           <SectionLabel icon={<AnalysesIcon />} label="Analyses & Frameworks" color="var(--glass-mid)" />
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: '10px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(230px, 100%), 1fr))', gap: '10px' }}>
             {project.analyses.map((a, i) => (
               <div key={i} style={{ ...innerCard, display: 'flex', gap: '12px' }}>
                 <div style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '13px', fontWeight: 700, color: 'rgba(124,92,255,0.38)', lineHeight: 1.2, flexShrink: 0, minWidth: '22px' }}>{String(i + 1).padStart(2, '0')}</div>
@@ -261,7 +266,7 @@ export default function ProjectPageClient({ project, prev, next }: { project: Pr
       {project.kpis && (
         <div style={{ marginBottom: '14px' }}>
           <SectionLabel icon={<KpiIcon />} label="Key Performance Metrics" color="rgba(245,200,66,0.65)" />
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', gap: '10px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(120px, 100%), 1fr))', gap: '10px' }}>
             {project.kpis.map((kpi, i) => (
               <div key={i} style={{ padding: '16px 10px', borderRadius: '12px', textAlign: 'center', background: 'radial-gradient(ellipse at 50% 0%, rgba(245,200,66,0.13) 0%, rgba(6,7,13,0.92) 70%)', border: '1px solid rgba(245,200,66,0.17)', boxShadow: '0 2px 20px rgba(245,200,66,0.04)' }}>
                 <div style={{ fontFamily: 'var(--font-display, serif)', fontSize: 'clamp(18px, 2.4vw, 26px)', fontWeight: 600, lineHeight: 1.1, marginBottom: '5px', background: 'linear-gradient(135deg, #f5c842 0%, #fde68a 55%, #e8a820 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{kpi.n}</div>
@@ -289,7 +294,7 @@ export default function ProjectPageClient({ project, prev, next }: { project: Pr
       {project.nextStepCards && (
         <div style={glass}>
           <SectionLabel icon={<NextIcon />} label="Next Steps" color="var(--glass-mid)" />
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: '10px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(230px, 100%), 1fr))', gap: '10px' }}>
             {project.nextStepCards.map((card, i) => (
               <div key={i} style={{ ...innerCard, display: 'flex', gap: '14px' }}>
                 <div style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '18px', fontWeight: 700, lineHeight: 1, flexShrink: 0, background: 'linear-gradient(135deg, #f5c842, #fde68a)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{card.num}</div>
@@ -318,7 +323,7 @@ export default function ProjectPageClient({ project, prev, next }: { project: Pr
         </div>
         <div style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '12px', color: '#9ba0b4', marginBottom: '8px' }}>{project.brand}</div>
         <h1 style={{ fontFamily: 'var(--font-display, serif)', fontSize: 'clamp(20px, 3.5vw, 40px)', fontWeight: 400, lineHeight: 1.1, color: '#0f1117', marginBottom: '22px', marginTop: 0 }}>{project.outcomeTitle}</h1>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '10px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(140px, 100%), 1fr))', gap: '10px' }}>
           {project.metrics.map((m, i) => (
             <div key={i} style={{ borderRadius: '10px', padding: '11px 14px', textAlign: 'center', background: 'rgba(15,17,23,0.05)', border: '1px solid rgba(15,17,23,0.07)' }}>
               <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '12px', color: '#1a1f2e' }}>{m}</span>
@@ -343,7 +348,7 @@ export default function ProjectPageClient({ project, prev, next }: { project: Pr
       {project.deckButtons && (
         <div style={glass}>
           <div style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--glass-low)', marginBottom: '14px' }}>All Documents ({project.deckButtons.length})</div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))', gap: '8px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(130px, 100%), 1fr))', gap: '8px' }}>
             {project.deckButtons.map((btn, i) => (
               <a key={i} href={btn.url} target="_blank" rel="noopener noreferrer" style={{ display: 'block', padding: '8px 10px', borderRadius: '8px', textAlign: 'center', fontFamily: 'var(--font-body, sans-serif)', fontSize: '11px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.09)', color: 'var(--glass-mid)', textDecoration: 'none' }}>{btn.label}</a>
             ))}
