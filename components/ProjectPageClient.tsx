@@ -115,6 +115,20 @@ function SlideViewer({ pdfUrl }: { pdfUrl: string }) {
   )
 }
 
+function LiveEmbed({ embedUrl }: { embedUrl: string }) {
+  return (
+    <div>
+      <div style={{ position: 'relative', borderRadius: '14px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)', height: 'clamp(300px, 55vw, 500px)', background: 'rgba(6,7,13,0.6)' }}>
+        <iframe src={embedUrl} title="Live project app" style={{ width: '100%', height: '100%', border: 'none' }} loading="lazy" />
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '8px' }}>
+        <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '10px', color: 'var(--glass-low)' }}>Live, interactive — scroll and click inside</span>
+        <a href={embedUrl} target="_blank" rel="noopener noreferrer" style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '10px', color: 'var(--accent)', textDecoration: 'none' }}>Open full site &#8599;</a>
+      </div>
+    </div>
+  )
+}
+
 const TAG_COLORS: Record<string, string> = { client: '#7c5cff', capstone: '#34d399', tool: '#f5a35c' }
 const HONESTY_COLORS: Record<string, string> = { MEASURED: '#34d399', MODELED: '#7c5cff', PROJECTED: '#f5a35c', 'MEASURED+MODELED': '#ef6f8e' }
 
@@ -332,13 +346,23 @@ export default function ProjectPageClient({ project, prev, next }: { project: Pr
         </div>
       </div>
 
-      {/* Content — slides pinned to the right, like the v25 project breakdowns (Newdia, British Airways, Airbnb) */}
-      {project.pdfUrl ? (
+      {/* Content — slides/live app pinned to the right, like the v25 project breakdowns (Newdia, British Airways, Airbnb) */}
+      {(project.pdfUrl || project.embedUrl) ? (
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_380px] gap-5 items-start">
           <div>{middleSections}</div>
           <div className="lg:sticky" style={{ top: '100px' }}>
-            <SectionLabel icon={<SlidesIcon />} label="Presentation Slides" color="var(--glass-mid)" />
-            <SlideViewer pdfUrl={project.pdfUrl} />
+            {project.pdfUrl && (
+              <>
+                <SectionLabel icon={<SlidesIcon />} label="Presentation Slides" color="var(--glass-mid)" />
+                <SlideViewer pdfUrl={project.pdfUrl} />
+              </>
+            )}
+            {project.embedUrl && (
+              <div style={{ marginTop: project.pdfUrl ? '20px' : 0 }}>
+                <SectionLabel icon={<ToolsIcon />} label="Live App" color="var(--glass-mid)" />
+                <LiveEmbed embedUrl={project.embedUrl} />
+              </div>
+            )}
           </div>
         </div>
       ) : (

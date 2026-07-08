@@ -28,6 +28,7 @@ export interface Project {
   deckUrl?: string
   githubUrl?: string
   pdfUrl?: string
+  embedUrl?: string
   problemLines?: string[]
   kpis?: KPI[]
   impactPoints?: string[]
@@ -611,6 +612,7 @@ export const projects: Project[] = [
     tagLabel: 'CAPSTONE \u00b7 RESEARCH',
     year: '2024',
     brand: 'Rat Lab (Behavioral Research)',
+    embedUrl: 'https://rat-lab.vercel.app/',
     outcomeTitle: 'Applied behavioral economics frameworks to experimental data to find human decision parallels',
     oneLineDecision: 'Loss-aversion signal in lab conditions maps directly to consumer churn trigger timing  -  structural equivalence, not metaphor',
     metrics: ['Behavioral data analysis', 'Decision framework built', 'Human-lab parallel found'],
