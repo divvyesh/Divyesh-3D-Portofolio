@@ -1,8 +1,10 @@
 'use client'
-import { useEffect, useRef } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
+import { highlightHtml } from '@/lib/highlight'
 
 export default function V25Section({ html }: { html: string }) {
   const ref = useRef<HTMLDivElement>(null)
+  const highlighted = useMemo(() => highlightHtml(html), [html])
 
   // Re-run any inline scripts that analytics blocks may need (none in our case)
   useEffect(() => {
@@ -13,7 +15,7 @@ export default function V25Section({ html }: { html: string }) {
   return (
     <div
       ref={ref}
-      dangerouslySetInnerHTML={{ __html: html }}
+      dangerouslySetInnerHTML={{ __html: highlighted }}
       style={{ width: '100%' }}
     />
   )

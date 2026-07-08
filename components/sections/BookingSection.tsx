@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import { BoldText } from '@/lib/highlight'
 
 export default function BookingSection() {
   const [name, setName] = useState('')
@@ -41,15 +42,15 @@ export default function BookingSection() {
               <span style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '13px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--accent)' }}>Book a Session</span>
             </div>
             <h2 id="book-heading" style={{ fontFamily: 'var(--font-fraunces)', fontSize: 'clamp(30px, 4vw, 46px)', lineHeight: 1.08, letterSpacing: '-0.01em', fontWeight: 500, color: 'var(--text-hi)', marginBottom: '24px' }}>15 minutes. Free. No pitch.</h2>
-            <p className="book-body" style={{ fontFamily: 'var(--font-inter)', fontSize: '19px', color: 'var(--text-mid)', lineHeight: 1.6, marginBottom: '20px' }}>Not a sales call. I will look at your consumer model, your cohort structure, or your attribution setup, and tell you what I see. If there is something worth fixing, we will talk about how. If there is not, you will know in 15 minutes.</p>
-            <p className="book-sub" style={{ fontFamily: 'var(--font-inter)', fontSize: '17px', color: 'var(--text-mid)', lineHeight: 1.6, marginBottom: '28px' }}>I got here by being the person in the room who actually read the data, from a go to market desk to 3.2M Starbucks records at BU. I take these calls because the fastest way to show I am useful is to be useful first.</p>
+            <p className="book-body" style={{ fontFamily: 'var(--font-inter)', fontSize: '19px', color: 'var(--text-mid)', lineHeight: 1.6, marginBottom: '20px' }}><BoldText color="var(--text-hi)" text="Not a sales call. I will look at your consumer model, your cohort structure, or your attribution setup, and tell you what I see. If there is something worth fixing, we will talk about how. If there is not, you will know in 15 minutes." /></p>
+            <p className="book-sub" style={{ fontFamily: 'var(--font-inter)', fontSize: '17px', color: 'var(--text-mid)', lineHeight: 1.6, marginBottom: '28px' }}><BoldText color="var(--text-hi)" text="I got here by being the person in the room who actually read the data, from a go to market desk to 3.2M Starbucks records at BU. I take these calls because the fastest way to show I am useful is to be useful first." /></p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '28px' }}>
               <div>
                 <div style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '11px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '10px' }}>If you are a founder or team lead</div>
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   {['Bring a specific question, or just a messy problem.', 'No NDAs needed. I will sign yours if you have one.', 'Good for founders, PMs, growth leads, data teams, and CMOs.'].map(item => (
                     <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontFamily: 'var(--font-inter)', fontSize: '16px', color: 'var(--text-mid)', lineHeight: 1.5 }}>
-                      <span style={{ color: 'var(--accent)', flexShrink: 0, marginTop: '2px' }} aria-hidden="true">&#x25CF;</span>{item}
+                      <span style={{ color: 'var(--accent)', flexShrink: 0, marginTop: '2px' }} aria-hidden="true">&#x25CF;</span><BoldText color="var(--text-hi)" text={item} />
                     </li>
                   ))}
                 </ul>
@@ -59,7 +60,7 @@ export default function BookingSection() {
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   {['Open to full-time roles in consumer insights, growth analytics, or data science.', 'This call can double as a working interview: bring a real problem, see how I think.'].map(item => (
                     <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontFamily: 'var(--font-inter)', fontSize: '16px', color: 'var(--text-mid)', lineHeight: 1.5 }}>
-                      <span style={{ color: 'var(--violet)', flexShrink: 0, marginTop: '2px' }} aria-hidden="true">&#x25CF;</span>{item}
+                      <span style={{ color: 'var(--violet)', flexShrink: 0, marginTop: '2px' }} aria-hidden="true">&#x25CF;</span><BoldText color="var(--text-hi)" text={item} />
                     </li>
                   ))}
                 </ul>

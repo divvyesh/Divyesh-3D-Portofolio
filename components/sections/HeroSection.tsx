@@ -2,6 +2,7 @@
 import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { BoldText } from '@/lib/highlight'
 
 const STAT_TILES: { top: string; bottom: string }[] = [
   { top: 'BU MSBA', bottom: 'CLASS OF 2026' },
@@ -30,7 +31,7 @@ export default function HeroSection() {
               The customer truth your data is not showing you.
             </h1>
             <p className="hero-body" style={{ fontFamily: 'var(--font-inter)', fontSize: '16px', lineHeight: 1.55, color: 'var(--text-mid)', maxWidth: '52ch', marginBottom: '14px' }}>
-              I found a 14% retention lift Starbucks&apos; own dashboards were averaging away. That is the kind of miss I look for.
+              <BoldText color="var(--text-hi)" text="I found a 14% retention lift Starbucks' own dashboards were averaging away. That is the kind of miss I look for." />
             </p>
             <p className="hero-sub" style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '13px', color: 'var(--text-low)', marginBottom: '24px' }}>
               10+ projects shipped. British Airways, Starbucks, Newdia.

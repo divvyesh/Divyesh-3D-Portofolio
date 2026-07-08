@@ -1,6 +1,7 @@
 'use client'
 import { useRef, useEffect, useState } from 'react'
 import CountUp from '@/components/CountUp'
+import { BoldText } from '@/lib/highlight'
 
 const CARDS = [
   { countVal: 95, countSuffix: '%', color: 'var(--pink)', claim: 'of new products fail to meet market expectations', source: 'Clayton Christensen, HBS', sourceUrl: 'https://www.inc.com/marc-emmer/95-percent-of-new-products-fail-here-are-6-steps-to-make-sure-yours-dont.html' },
@@ -38,7 +39,7 @@ function StatCard({ card, delay }: { card: typeof CARDS[0]; delay: number }) {
         <CountUp value={card.countVal} prefix={card.countPrefix || ''} suffix={card.countSuffix || ''} decimals={card.countDecimals || 0} />
       </div>
       <div>
-        <div className="stat-claim" style={{ fontFamily: 'var(--font-inter)', fontSize: '14px', fontWeight: 500, color: 'var(--glass-mid)', lineHeight: 1.35, marginBottom: '4px' }}>{card.claim}</div>
+        <div className="stat-claim" style={{ fontFamily: 'var(--font-inter)', fontSize: '14px', fontWeight: 500, color: 'var(--glass-mid)', lineHeight: 1.35, marginBottom: '4px' }}><BoldText text={card.claim} /></div>
         <a href={card.sourceUrl} target="_blank" rel="noopener noreferrer" style={{ fontFamily: 'var(--font-inter)', fontSize: '10.5px', fontStyle: 'italic', color: 'var(--glass-low)', textDecoration: 'none' }}>
           {card.source} ↗
         </a>
@@ -116,7 +117,7 @@ export default function ProblemSection() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '16px' }}>
               {QUOTES.map((q, i) => (
                 <div key={i} className="quote-card" style={{ background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', border: '1px solid var(--glass-border)', boxShadow: 'var(--glass-shadow)', borderRadius: '10px', padding: '14px 16px', borderLeft: `3px solid ${q.border}` }}>
-                  <p className="quote-text" style={{ fontFamily: 'var(--font-inter)', fontSize: '12.5px', fontWeight: 500, color: 'var(--glass-hi)', lineHeight: 1.4, marginBottom: '4px' }}>&ldquo;{q.text}&rdquo;</p>
+                  <p className="quote-text" style={{ fontFamily: 'var(--font-inter)', fontSize: '12.5px', fontWeight: 500, color: 'var(--glass-hi)', lineHeight: 1.4, marginBottom: '4px' }}>&ldquo;<BoldText text={q.text} />&rdquo;</p>
                   <a href={q.sourceUrl} target="_blank" rel="noopener noreferrer" style={{ fontFamily: 'var(--font-inter)', fontSize: '10.5px', color: 'var(--glass-low)', textDecoration: 'none' }}>{q.source} ↗</a>
                 </div>
               ))}

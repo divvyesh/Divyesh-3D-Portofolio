@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRef, useEffect, useState } from 'react'
+import { BoldText } from '@/lib/highlight'
 
 const FEATURED = [
   {
@@ -57,11 +58,11 @@ function WorkCard({ project, index }: { project: typeof FEATURED[0]; index: numb
       </div>
       <div style={{ padding: '24px' }}>
         <div style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', color: project.chipColor, marginBottom: '12px', textTransform: 'uppercase' }}>{project.chip}</div>
-        <h3 style={{ fontFamily: 'var(--font-inter)', fontSize: '18px', fontWeight: 600, color: 'var(--glass-hi)', lineHeight: 1.3, marginBottom: '10px' }}>{project.title}</h3>
-        <p style={{ fontFamily: 'var(--font-inter)', fontSize: '14px', color: 'var(--glass-mid)', lineHeight: 1.5, marginBottom: '16px' }}>{project.body}</p>
+        <h3 style={{ fontFamily: 'var(--font-inter)', fontSize: '18px', fontWeight: 600, color: 'var(--glass-hi)', lineHeight: 1.3, marginBottom: '10px' }}><BoldText text={project.title} /></h3>
+        <p style={{ fontFamily: 'var(--font-inter)', fontSize: '14px', color: 'var(--glass-mid)', lineHeight: 1.5, marginBottom: '16px' }}><BoldText text={project.body} /></p>
         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '16px' }}>
           {project.metrics.map(m => (
-            <span key={m} style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '12px', color: 'var(--glass-mid)', background: 'rgba(255,255,255,0.07)', borderRadius: '6px', padding: '3px 10px' }}>{m}</span>
+            <span key={m} style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '12px', color: 'var(--glass-mid)', background: 'rgba(255,255,255,0.07)', borderRadius: '6px', padding: '3px 10px' }}><BoldText text={m} /></span>
           ))}
         </div>
         <span style={{ fontFamily: 'var(--font-inter)', fontSize: '14px', fontWeight: 600, color: 'var(--accent)' }}>View breakdown &#8594;</span>
@@ -95,7 +96,7 @@ export default function SelectedWork() {
             ].map(item => (
               <div key={item.name}>
                 <div style={{ fontFamily: 'var(--font-inter)', fontSize: '14px', fontWeight: 600, color: 'var(--text-hi)', marginBottom: '4px' }}>{item.name}</div>
-                <div style={{ fontFamily: 'var(--font-inter)', fontSize: '13px', color: 'var(--text-mid)', lineHeight: 1.45 }}>{item.desc}</div>
+                <div style={{ fontFamily: 'var(--font-inter)', fontSize: '13px', color: 'var(--text-mid)', lineHeight: 1.45 }}><BoldText color="var(--text-hi)" text={item.desc} /></div>
               </div>
             ))}
           </div>

@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Image from 'next/image'
+import { BoldText } from '@/lib/highlight'
 
 const SCREENSHOTS = ['t1','t2','t3','t4','t5','t6','t7','t8']
 
@@ -49,7 +50,7 @@ export default function SocialProof() {
             <button key={i} onClick={() => setLightbox(q.src)}
               style={{ textAlign: 'left', cursor: 'zoom-in', background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', border: '1px solid var(--glass-border)', boxShadow: 'var(--glass-shadow)', borderRadius: '12px', padding: '20px 22px', borderLeft: '3px solid var(--accent)' }}
             >
-              <p style={{ fontFamily: 'var(--font-inter)', fontSize: '14.5px', fontWeight: 500, color: 'var(--glass-hi)', lineHeight: 1.5, marginBottom: '10px' }}>&ldquo;{q.text}&rdquo;</p>
+              <p style={{ fontFamily: 'var(--font-inter)', fontSize: '14.5px', fontWeight: 500, color: 'var(--glass-hi)', lineHeight: 1.5, marginBottom: '10px' }}>&ldquo;<BoldText text={q.text} />&rdquo;</p>
               <div style={{ fontFamily: 'var(--font-inter)', fontSize: '12px', color: 'var(--glass-low)' }}>{q.name} &middot; {q.role}</div>
             </button>
           ))}

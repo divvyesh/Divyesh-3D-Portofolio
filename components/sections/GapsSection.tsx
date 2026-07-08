@@ -1,6 +1,7 @@
 'use client'
 import { useRef, useEffect, useState } from 'react'
 import Link from 'next/link'
+import { BoldText } from '@/lib/highlight'
 
 const GAPS = [
   { num: '01', lens: 'COHORT', title: 'Your middle cohort is churning, and your dashboard is hiding it.', tag: 'Starbucks · 3.2M records · 14% retention lift', slug: 'starbucks', color: 'var(--accent)' },
@@ -41,13 +42,13 @@ function GapRow({ gap, index }: { gap: typeof GAPS[0]; index: number }) {
       <div className="gap-num-big" style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '18px', fontWeight: 600, color: gap.color, flexShrink: 0, width: '30px', lineHeight: 1.4 }}>{gap.num}</div>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '10.5px', fontWeight: 500, color: gap.color, letterSpacing: '0.09em', textTransform: 'uppercase', marginBottom: '4px' }}>{gap.lens}</div>
-        <h3 className="gap-title" style={{ fontFamily: 'var(--font-inter)', fontSize: '14.5px', fontWeight: 600, color: 'var(--glass-hi)', lineHeight: 1.3, marginBottom: '4px' }}>{gap.title}</h3>
+        <h3 className="gap-title" style={{ fontFamily: 'var(--font-inter)', fontSize: '14.5px', fontWeight: 600, color: 'var(--glass-hi)', lineHeight: 1.3, marginBottom: '4px' }}><BoldText text={gap.title} /></h3>
         <Link href={'/work/' + gap.slug}
           style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '11px', color: 'var(--glass-low)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px', transition: 'color 150ms' }}
           onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'var(--accent)'; }}
           onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'var(--glass-low)'; }}
         >
-          {gap.tag} <span>&#8594;</span>
+          <BoldText text={gap.tag} color="var(--glass-low)" /> <span>&#8594;</span>
         </Link>
       </div>
     </div>
@@ -72,7 +73,7 @@ function SkillCluster({ cluster, delay }: { cluster: typeof SKILL_CLUSTERS[0]; d
         {cluster.items.map(item => (
           <li key={item} style={{ fontFamily: 'var(--font-inter)', fontSize: '13px', color: 'var(--glass-mid)', lineHeight: 1.4, paddingLeft: '14px', position: 'relative' }}>
             <span style={{ position: 'absolute', left: 0, color: cluster.color }}>&#183;</span>
-            {item}
+            <BoldText text={item} />
           </li>
         ))}
       </ul>

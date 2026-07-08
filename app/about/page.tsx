@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { BoldText } from '@/lib/highlight'
 
 export default function AboutPage() {
   const timeline = [
@@ -26,13 +27,13 @@ export default function AboutPage() {
 
           <div className="space-y-5 font-body text-[17px] leading-[1.75] max-w-[68ch]" style={{ color: 'var(--text-mid)' }}>
             <p>
-              I left Hyderabad for Boston with one suitcase and a laptop, the same year I was still closing GTM decks for a semiconductor client three time zones away. That gap, deadlines by day, an ocean between me and everyone I grew up with by night, is where I actually learned what matters under pressure. Not the tool. Not the framework. The decision waiting on the other end of the work.
+              <BoldText color="var(--text-hi)" text="I left Hyderabad for Boston with one suitcase and a laptop, the same year I was still closing GTM decks for a semiconductor client three time zones away. That gap, deadlines by day, an ocean between me and everyone I grew up with by night, is where I actually learned what matters under pressure. Not the tool. Not the framework. The decision waiting on the other end of the work." />
             </p>
             <p>
-              Every line on the timeline below happened against a visa clock I could not negotiate with. F-1, then OPT, then the countdown to STEM OPT and beyond. I built a 25+ client consulting practice, then a startup&apos;s first CAC funnel, then walked into Boston University with the same urgency: figure out what is real in the data, fast, because the runway is not infinite for someone in my position.
+              <BoldText color="var(--text-hi)" text="Every line on the timeline below happened against a visa clock I could not negotiate with. F-1, then OPT, then the countdown to STEM OPT and beyond. I built a 25+ client consulting practice, then a startup's first CAC funnel, then walked into Boston University with the same urgency: figure out what is real in the data, fast, because the runway is not infinite for someone in my position." />
             </p>
             <p>
-              I&apos;m finishing my MS in Business Analytics at Boston University Questrom School of Business in 2026, and moving to Florida after, because the work has to keep moving too. I&apos;m actively looking for full-time roles in consumer insights, growth analytics, or data science. US work-authorized for 4+ years, no sponsorship needed.
+              <BoldText color="var(--text-hi)" text="I'm finishing my MS in Business Analytics at Boston University Questrom School of Business in 2026, and moving to Florida after, because the work has to keep moving too. I'm actively looking for full-time roles in consumer insights, growth analytics, or data science. US work-authorized for 4+ years, no sponsorship needed." />
             </p>
             <p style={{ color: 'var(--accent-2)' }} className="font-display italic">
               The clock did not stop for any of it. Neither did I.
@@ -105,7 +106,7 @@ export default function AboutPage() {
                     {item.who}
                   </div>
                   <div className="font-body text-[15.5px] leading-[1.7] max-w-[62ch]" style={{ color: 'var(--text-mid)' }}>
-                    {item.body}
+                    <BoldText color="var(--text-hi)" text={item.body} />
                   </div>
                 </div>
               </div>
@@ -138,7 +139,7 @@ export default function AboutPage() {
                     {item.role} <span style={{ color: 'var(--text-low)' }}>·</span> {item.company}
                   </div>
                   <div className="font-body text-[14px]" style={{ color: 'var(--text-mid)' }}>
-                    {item.desc}
+                    <BoldText color="var(--text-hi)" text={item.desc} />
                   </div>
                 </div>
               </div>

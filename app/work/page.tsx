@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { projects, ProjectTag } from '@/data/projects'
+import { BoldText } from '@/lib/highlight'
 
 const FILTERS: { label: string; value: ProjectTag | 'all' }[] = [
   { label: 'All', value: 'all' },
@@ -216,10 +217,10 @@ export default function WorkPage() {
                 {project.brand}
               </div>
               <h2 className="font-body font-semibold text-[15px] leading-snug mb-3" style={{ color: 'var(--text-hi)' }}>
-                {project.outcomeTitle}
+                <BoldText color="var(--text-hi)" text={project.outcomeTitle} />
               </h2>
               <p className="font-body text-[13px] leading-[1.6] mb-4" style={{ color: 'var(--text-hi)' }}>
-                {project.oneLineDecision}
+                <BoldText color="var(--text-hi)" text={project.oneLineDecision} />
               </p>
 
               <div className="flex flex-wrap gap-2 mb-4">
@@ -229,7 +230,7 @@ export default function WorkPage() {
                     className="font-mono text-[10px] px-2 py-1 rounded"
                     style={{ background: 'var(--bg-0)', border: '1px solid var(--line)', color: 'var(--text-mid)' }}
                   >
-                    {m}
+                    <BoldText color="var(--text-mid)" text={m} />
                   </span>
                 ))}
               </div>
@@ -268,7 +269,7 @@ export default function WorkPage() {
             Kept building the fundamentals alongside every project above.
           </h2>
           <p className="font-body text-[15px] leading-[1.6] max-w-[62ch] mb-6" style={{ color: 'var(--text-mid)' }}>
-            33 courses and certifications across SQL, Python, machine learning, analytics, and AI tooling, completed alongside the client work and capstone projects on this page.
+            <BoldText color="var(--text-hi)" text="33 courses and certifications across SQL, Python, machine learning, analytics, and AI tooling, completed alongside the client work and capstone projects on this page." />
           </p>
 
           <div className="flex flex-wrap gap-3 mb-12">
@@ -325,7 +326,7 @@ export default function WorkPage() {
                       className="font-body text-[13.5px] leading-snug px-4 py-3 rounded-[10px]"
                       style={{ background: 'var(--bg-1)', border: '1px solid var(--line)', color: 'var(--text-hi)' }}
                     >
-                      {item}
+                      <BoldText color="var(--text-hi)" text={item} />
                     </div>
                   ))}
                 </div>

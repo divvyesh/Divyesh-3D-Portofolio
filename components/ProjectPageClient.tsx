@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Project } from '@/data/projects'
 import { v25Html } from '@/data/v25Html'
 import V25Section from '@/components/V25Section'
+import { BoldText } from '@/lib/highlight'
 
 // ── SVG Icons ─────────────────────────────────────────────────────────
 const ProblemIcon = () => (
@@ -79,15 +80,6 @@ function SectionLabel({ icon, label, color = 'var(--glass-low)' }: { icon: React
       </span>
     </div>
   )
-}
-
-function BoldText({ text }: { text: string }) {
-  const escaped = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-  const highlighted = escaped.replace(
-    /(\$[\d,.]+[KMBbn+%×]?|[+\-]?\d+\.?\d*[%×KMBbn+]?|\b(?:AUC|ROAS|CLV|CAC|NPS|LTV|ROI|DiD|PCA|SQL|CBCV|CAGR|CRO|GTM)\b)/gi,
-    '<strong style="color:var(--glass-hi);font-weight:700">$1</strong>'
-  )
-  return <span dangerouslySetInnerHTML={{ __html: highlighted }} />
 }
 
 function SlideViewer({ pdfUrl }: { pdfUrl: string }) {
@@ -257,7 +249,7 @@ export default function ProjectPageClient({ project, prev, next }: { project: Pr
             {project.segments.map((seg, i) => (
               <div key={i} style={innerCard}>
                 <div style={{ fontFamily: 'var(--font-body, sans-serif)', fontWeight: 600, fontSize: '14px', marginBottom: '4px', color: 'var(--glass-hi)' }}>{seg.name}</div>
-                <div style={{ fontFamily: 'var(--font-body, sans-serif)', fontSize: '13px', lineHeight: 1.5, color: 'var(--glass-mid)' }}>{seg.desc}</div>
+                <div style={{ fontFamily: 'var(--font-body, sans-serif)', fontSize: '13px', lineHeight: 1.5, color: 'var(--glass-mid)' }}><BoldText text={seg.desc} /></div>
               </div>
             ))}
           </div>
@@ -344,19 +336,19 @@ export default function ProjectPageClient({ project, prev, next }: { project: Pr
   return (
     <PageShell project={project} prev={prev} next={next}>
 
-      {/* Header white card */}
-      <div style={{ background: 'rgba(255,255,255,0.93)', backdropFilter: 'blur(28px)', border: '1px solid rgba(15,17,23,0.09)', borderRadius: '18px', padding: '28px 28px 24px', marginBottom: '14px', boxShadow: '0 4px 40px rgba(0,0,0,0.07)' }}>
+      {/* Header — same dark glass card style as every other block on the page */}
+      <div style={{ background: 'var(--glass-bg)', backdropFilter: 'var(--glass-blur)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '18px', padding: '28px 28px 24px', marginBottom: '14px', boxShadow: 'var(--glass-shadow)' }}>
         <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '8px', marginBottom: '18px' }}>
           <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.12em', padding: '4px 12px', borderRadius: '9999px', background: `${TAG_COLORS[project.tag]}1a`, color: TAG_COLORS[project.tag], border: `1px solid ${TAG_COLORS[project.tag]}3c` }}>{project.tagLabel}</span>
-          <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '10px', color: '#8a8fa8' }}>{project.year}</span>
+          <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '10px', color: 'var(--glass-low)' }}>{project.year}</span>
           <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.08em', padding: '3px 8px', borderRadius: '6px', background: `${HONESTY_COLORS[project.honesty]}14`, color: HONESTY_COLORS[project.honesty], border: `1px solid ${HONESTY_COLORS[project.honesty]}30` }}>{project.honesty}</span>
         </div>
-        <div style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '12px', color: '#9ba0b4', marginBottom: '8px' }}>{project.brand}</div>
-        <h1 style={{ fontFamily: 'var(--font-display, serif)', fontSize: 'clamp(20px, 3.5vw, 40px)', fontWeight: 400, lineHeight: 1.1, color: '#0f1117', marginBottom: '22px', marginTop: 0 }}>{project.outcomeTitle}</h1>
+        <div style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '12px', color: 'var(--glass-mid)', marginBottom: '8px' }}>{project.brand}</div>
+        <h1 style={{ fontFamily: 'var(--font-display, serif)', fontSize: 'clamp(20px, 3.5vw, 40px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--glass-hi)', marginBottom: '22px', marginTop: 0 }}><BoldText text={project.outcomeTitle} /></h1>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(140px, 100%), 1fr))', gap: '10px' }}>
           {project.metrics.map((m, i) => (
-            <div key={i} style={{ borderRadius: '10px', padding: '11px 14px', textAlign: 'center', background: 'rgba(15,17,23,0.05)', border: '1px solid rgba(15,17,23,0.07)' }}>
-              <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '12px', color: '#1a1f2e' }}>{m}</span>
+            <div key={i} style={{ borderRadius: '10px', padding: '11px 14px', textAlign: 'center', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}>
+              <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '12px', color: 'var(--glass-hi)' }}><BoldText text={m} /></span>
             </div>
           ))}
         </div>
