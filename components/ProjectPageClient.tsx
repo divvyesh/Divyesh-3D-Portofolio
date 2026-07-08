@@ -116,10 +116,26 @@ function SlideViewer({ pdfUrl }: { pdfUrl: string }) {
 }
 
 function LiveEmbed({ embedUrl }: { embedUrl: string }) {
+  // Render the live app at ~2.2x the visible box, then scale it back down so the
+  // whole page (header + content) fits in the same rectangle as the PDF slide
+  // viewers, instead of showing a cropped, scrollable sliver of a tall page.
+  const scale = 0.45
+  const inv = `${100 / scale}%`
   return (
     <div>
       <div style={{ position: 'relative', borderRadius: '14px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)', height: 'clamp(300px, 55vw, 500px)', background: 'rgba(6,7,13,0.6)' }}>
-        <iframe src={embedUrl} title="Live project app" style={{ width: '100%', height: '100%', border: 'none' }} loading="lazy" />
+        <iframe
+          src={embedUrl}
+          title="Live project app"
+          style={{
+            position: 'absolute', top: 0, left: 0,
+            width: inv, height: inv,
+            border: 'none',
+            transform: `scale(${scale})`,
+            transformOrigin: 'top left',
+          }}
+          loading="lazy"
+        />
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '8px' }}>
         <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '10px', color: 'var(--glass-low)' }}>Live, interactive — scroll and click inside</span>
