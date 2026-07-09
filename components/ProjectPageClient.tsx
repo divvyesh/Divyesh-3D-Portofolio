@@ -94,8 +94,8 @@ function SlideViewer({ pdfUrl }: { pdfUrl: string }) {
   }
   return (
     <div>
-      <div style={{ position: 'relative', borderRadius: '14px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)', height: 'clamp(300px, 55vw, 500px)', background: 'rgba(6,7,13,0.6)' }}>
-        <iframe key={page} src={`${pdfUrl}#page=${page}&toolbar=0&navpanes=0&statusbar=0&view=FitH`} title="Project slides" style={{ width: '100%', height: '100%', border: 'none' }} />
+      <div className="slide-frame" style={{ position: 'relative', borderRadius: '14px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)', height: 'clamp(300px, 55vw, 500px)', background: 'rgba(6,7,13,0.6)' }}>
+        <iframe key={page} className="slide-frame-iframe" src={`${pdfUrl}#page=${page}&toolbar=0&navpanes=0&statusbar=0&view=FitH`} title="Project slides" style={{ width: '100%', height: '100%', border: 'none' }} />
         <button onClick={() => setPage(p => Math.max(1, p - 1))} aria-label="Previous" style={{ ...btnStyle, left: '12px' }}>‹</button>
         <button onClick={() => setPage(p => p + 1)} aria-label="Next" style={{ ...btnStyle, right: '12px' }}>›</button>
       </div>
@@ -103,6 +103,14 @@ function SlideViewer({ pdfUrl }: { pdfUrl: string }) {
         <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '10px', color: 'var(--glass-low)' }}>← → navigate slides</span>
         <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '10px', color: 'var(--glass-low)' }}>Slide {page}</span>
       </div>
+      {/* Mobile PDF renderers ignore the #view=FitH fragment and default to a
+          zoomed/cropped view. Force the whole slide into frame the same way
+          the live-app embed does: render oversized, then scale back down. */}
+      <style>{`
+        @media (max-width: 640px) {
+          .slide-frame-iframe { position: absolute !important; top: 0; left: 0; width: 222% !important; height: 222% !important; transform: scale(0.45); transform-origin: top left; }
+        }
+      `}</style>
     </div>
   )
 }
@@ -358,7 +366,7 @@ export default function ProjectPageClient({ project, prev, next }: { project: Pr
       {(project.pdfUrl || project.embedUrl) ? (
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_380px] gap-5 items-start">
           <div>{middleSections}</div>
-          <div className="lg:sticky" style={{ top: '100px' }}>
+          <div className="lg:sticky order-first lg:order-none" style={{ top: '100px' }}>
             {project.pdfUrl && (
               <>
                 <SectionLabel icon={<SlidesIcon />} label="Presentation Slides" color="var(--glass-mid)" />

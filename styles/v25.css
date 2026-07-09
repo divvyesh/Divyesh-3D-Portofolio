@@ -1411,9 +1411,18 @@
   .v25-wrap .ba-left {
  grid-template-columns: 1fr;   }
   .v25-wrap .ba-right {
- position: static;   }
+ position: static; order: -1; margin-bottom: 8px;   }
   .v25-wrap .ba-analysis-grid {
  grid-template-columns: 1fr;   }
+
+  /* Presentation/PDF slide viewer — force full-slide visibility on mobile.
+     Mobile browsers' built-in PDF renderers ignore #view=FitH etc, so instead
+     we render the iframe oversized and scale it back down — same trick used
+     by the live-embed viewer — to guarantee the whole page fits in frame. */
+  .v25-wrap .ba-pdf-frame {
+ position: relative;   }
+  .v25-wrap .ba-pdf-frame iframe {
+ position: absolute; top: 0; left: 0; width: 222%; height: 222%; transform: scale(0.45); transform-origin: top left;   }
 }
 
 @media (max-width: 1100px) {
