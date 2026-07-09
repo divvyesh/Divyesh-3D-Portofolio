@@ -28,6 +28,7 @@ export interface Project {
   deckUrl?: string
   githubUrl?: string
   pdfUrl?: string
+  slideImages?: string[]
   embedUrl?: string
   problemLines?: string[]
   kpis?: KPI[]
@@ -477,6 +478,7 @@ export const projects: Project[] = [
     method: 'K-means clustering, churn sensitivity modeling, service failure attribution analysis.',
     impact: 'Behavioral segmentation of MBTA ridership. Reliability-churn link quantified per segment. Commuter retention as highest-priority intervention.',
     pdfUrl: '/pdfs/MBTA_Consumer_Presentation.pdf',
+    slideImages: Array.from({ length: 16 }, (_, i) => `/pdfs/slides/mbta-consumer/s-${String(i + 1).padStart(2, '0')}.jpg`),
     kpis: [
       { n: '45K', l: 'Customer Records' },
       { n: '4', l: 'ML Methods Applied' },

@@ -320,10 +320,8 @@ export const v25Html: Record<string, string> = {
     <div class="ba-right">
 
       <!-- PDF Iframe -->
-      <div class="ba-pdf-frame">
-        <iframe src="/pdfs/Newdia_25.pdf#toolbar=0&navpanes=0&statusbar=0&messages=0&scrollbar=1&view=FitH" loading="lazy"></iframe>
-      </div>
-      <p style="font-size:10px;color:var(--muted2);text-align:center;margin:0;">Scroll within frame · Click documents below for full-page view</p>
+      <div class="ba-pdf-frame"><div class="ba-slide-scroll"><img class="ba-slide-img" src="/pdfs/slides/newdia/s-01.jpg" loading="eager" alt="Slide 1"><img class="ba-slide-img" src="/pdfs/slides/newdia/s-02.jpg" loading="lazy" alt="Slide 2"><img class="ba-slide-img" src="/pdfs/slides/newdia/s-03.jpg" loading="lazy" alt="Slide 3"><img class="ba-slide-img" src="/pdfs/slides/newdia/s-04.jpg" loading="lazy" alt="Slide 4"><img class="ba-slide-img" src="/pdfs/slides/newdia/s-05.jpg" loading="lazy" alt="Slide 5"><img class="ba-slide-img" src="/pdfs/slides/newdia/s-06.jpg" loading="lazy" alt="Slide 6"><img class="ba-slide-img" src="/pdfs/slides/newdia/s-07.jpg" loading="lazy" alt="Slide 7"><img class="ba-slide-img" src="/pdfs/slides/newdia/s-08.jpg" loading="lazy" alt="Slide 8"><img class="ba-slide-img" src="/pdfs/slides/newdia/s-09.jpg" loading="lazy" alt="Slide 9"><img class="ba-slide-img" src="/pdfs/slides/newdia/s-10.jpg" loading="lazy" alt="Slide 10"><img class="ba-slide-img" src="/pdfs/slides/newdia/s-11.jpg" loading="lazy" alt="Slide 11"></div></div>
+      <p style="font-size:10px;color:var(--muted2);text-align:center;margin:0;">Swipe for slides · Click documents below for full-page view</p>
 
       <!-- KPI Row &mdash; 3×2 -->
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-left:3px solid rgba(0,212,170,0.6);border-radius:12px;padding:14px 16px;margin-bottom:16px;">
@@ -562,10 +560,8 @@ export const v25Html: Record<string, string> = {
 
     <!-- RIGHT: PDF + KPI + Impact + Tags -->
     <div class="ba-right">
-      <div class="ba-pdf-frame">
-        <iframe src="/pdfs/British_Airways_PRESENTATION.pdf#toolbar=0&navpanes=0&statusbar=0&messages=0&scrollbar=1&view=FitH" title="British Airways Presentation"></iframe>
-      </div>
-      <div class="ba-pdf-hint">↕ &thinsp; scroll within frame &nbsp;·&nbsp; 17 slides</div>
+      <div class="ba-pdf-frame"><div class="ba-slide-scroll"><img class="ba-slide-img" src="/pdfs/slides/ba/s-01.jpg" loading="eager" alt="Slide 1"><img class="ba-slide-img" src="/pdfs/slides/ba/s-02.jpg" loading="lazy" alt="Slide 2"><img class="ba-slide-img" src="/pdfs/slides/ba/s-03.jpg" loading="lazy" alt="Slide 3"><img class="ba-slide-img" src="/pdfs/slides/ba/s-04.jpg" loading="lazy" alt="Slide 4"><img class="ba-slide-img" src="/pdfs/slides/ba/s-05.jpg" loading="lazy" alt="Slide 5"><img class="ba-slide-img" src="/pdfs/slides/ba/s-06.jpg" loading="lazy" alt="Slide 6"><img class="ba-slide-img" src="/pdfs/slides/ba/s-07.jpg" loading="lazy" alt="Slide 7"><img class="ba-slide-img" src="/pdfs/slides/ba/s-08.jpg" loading="lazy" alt="Slide 8"><img class="ba-slide-img" src="/pdfs/slides/ba/s-09.jpg" loading="lazy" alt="Slide 9"><img class="ba-slide-img" src="/pdfs/slides/ba/s-10.jpg" loading="lazy" alt="Slide 10"><img class="ba-slide-img" src="/pdfs/slides/ba/s-11.jpg" loading="lazy" alt="Slide 11"><img class="ba-slide-img" src="/pdfs/slides/ba/s-12.jpg" loading="lazy" alt="Slide 12"><img class="ba-slide-img" src="/pdfs/slides/ba/s-13.jpg" loading="lazy" alt="Slide 13"><img class="ba-slide-img" src="/pdfs/slides/ba/s-14.jpg" loading="lazy" alt="Slide 14"><img class="ba-slide-img" src="/pdfs/slides/ba/s-15.jpg" loading="lazy" alt="Slide 15"><img class="ba-slide-img" src="/pdfs/slides/ba/s-16.jpg" loading="lazy" alt="Slide 16"><img class="ba-slide-img" src="/pdfs/slides/ba/s-17.jpg" loading="lazy" alt="Slide 17"></div></div>
+      <div class="ba-pdf-hint">&#8596; &thinsp; swipe for slides &nbsp;·&nbsp; 17 slides</div>
 
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-left:3px solid rgba(0,212,170,0.6);border-radius:12px;padding:14px 16px;margin-bottom:16px;">
   <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--teal);text-transform:uppercase;margin-bottom:6px;">Decision This Changed</div>
@@ -869,10 +865,8 @@ export const v25Html: Record<string, string> = {
 
     <!-- RIGHT: PDF + KPI + Impact + Tags -->
     <div class="ba-right">
-      <div class="ba-pdf-frame">
-        <iframe src="/pdfs/Starbucks_Research_Presentation.pdf#toolbar=0&navpanes=0&statusbar=0&messages=0&scrollbar=1&view=FitH" title="Starbucks Research Presentation"></iframe>
-      </div>
-      <div class="ba-pdf-hint">↕ &thinsp; scroll within frame &nbsp;·&nbsp; Starbucks Capstone</div>
+      <div class="ba-pdf-frame"><div class="ba-slide-scroll"><img class="ba-slide-img" src="/pdfs/slides/starbucks/s-01.jpg" loading="eager" alt="Slide 1"><img class="ba-slide-img" src="/pdfs/slides/starbucks/s-02.jpg" loading="lazy" alt="Slide 2"><img class="ba-slide-img" src="/pdfs/slides/starbucks/s-03.jpg" loading="lazy" alt="Slide 3"><img class="ba-slide-img" src="/pdfs/slides/starbucks/s-04.jpg" loading="lazy" alt="Slide 4"><img class="ba-slide-img" src="/pdfs/slides/starbucks/s-05.jpg" loading="lazy" alt="Slide 5"><img class="ba-slide-img" src="/pdfs/slides/starbucks/s-06.jpg" loading="lazy" alt="Slide 6"><img class="ba-slide-img" src="/pdfs/slides/starbucks/s-07.jpg" loading="lazy" alt="Slide 7"><img class="ba-slide-img" src="/pdfs/slides/starbucks/s-08.jpg" loading="lazy" alt="Slide 8"><img class="ba-slide-img" src="/pdfs/slides/starbucks/s-09.jpg" loading="lazy" alt="Slide 9"><img class="ba-slide-img" src="/pdfs/slides/starbucks/s-10.jpg" loading="lazy" alt="Slide 10"><img class="ba-slide-img" src="/pdfs/slides/starbucks/s-11.jpg" loading="lazy" alt="Slide 11"><img class="ba-slide-img" src="/pdfs/slides/starbucks/s-12.jpg" loading="lazy" alt="Slide 12"><img class="ba-slide-img" src="/pdfs/slides/starbucks/s-13.jpg" loading="lazy" alt="Slide 13"><img class="ba-slide-img" src="/pdfs/slides/starbucks/s-14.jpg" loading="lazy" alt="Slide 14"><img class="ba-slide-img" src="/pdfs/slides/starbucks/s-15.jpg" loading="lazy" alt="Slide 15"><img class="ba-slide-img" src="/pdfs/slides/starbucks/s-16.jpg" loading="lazy" alt="Slide 16"><img class="ba-slide-img" src="/pdfs/slides/starbucks/s-17.jpg" loading="lazy" alt="Slide 17"><img class="ba-slide-img" src="/pdfs/slides/starbucks/s-18.jpg" loading="lazy" alt="Slide 18"><img class="ba-slide-img" src="/pdfs/slides/starbucks/s-19.jpg" loading="lazy" alt="Slide 19"><img class="ba-slide-img" src="/pdfs/slides/starbucks/s-20.jpg" loading="lazy" alt="Slide 20"><img class="ba-slide-img" src="/pdfs/slides/starbucks/s-21.jpg" loading="lazy" alt="Slide 21"><img class="ba-slide-img" src="/pdfs/slides/starbucks/s-22.jpg" loading="lazy" alt="Slide 22"><img class="ba-slide-img" src="/pdfs/slides/starbucks/s-23.jpg" loading="lazy" alt="Slide 23"><img class="ba-slide-img" src="/pdfs/slides/starbucks/s-24.jpg" loading="lazy" alt="Slide 24"></div></div>
+      <div class="ba-pdf-hint">&#8596; &thinsp; swipe for slides &nbsp;·&nbsp; Starbucks Capstone</div>
 
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-left:3px solid rgba(0,212,170,0.6);border-radius:12px;padding:14px 16px;margin-bottom:16px;">
   <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--teal);text-transform:uppercase;margin-bottom:6px;">Decision This Changed</div>
@@ -1161,10 +1155,8 @@ export const v25Html: Record<string, string> = {
 
     <!-- RIGHT: PDF + KPI + Impact + Tags -->
     <div class="ba-right">
-      <div class="ba-pdf-frame">
-        <iframe src="/pdfs/Airbnb_Presentation.pdf#toolbar=0&navpanes=0&statusbar=0&messages=0&scrollbar=1&view=FitH" title="Airbnb Price Prediction Presentation"></iframe>
-      </div>
-      <div class="ba-pdf-hint">↕ &thinsp; scroll within frame &nbsp;·&nbsp; 17 slides</div>
+      <div class="ba-pdf-frame"><div class="ba-slide-scroll"><img class="ba-slide-img" src="/pdfs/slides/airbnb/s-01.jpg" loading="eager" alt="Slide 1"><img class="ba-slide-img" src="/pdfs/slides/airbnb/s-02.jpg" loading="lazy" alt="Slide 2"><img class="ba-slide-img" src="/pdfs/slides/airbnb/s-03.jpg" loading="lazy" alt="Slide 3"><img class="ba-slide-img" src="/pdfs/slides/airbnb/s-04.jpg" loading="lazy" alt="Slide 4"><img class="ba-slide-img" src="/pdfs/slides/airbnb/s-05.jpg" loading="lazy" alt="Slide 5"><img class="ba-slide-img" src="/pdfs/slides/airbnb/s-06.jpg" loading="lazy" alt="Slide 6"><img class="ba-slide-img" src="/pdfs/slides/airbnb/s-07.jpg" loading="lazy" alt="Slide 7"><img class="ba-slide-img" src="/pdfs/slides/airbnb/s-08.jpg" loading="lazy" alt="Slide 8"><img class="ba-slide-img" src="/pdfs/slides/airbnb/s-09.jpg" loading="lazy" alt="Slide 9"><img class="ba-slide-img" src="/pdfs/slides/airbnb/s-10.jpg" loading="lazy" alt="Slide 10"><img class="ba-slide-img" src="/pdfs/slides/airbnb/s-11.jpg" loading="lazy" alt="Slide 11"><img class="ba-slide-img" src="/pdfs/slides/airbnb/s-12.jpg" loading="lazy" alt="Slide 12"><img class="ba-slide-img" src="/pdfs/slides/airbnb/s-13.jpg" loading="lazy" alt="Slide 13"><img class="ba-slide-img" src="/pdfs/slides/airbnb/s-14.jpg" loading="lazy" alt="Slide 14"><img class="ba-slide-img" src="/pdfs/slides/airbnb/s-15.jpg" loading="lazy" alt="Slide 15"><img class="ba-slide-img" src="/pdfs/slides/airbnb/s-16.jpg" loading="lazy" alt="Slide 16"><img class="ba-slide-img" src="/pdfs/slides/airbnb/s-17.jpg" loading="lazy" alt="Slide 17"></div></div>
+      <div class="ba-pdf-hint">&#8596; &thinsp; swipe for slides &nbsp;·&nbsp; 17 slides</div>
 
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-left:3px solid rgba(0,212,170,0.6);border-radius:12px;padding:14px 16px;margin-bottom:16px;">
   <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--teal);text-transform:uppercase;margin-bottom:6px;">Decision This Changed</div>
@@ -1403,10 +1395,8 @@ export const v25Html: Record<string, string> = {
 
     <!-- RIGHT: PDF + KPI + Impact + Tags -->
     <div class="ba-right">
-      <div class="ba-pdf-frame">
-        <iframe src="/pdfs/EV_Charging_Presentation.pdf#toolbar=0&navpanes=0&statusbar=0&messages=0&scrollbar=1&view=FitH" title="EV Charging Station Optimization"></iframe>
-      </div>
-      <div class="ba-pdf-hint">↕ &thinsp; scroll within frame &nbsp;·&nbsp; 19 slides</div>
+      <div class="ba-pdf-frame"><div class="ba-slide-scroll"><img class="ba-slide-img" src="/pdfs/slides/ev/s-01.jpg" loading="eager" alt="Slide 1"><img class="ba-slide-img" src="/pdfs/slides/ev/s-02.jpg" loading="lazy" alt="Slide 2"><img class="ba-slide-img" src="/pdfs/slides/ev/s-03.jpg" loading="lazy" alt="Slide 3"><img class="ba-slide-img" src="/pdfs/slides/ev/s-04.jpg" loading="lazy" alt="Slide 4"><img class="ba-slide-img" src="/pdfs/slides/ev/s-05.jpg" loading="lazy" alt="Slide 5"><img class="ba-slide-img" src="/pdfs/slides/ev/s-06.jpg" loading="lazy" alt="Slide 6"><img class="ba-slide-img" src="/pdfs/slides/ev/s-07.jpg" loading="lazy" alt="Slide 7"><img class="ba-slide-img" src="/pdfs/slides/ev/s-08.jpg" loading="lazy" alt="Slide 8"><img class="ba-slide-img" src="/pdfs/slides/ev/s-09.jpg" loading="lazy" alt="Slide 9"><img class="ba-slide-img" src="/pdfs/slides/ev/s-10.jpg" loading="lazy" alt="Slide 10"><img class="ba-slide-img" src="/pdfs/slides/ev/s-11.jpg" loading="lazy" alt="Slide 11"><img class="ba-slide-img" src="/pdfs/slides/ev/s-12.jpg" loading="lazy" alt="Slide 12"><img class="ba-slide-img" src="/pdfs/slides/ev/s-13.jpg" loading="lazy" alt="Slide 13"><img class="ba-slide-img" src="/pdfs/slides/ev/s-14.jpg" loading="lazy" alt="Slide 14"><img class="ba-slide-img" src="/pdfs/slides/ev/s-15.jpg" loading="lazy" alt="Slide 15"><img class="ba-slide-img" src="/pdfs/slides/ev/s-16.jpg" loading="lazy" alt="Slide 16"><img class="ba-slide-img" src="/pdfs/slides/ev/s-17.jpg" loading="lazy" alt="Slide 17"><img class="ba-slide-img" src="/pdfs/slides/ev/s-18.jpg" loading="lazy" alt="Slide 18"><img class="ba-slide-img" src="/pdfs/slides/ev/s-19.jpg" loading="lazy" alt="Slide 19"></div></div>
+      <div class="ba-pdf-hint">&#8596; &thinsp; swipe for slides &nbsp;·&nbsp; 19 slides</div>
 
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-left:3px solid rgba(0,212,170,0.6);border-radius:12px;padding:14px 16px;margin-bottom:16px;">
   <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--teal);text-transform:uppercase;margin-bottom:6px;">Decision This Changed</div>
@@ -1620,10 +1610,8 @@ export const v25Html: Record<string, string> = {
 
     <!-- RIGHT: PDF + KPI + Tags -->
     <div class="ba-right">
-      <div class="ba-pdf-frame">
-        <iframe src="/pdfs/AI_Sales_Presentation.pdf#toolbar=0&navpanes=0&statusbar=0&messages=0&scrollbar=1&view=FitH" title="AI Sales Proposal Presentation"></iframe>
-      </div>
-      <div class="ba-pdf-hint">↕ scroll within frame · AI Sales Proposal</div>
+      <div class="ba-pdf-frame"><div class="ba-slide-scroll"><img class="ba-slide-img" src="/pdfs/slides/aisales/s-01.jpg" loading="eager" alt="Slide 1"><img class="ba-slide-img" src="/pdfs/slides/aisales/s-02.jpg" loading="lazy" alt="Slide 2"><img class="ba-slide-img" src="/pdfs/slides/aisales/s-03.jpg" loading="lazy" alt="Slide 3"><img class="ba-slide-img" src="/pdfs/slides/aisales/s-04.jpg" loading="lazy" alt="Slide 4"><img class="ba-slide-img" src="/pdfs/slides/aisales/s-05.jpg" loading="lazy" alt="Slide 5"><img class="ba-slide-img" src="/pdfs/slides/aisales/s-06.jpg" loading="lazy" alt="Slide 6"></div></div>
+      <div class="ba-pdf-hint">&#8596; swipe for slides · AI Sales Proposal</div>
 
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-left:3px solid rgba(0,212,170,0.6);border-radius:12px;padding:14px 16px;margin-bottom:16px;">
   <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--teal);text-transform:uppercase;margin-bottom:6px;">Decision This Changed</div>
@@ -1939,10 +1927,8 @@ export const v25Html: Record<string, string> = {
 
     <!-- RIGHT: PDF + KPI + Impact + Tags -->
     <div class="ba-right">
-      <div class="ba-pdf-frame">
-        <iframe src="/pdfs/GT_Presentation.pdf#toolbar=0&navpanes=0&statusbar=0&messages=0&scrollbar=1&view=FitH" title="Google Trends Big Data Analytics Presentation"></iframe>
-      </div>
-      <div class="ba-pdf-hint">↕ scroll within frame · From Spikes to Signals</div>
+      <div class="ba-pdf-frame"><div class="ba-slide-scroll"><img class="ba-slide-img" src="/pdfs/slides/gt/s-01.jpg" loading="eager" alt="Slide 1"><img class="ba-slide-img" src="/pdfs/slides/gt/s-02.jpg" loading="lazy" alt="Slide 2"><img class="ba-slide-img" src="/pdfs/slides/gt/s-03.jpg" loading="lazy" alt="Slide 3"><img class="ba-slide-img" src="/pdfs/slides/gt/s-04.jpg" loading="lazy" alt="Slide 4"><img class="ba-slide-img" src="/pdfs/slides/gt/s-05.jpg" loading="lazy" alt="Slide 5"><img class="ba-slide-img" src="/pdfs/slides/gt/s-06.jpg" loading="lazy" alt="Slide 6"><img class="ba-slide-img" src="/pdfs/slides/gt/s-07.jpg" loading="lazy" alt="Slide 7"><img class="ba-slide-img" src="/pdfs/slides/gt/s-08.jpg" loading="lazy" alt="Slide 8"><img class="ba-slide-img" src="/pdfs/slides/gt/s-09.jpg" loading="lazy" alt="Slide 9"><img class="ba-slide-img" src="/pdfs/slides/gt/s-10.jpg" loading="lazy" alt="Slide 10"><img class="ba-slide-img" src="/pdfs/slides/gt/s-11.jpg" loading="lazy" alt="Slide 11"><img class="ba-slide-img" src="/pdfs/slides/gt/s-12.jpg" loading="lazy" alt="Slide 12"><img class="ba-slide-img" src="/pdfs/slides/gt/s-13.jpg" loading="lazy" alt="Slide 13"><img class="ba-slide-img" src="/pdfs/slides/gt/s-14.jpg" loading="lazy" alt="Slide 14"><img class="ba-slide-img" src="/pdfs/slides/gt/s-15.jpg" loading="lazy" alt="Slide 15"><img class="ba-slide-img" src="/pdfs/slides/gt/s-16.jpg" loading="lazy" alt="Slide 16"></div></div>
+      <div class="ba-pdf-hint">&#8596; swipe for slides · From Spikes to Signals</div>
 
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-left:3px solid rgba(0,212,170,0.6);border-radius:12px;padding:14px 16px;margin-bottom:16px;">
   <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--teal);text-transform:uppercase;margin-bottom:6px;">Decision This Changed</div>
@@ -2227,10 +2213,8 @@ export const v25Html: Record<string, string> = {
 
     <!-- RIGHT: PDF + KPI + Impact + Tableau + Recommendations + Tags -->
     <div class="ba-right">
-      <div class="ba-pdf-frame">
-        <iframe src="/pdfs/MBTA_Headway_Presentation.pdf#toolbar=0&navpanes=0&statusbar=0&messages=0&scrollbar=1&view=FitH" title="MBTA Headway Analysis Presentation"></iframe>
-      </div>
-      <div class="ba-pdf-hint">↕ scroll within frame · Headway: Analyzing MBTA Consistency</div>
+      <div class="ba-pdf-frame"><div class="ba-slide-scroll"><img class="ba-slide-img" src="/pdfs/slides/mbta-headway/s-01.jpg" loading="eager" alt="Slide 1"><img class="ba-slide-img" src="/pdfs/slides/mbta-headway/s-02.jpg" loading="lazy" alt="Slide 2"><img class="ba-slide-img" src="/pdfs/slides/mbta-headway/s-03.jpg" loading="lazy" alt="Slide 3"><img class="ba-slide-img" src="/pdfs/slides/mbta-headway/s-04.jpg" loading="lazy" alt="Slide 4"><img class="ba-slide-img" src="/pdfs/slides/mbta-headway/s-05.jpg" loading="lazy" alt="Slide 5"><img class="ba-slide-img" src="/pdfs/slides/mbta-headway/s-06.jpg" loading="lazy" alt="Slide 6"><img class="ba-slide-img" src="/pdfs/slides/mbta-headway/s-07.jpg" loading="lazy" alt="Slide 7"><img class="ba-slide-img" src="/pdfs/slides/mbta-headway/s-08.jpg" loading="lazy" alt="Slide 8"><img class="ba-slide-img" src="/pdfs/slides/mbta-headway/s-09.jpg" loading="lazy" alt="Slide 9"><img class="ba-slide-img" src="/pdfs/slides/mbta-headway/s-10.jpg" loading="lazy" alt="Slide 10"><img class="ba-slide-img" src="/pdfs/slides/mbta-headway/s-11.jpg" loading="lazy" alt="Slide 11"><img class="ba-slide-img" src="/pdfs/slides/mbta-headway/s-12.jpg" loading="lazy" alt="Slide 12"><img class="ba-slide-img" src="/pdfs/slides/mbta-headway/s-13.jpg" loading="lazy" alt="Slide 13"><img class="ba-slide-img" src="/pdfs/slides/mbta-headway/s-14.jpg" loading="lazy" alt="Slide 14"></div></div>
+      <div class="ba-pdf-hint">&#8596; swipe for slides · Headway: Analyzing MBTA Consistency</div>
 
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-left:3px solid rgba(0,212,170,0.6);border-radius:12px;padding:14px 16px;margin-bottom:16px;">
   <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--teal);text-transform:uppercase;margin-bottom:6px;">Decision This Changed</div>
@@ -2589,10 +2573,8 @@ export const v25Html: Record<string, string> = {
 
     <!-- RIGHT: PDF + KPI + Impact + Tags -->
     <div class="ba-right">
-      <div class="ba-pdf-frame">
-        <iframe src="/pdfs/Banco_Presentation.pdf#toolbar=0&navpanes=0&statusbar=0&messages=0&scrollbar=1&view=FitH" title="Customer-Centric Bank Marketing Strategies Presentation"></iframe>
-      </div>
-      <div class="ba-pdf-hint">↕ scroll within frame · Customer-Centric Bank Marketing Strategies · Team 11</div>
+      <div class="ba-pdf-frame"><div class="ba-slide-scroll"><img class="ba-slide-img" src="/pdfs/slides/banco/s-01.jpg" loading="eager" alt="Slide 1"><img class="ba-slide-img" src="/pdfs/slides/banco/s-02.jpg" loading="lazy" alt="Slide 2"><img class="ba-slide-img" src="/pdfs/slides/banco/s-03.jpg" loading="lazy" alt="Slide 3"><img class="ba-slide-img" src="/pdfs/slides/banco/s-04.jpg" loading="lazy" alt="Slide 4"><img class="ba-slide-img" src="/pdfs/slides/banco/s-05.jpg" loading="lazy" alt="Slide 5"><img class="ba-slide-img" src="/pdfs/slides/banco/s-06.jpg" loading="lazy" alt="Slide 6"><img class="ba-slide-img" src="/pdfs/slides/banco/s-07.jpg" loading="lazy" alt="Slide 7"><img class="ba-slide-img" src="/pdfs/slides/banco/s-08.jpg" loading="lazy" alt="Slide 8"><img class="ba-slide-img" src="/pdfs/slides/banco/s-09.jpg" loading="lazy" alt="Slide 9"><img class="ba-slide-img" src="/pdfs/slides/banco/s-10.jpg" loading="lazy" alt="Slide 10"><img class="ba-slide-img" src="/pdfs/slides/banco/s-11.jpg" loading="lazy" alt="Slide 11"><img class="ba-slide-img" src="/pdfs/slides/banco/s-12.jpg" loading="lazy" alt="Slide 12"><img class="ba-slide-img" src="/pdfs/slides/banco/s-13.jpg" loading="lazy" alt="Slide 13"><img class="ba-slide-img" src="/pdfs/slides/banco/s-14.jpg" loading="lazy" alt="Slide 14"><img class="ba-slide-img" src="/pdfs/slides/banco/s-15.jpg" loading="lazy" alt="Slide 15"><img class="ba-slide-img" src="/pdfs/slides/banco/s-16.jpg" loading="lazy" alt="Slide 16"><img class="ba-slide-img" src="/pdfs/slides/banco/s-17.jpg" loading="lazy" alt="Slide 17"><img class="ba-slide-img" src="/pdfs/slides/banco/s-18.jpg" loading="lazy" alt="Slide 18"><img class="ba-slide-img" src="/pdfs/slides/banco/s-19.jpg" loading="lazy" alt="Slide 19"><img class="ba-slide-img" src="/pdfs/slides/banco/s-20.jpg" loading="lazy" alt="Slide 20"><img class="ba-slide-img" src="/pdfs/slides/banco/s-21.jpg" loading="lazy" alt="Slide 21"><img class="ba-slide-img" src="/pdfs/slides/banco/s-22.jpg" loading="lazy" alt="Slide 22"><img class="ba-slide-img" src="/pdfs/slides/banco/s-23.jpg" loading="lazy" alt="Slide 23"></div></div>
+      <div class="ba-pdf-hint">&#8596; swipe for slides · Customer-Centric Bank Marketing Strategies · Team 11</div>
 
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-left:3px solid rgba(0,212,170,0.6);border-radius:12px;padding:14px 16px;margin-bottom:16px;">
   <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--teal);text-transform:uppercase;margin-bottom:6px;">Decision This Changed</div>
@@ -2834,10 +2816,8 @@ export const v25Html: Record<string, string> = {
 
     <!-- RIGHT: PDF + KPI + Impact + GTM Phases + Deliverables + Tags -->
     <div class="ba-right">
-      <div class="ba-pdf-frame">
-        <iframe src="/pdfs/ClarkSchool_Presentation.pdf#toolbar=0&navpanes=0&statusbar=0&messages=0&scrollbar=1&view=FitH" title="Clark School Link Day 2026 Presentation"></iframe>
-      </div>
-      <div class="ba-pdf-hint">↕ scroll within frame · CLARK ANYWHERE · Link Day 2026 · 15 slides</div>
+      <div class="ba-pdf-frame"><div class="ba-slide-scroll"><img class="ba-slide-img" src="/pdfs/slides/clarkschool/s-01.jpg" loading="eager" alt="Slide 1"><img class="ba-slide-img" src="/pdfs/slides/clarkschool/s-02.jpg" loading="lazy" alt="Slide 2"><img class="ba-slide-img" src="/pdfs/slides/clarkschool/s-03.jpg" loading="lazy" alt="Slide 3"><img class="ba-slide-img" src="/pdfs/slides/clarkschool/s-04.jpg" loading="lazy" alt="Slide 4"><img class="ba-slide-img" src="/pdfs/slides/clarkschool/s-05.jpg" loading="lazy" alt="Slide 5"><img class="ba-slide-img" src="/pdfs/slides/clarkschool/s-06.jpg" loading="lazy" alt="Slide 6"><img class="ba-slide-img" src="/pdfs/slides/clarkschool/s-07.jpg" loading="lazy" alt="Slide 7"><img class="ba-slide-img" src="/pdfs/slides/clarkschool/s-08.jpg" loading="lazy" alt="Slide 8"><img class="ba-slide-img" src="/pdfs/slides/clarkschool/s-09.jpg" loading="lazy" alt="Slide 9"><img class="ba-slide-img" src="/pdfs/slides/clarkschool/s-10.jpg" loading="lazy" alt="Slide 10"><img class="ba-slide-img" src="/pdfs/slides/clarkschool/s-11.jpg" loading="lazy" alt="Slide 11"><img class="ba-slide-img" src="/pdfs/slides/clarkschool/s-12.jpg" loading="lazy" alt="Slide 12"><img class="ba-slide-img" src="/pdfs/slides/clarkschool/s-13.jpg" loading="lazy" alt="Slide 13"><img class="ba-slide-img" src="/pdfs/slides/clarkschool/s-14.jpg" loading="lazy" alt="Slide 14"><img class="ba-slide-img" src="/pdfs/slides/clarkschool/s-15.jpg" loading="lazy" alt="Slide 15"></div></div>
+      <div class="ba-pdf-hint">&#8596; swipe for slides · CLARK ANYWHERE · Link Day 2026 · 15 slides</div>
 
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-left:3px solid rgba(0,212,170,0.6);border-radius:12px;padding:14px 16px;margin-bottom:16px;">
   <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--teal);text-transform:uppercase;margin-bottom:6px;">Decision This Changed</div>

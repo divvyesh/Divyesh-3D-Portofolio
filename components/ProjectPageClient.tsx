@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Link from 'next/link'
 import { Project } from '@/data/projects'
 import { v25Html } from '@/data/v25Html'
@@ -82,8 +82,28 @@ function SectionLabel({ icon, label, color = 'var(--glass-low)' }: { icon: React
   )
 }
 
-function SlideViewer({ pdfUrl }: { pdfUrl: string }) {
+// Renders pre-rendered slide-page images in a native horizontal scroll-snap
+// carousel instead of embedding the PDF in an iframe. Mobile browsers' built-in
+// PDF viewers ignore #page=/#view=FitH and render at their own default zoom,
+// leaving the slide cropped with no reliable way to reach other pages — images
+// sidestep that entirely and work identically on every device.
+function SlideViewer({ images, pdfUrl }: { images: string[]; pdfUrl?: string }) {
   const [page, setPage] = useState(1)
+  const scrollerRef = useRef<HTMLDivElement>(null)
+
+  function goTo(p: number) {
+    const clamped = Math.max(1, Math.min(images.length, p))
+    const el = scrollerRef.current
+    if (el) el.scrollTo({ left: (clamped - 1) * el.clientWidth, behavior: 'smooth' })
+    setPage(clamped)
+  }
+
+  function handleScroll() {
+    const el = scrollerRef.current
+    if (!el || el.clientWidth === 0) return
+    setPage(Math.round(el.scrollLeft / el.clientWidth) + 1)
+  }
+
   const btnStyle: React.CSSProperties = {
     position: 'absolute', top: '50%', transform: 'translateY(-50%)',
     width: '36px', height: '36px', borderRadius: '50%',
@@ -94,23 +114,35 @@ function SlideViewer({ pdfUrl }: { pdfUrl: string }) {
   }
   return (
     <div>
-      <div className="slide-frame" style={{ position: 'relative', borderRadius: '14px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)', height: 'clamp(300px, 55vw, 500px)', background: 'rgba(6,7,13,0.6)' }}>
-        <iframe key={page} className="slide-frame-iframe" src={`${pdfUrl}#page=${page}&toolbar=0&navpanes=0&statusbar=0&view=FitH`} title="Project slides" style={{ width: '100%', height: '100%', border: 'none' }} />
-        <button onClick={() => setPage(p => Math.max(1, p - 1))} aria-label="Previous" style={{ ...btnStyle, left: '12px' }}>‹</button>
-        <button onClick={() => setPage(p => p + 1)} aria-label="Next" style={{ ...btnStyle, right: '12px' }}>›</button>
+      <div style={{ position: 'relative', borderRadius: '14px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)', height: 'clamp(300px, 55vw, 500px)', background: 'rgba(6,7,13,0.6)' }}>
+        <div
+          ref={scrollerRef}
+          onScroll={handleScroll}
+          className="no-scrollbar"
+          style={{ display: 'flex', width: '100%', height: '100%', overflowX: 'auto', scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch' }}
+        >
+          {images.map((src, i) => (
+            <img
+              key={src}
+              src={src}
+              alt={`Slide ${i + 1}`}
+              loading={i === 0 ? 'eager' : 'lazy'}
+              style={{ flex: '0 0 100%', width: '100%', height: '100%', objectFit: 'contain', background: '#0b0b12', scrollSnapAlign: 'start', scrollSnapStop: 'always', userSelect: 'none' }}
+            />
+          ))}
+        </div>
+        <button onClick={() => goTo(page - 1)} aria-label="Previous" style={{ ...btnStyle, left: '12px' }}>‹</button>
+        <button onClick={() => goTo(page + 1)} aria-label="Next" style={{ ...btnStyle, right: '12px' }}>›</button>
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '8px' }}>
-        <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '10px', color: 'var(--glass-low)' }}>← → navigate slides</span>
-        <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '10px', color: 'var(--glass-low)' }}>Slide {page}</span>
+        <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '10px', color: 'var(--glass-low)' }}>Swipe or use arrows to navigate</span>
+        <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '10px', color: 'var(--glass-low)' }}>Slide {page} / {images.length}</span>
       </div>
-      {/* Mobile PDF renderers ignore the #view=FitH fragment and default to a
-          zoomed/cropped view. Force the whole slide into frame the same way
-          the live-app embed does: render oversized, then scale back down. */}
-      <style>{`
-        @media (max-width: 640px) {
-          .slide-frame-iframe { position: absolute !important; top: 0; left: 0; width: 222% !important; height: 222% !important; transform: scale(0.45); transform-origin: top left; }
-        }
-      `}</style>
+      {pdfUrl && (
+        <a href={pdfUrl} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', marginTop: '6px', fontFamily: 'var(--font-mono, monospace)', fontSize: '10px', color: 'var(--accent)', textDecoration: 'none' }}>
+          Open full PDF &#8599;
+        </a>
+      )}
     </div>
   )
 }
@@ -363,18 +395,18 @@ export default function ProjectPageClient({ project, prev, next }: { project: Pr
       </div>
 
       {/* Content — slides/live app pinned to the right, like the v25 project breakdowns (Newdia, British Airways, Airbnb) */}
-      {(project.pdfUrl || project.embedUrl) ? (
+      {(project.slideImages || project.embedUrl) ? (
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_380px] gap-5 items-start">
           <div>{middleSections}</div>
           <div className="lg:sticky order-first lg:order-none" style={{ top: '100px' }}>
-            {project.pdfUrl && (
+            {project.slideImages && (
               <>
                 <SectionLabel icon={<SlidesIcon />} label="Presentation Slides" color="var(--glass-mid)" />
-                <SlideViewer pdfUrl={project.pdfUrl} />
+                <SlideViewer images={project.slideImages} pdfUrl={project.pdfUrl} />
               </>
             )}
             {project.embedUrl && (
-              <div style={{ marginTop: project.pdfUrl ? '20px' : 0 }}>
+              <div style={{ marginTop: project.slideImages ? '20px' : 0 }}>
                 <SectionLabel icon={<ToolsIcon />} label="Live App" color="var(--glass-mid)" />
                 <LiveEmbed embedUrl={project.embedUrl} />
               </div>
