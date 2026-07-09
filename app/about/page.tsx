@@ -133,41 +133,47 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Photo roadmap — the same journey, in pictures */}
-        <div className="mb-20">
-          <div className="font-mono text-[12px] uppercase tracking-[0.12em] mb-4" style={{ color: 'var(--text-low)' }}>
-            The Roadmap, In Pictures
-          </div>
-          <h2
-            className="font-display mb-6"
-            style={{ fontSize: 'clamp(24px, 3.2vw, 34px)', color: 'var(--text-hi)', fontWeight: 400, maxWidth: '36ch' }}
-          >
-            Same road. Actual frames from it.
-          </h2>
-          <div style={{ position: 'relative' }}>
-            <div
-              className="no-scrollbar"
-              style={{ display: 'flex', gap: '14px', overflowX: 'auto', paddingBottom: '20px', scrollSnapType: 'x proximity' }}
-            >
+        {/* Photo roadmap — the same journey, in pictures. Full-bleed, alternating
+            left/right, one big uncropped frame at a time, all the way down. */}
+        <div
+          className="mb-20 w-screen relative left-1/2 -translate-x-1/2 px-5 sm:px-8"
+        >
+          <div className="max-w-[1300px] mx-auto">
+            <div className="max-w-4xl mx-auto">
+              <div className="font-mono text-[12px] uppercase tracking-[0.12em] mb-4" style={{ color: 'var(--text-low)' }}>
+                The Roadmap, In Pictures
+              </div>
+              <h2
+                className="font-display mb-3"
+                style={{ fontSize: 'clamp(24px, 3.2vw, 34px)', color: 'var(--text-hi)', fontWeight: 400, maxWidth: '36ch' }}
+              >
+                Same road. Actual frames from it.
+              </h2>
+              <p className="font-mono text-[11px] mb-4" style={{ color: 'var(--text-low)' }}>
+                {ROADMAP_PHOTOS.length} unfiltered frames, 2024&ndash;2026 &mdash; full size, nothing cropped out
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-14 sm:gap-20 mt-10">
               {ROADMAP_PHOTOS.map((photo, i) => {
                 const showYear = i === 0 || ROADMAP_PHOTOS[i - 1].year !== photo.year
+                const alignRight = i % 2 === 1
                 return (
-                  <div key={photo.file} style={{ flexShrink: 0, scrollSnapAlign: 'start', position: 'relative' }}>
-                    {showYear && (
-                      <div
-                        className="font-mono"
-                        style={{ position: 'absolute', top: '8px', left: '8px', zIndex: 2, fontSize: '10px', letterSpacing: '0.08em', color: '#fff', background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(6px)', padding: '3px 8px', borderRadius: '9999px' }}
-                      >
-                        {photo.year}
-                      </div>
-                    )}
-                    <div style={{ width: '150px', height: '200px', borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--line)', position: 'relative' }}>
-                      <Image
+                  <div key={photo.file} className={`flex ${alignRight ? 'justify-end' : 'justify-start'}`}>
+                    <div style={{ position: 'relative', width: 'min(680px, 92vw)' }}>
+                      {showYear && (
+                        <div
+                          className="font-mono"
+                          style={{ position: 'absolute', top: '14px', left: '14px', zIndex: 2, fontSize: '11px', letterSpacing: '0.08em', color: '#fff', background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(6px)', padding: '4px 10px', borderRadius: '9999px' }}
+                        >
+                          {photo.year}
+                        </div>
+                      )}
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
                         src={`/images/about/roadmap/${photo.file}`}
                         alt="A moment from the last two years"
-                        fill
-                        sizes="150px"
-                        style={{ objectFit: 'cover' }}
+                        style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '18px', border: '1px solid var(--line)', background: 'rgba(255,255,255,0.02)' }}
                         loading="lazy"
                       />
                     </div>
@@ -175,12 +181,7 @@ export default function AboutPage() {
                 )
               })}
             </div>
-            {/* Connecting rail, decorative — same visual language as the timeline dots below */}
-            <div style={{ position: 'absolute', bottom: '6px', left: 0, right: 0, height: '1px', background: 'var(--line)', zIndex: -1 }} aria-hidden="true" />
           </div>
-          <p className="font-mono text-[11px] mt-3" style={{ color: 'var(--text-low)' }}>
-            ← scroll → {ROADMAP_PHOTOS.length} unfiltered frames, 2024–2026
-          </p>
         </div>
 
         {/* Timeline */}
