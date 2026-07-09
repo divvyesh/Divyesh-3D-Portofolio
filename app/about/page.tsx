@@ -1,6 +1,25 @@
 import Image from 'next/image'
 import { BoldText } from '@/lib/highlight'
 
+// Chronological (EXIF-sorted), unfiltered — 2024 through 2026
+const ROADMAP_PHOTOS: { file: string; year: string }[] = [
+  { file: 'rm-01.jpg', year: '2024' }, { file: 'rm-02.jpg', year: '2024' }, { file: 'rm-03.jpg', year: '2024' },
+  { file: 'rm-04.jpg', year: '2024' }, { file: 'rm-05.jpg', year: '2024' }, { file: 'rm-06.jpg', year: '2024' },
+  { file: 'rm-07.jpg', year: '2024' }, { file: 'rm-08.jpg', year: '2025' }, { file: 'rm-09.jpg', year: '2025' },
+  { file: 'rm-10.jpg', year: '2025' }, { file: 'rm-11.jpg', year: '2025' }, { file: 'rm-12.jpg', year: '2025' },
+  { file: 'rm-13.jpg', year: '2025' }, { file: 'rm-14.jpg', year: '2025' }, { file: 'rm-15.jpg', year: '2025' },
+  { file: 'rm-16.jpg', year: '2025' }, { file: 'rm-17.jpg', year: '2025' }, { file: 'rm-18.jpg', year: '2025' },
+  { file: 'rm-19.jpg', year: '2025' }, { file: 'rm-20.jpg', year: '2025' }, { file: 'rm-21.jpg', year: '2025' },
+  { file: 'rm-22.jpg', year: '2025' }, { file: 'rm-23.jpg', year: '2025' }, { file: 'rm-24.jpg', year: '2025' },
+  { file: 'rm-25.jpg', year: '2026' }, { file: 'rm-26.jpg', year: '2026' }, { file: 'rm-27.jpg', year: '2026' },
+  { file: 'rm-28.jpg', year: '2026' }, { file: 'rm-29.jpg', year: '2026' }, { file: 'rm-30.jpg', year: '2026' },
+  { file: 'rm-31.jpg', year: '2026' }, { file: 'rm-32.jpg', year: '2026' }, { file: 'rm-33.jpg', year: '2026' },
+  { file: 'rm-34.jpg', year: '2026' }, { file: 'rm-35.jpg', year: '2026' }, { file: 'rm-36.jpg', year: '2026' },
+  { file: 'rm-37.jpg', year: '2026' }, { file: 'rm-38.jpg', year: '2026' }, { file: 'rm-39.jpg', year: '2026' },
+  { file: 'rm-40.jpg', year: '2026' }, { file: 'rm-41.jpg', year: '2026' }, { file: 'rm-42.jpg', year: '2026' },
+  { file: 'rm-43.jpg', year: '2026' },
+]
+
 export default function AboutPage() {
   const timeline = [
     { year: '2022–23', role: 'GTM Analyst', company: 'Sumedha IT', desc: 'Semiconductor training GTM. Stakeholder in CYIENT acquisition.' },
@@ -112,6 +131,56 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Photo roadmap — the same journey, in pictures */}
+        <div className="mb-20">
+          <div className="font-mono text-[12px] uppercase tracking-[0.12em] mb-4" style={{ color: 'var(--text-low)' }}>
+            The Roadmap, In Pictures
+          </div>
+          <h2
+            className="font-display mb-6"
+            style={{ fontSize: 'clamp(24px, 3.2vw, 34px)', color: 'var(--text-hi)', fontWeight: 400, maxWidth: '36ch' }}
+          >
+            Same road. Actual frames from it.
+          </h2>
+          <div style={{ position: 'relative' }}>
+            <div
+              className="no-scrollbar"
+              style={{ display: 'flex', gap: '14px', overflowX: 'auto', paddingBottom: '20px', scrollSnapType: 'x proximity' }}
+            >
+              {ROADMAP_PHOTOS.map((photo, i) => {
+                const showYear = i === 0 || ROADMAP_PHOTOS[i - 1].year !== photo.year
+                return (
+                  <div key={photo.file} style={{ flexShrink: 0, scrollSnapAlign: 'start', position: 'relative' }}>
+                    {showYear && (
+                      <div
+                        className="font-mono"
+                        style={{ position: 'absolute', top: '8px', left: '8px', zIndex: 2, fontSize: '10px', letterSpacing: '0.08em', color: '#fff', background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(6px)', padding: '3px 8px', borderRadius: '9999px' }}
+                      >
+                        {photo.year}
+                      </div>
+                    )}
+                    <div style={{ width: '150px', height: '200px', borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--line)', position: 'relative' }}>
+                      <Image
+                        src={`/images/about/roadmap/${photo.file}`}
+                        alt="A moment from the last two years"
+                        fill
+                        sizes="150px"
+                        style={{ objectFit: 'cover' }}
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+            {/* Connecting rail, decorative — same visual language as the timeline dots below */}
+            <div style={{ position: 'absolute', bottom: '6px', left: 0, right: 0, height: '1px', background: 'var(--line)', zIndex: -1 }} aria-hidden="true" />
+          </div>
+          <p className="font-mono text-[11px] mt-3" style={{ color: 'var(--text-low)' }}>
+            ← scroll → {ROADMAP_PHOTOS.length} unfiltered frames, 2024–2026
+          </p>
         </div>
 
         {/* Timeline */}
