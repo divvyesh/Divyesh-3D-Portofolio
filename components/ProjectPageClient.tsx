@@ -331,7 +331,7 @@ export default function ProjectPageClient({ project, prev, next }: { project: Pr
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(120px, 100%), 1fr))', gap: '10px' }}>
             {project.kpis.map((kpi, i) => (
               <div key={i} style={{ padding: '16px 10px', borderRadius: '12px', textAlign: 'center', background: 'radial-gradient(ellipse at 50% 0%, rgba(245,200,66,0.13) 0%, rgba(6,7,13,0.92) 70%)', border: '1px solid rgba(245,200,66,0.17)', boxShadow: '0 2px 20px rgba(245,200,66,0.04)' }}>
-                <div style={{ fontFamily: 'var(--font-display, serif)', fontSize: 'clamp(18px, 2.4vw, 26px)', fontWeight: 600, lineHeight: 1.1, marginBottom: '5px', background: 'linear-gradient(135deg, #f5c842 0%, #fde68a 55%, #e8a820 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{kpi.n}</div>
+                <div style={{ fontFamily: 'var(--font-display, serif)', fontSize: 'clamp(18px, 2.4vw, 26px)', fontWeight: 600, lineHeight: 1.1, marginBottom: '5px', color: '#f0c14b' }}>{kpi.n}</div>
                 <div style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.07em', color: 'rgba(245,200,66,0.48)' }}>{kpi.l}</div>
               </div>
             ))}
@@ -359,7 +359,7 @@ export default function ProjectPageClient({ project, prev, next }: { project: Pr
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(230px, 100%), 1fr))', gap: '10px' }}>
             {project.nextStepCards.map((card, i) => (
               <div key={i} style={{ ...innerCard, display: 'flex', gap: '14px' }}>
-                <div style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '18px', fontWeight: 700, lineHeight: 1, flexShrink: 0, background: 'linear-gradient(135deg, #f5c842, #fde68a)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{card.num}</div>
+                <div style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '18px', fontWeight: 700, lineHeight: 1, flexShrink: 0, color: '#f0c14b' }}>{card.num}</div>
                 <div>
                   <div style={{ fontFamily: 'var(--font-body, sans-serif)', fontWeight: 600, fontSize: '14px', marginBottom: '4px', color: 'var(--glass-hi)' }}>{card.title}</div>
                   <div style={{ fontFamily: 'var(--font-body, sans-serif)', fontSize: '13px', lineHeight: 1.5, color: 'var(--glass-mid)' }}><BoldText text={card.desc} /></div>

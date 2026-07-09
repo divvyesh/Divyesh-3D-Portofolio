@@ -28,7 +28,11 @@ function escapeRegex(s: string): string {
 }
 
 // Numbers, currency, percentages, multipliers — matches "$3.7T", "95%", "5.7x", "306%", "-23%"
-const NUM_SOURCE = String.raw`\$[\d,.]+[KMBbn+%×]?|[+-]?\d[\d,]*\.?\d*[%×]?(?:[KMB]\b)?`
+// The (?<!&#) lookbehind stops this from matching the digits inside an HTML
+// numeric entity like "&#8596;" — wrapping those digits in <strong> breaks
+// the entity syntax and makes the browser render it as literal text instead
+// of the intended character.
+const NUM_SOURCE = String.raw`(?<!&#)(?:\$[\d,.]+[KMBbn+%×]?|[+-]?\d[\d,]*\.?\d*[%×]?(?:[KMB]\b)?)`
 
 const KEYWORDS = [...PHRASES, ...ACRONYMS].sort((a, b) => b.length - a.length).map(escapeRegex)
 

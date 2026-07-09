@@ -1114,10 +1114,12 @@
       font-family: "Space Grotesk", sans-serif;
       font-size: 20px;
       font-weight: 800;
-      background: linear-gradient(138deg, #FFD700 0%, #FFA500 55%, #FF8C00 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      /* Plain solid color instead of a gradient background-clip:text trick —
+         that combo has a known iOS Safari compositing bug when stacked with
+         backdrop-filter blur elsewhere on the page (this page has many),
+         causing ghosted/duplicated text. Solid color renders correctly on
+         every device, no exceptions. */
+      color: #FFB020;
       line-height: 1;
       margin-bottom: 5px;
       display: block;
@@ -1133,13 +1135,10 @@
       display: block;
     }
 
-.v25-wrap /* All project-specific KPI number classes → gold */
+.v25-wrap /* All project-specific KPI number classes → gold (solid color, not gradient-clip-text — see note above) */
     .nc-kpi-n, .v25-wrap .sb-kpi-n, .v25-wrap .ev-kpi-n, .v25-wrap .gt-kpi-n, .v25-wrap .banco-kpi-n, .v25-wrap .mbta-kpi-n, .v25-wrap .cs-kpi-n, .v25-wrap .ab-kpi-n, .v25-wrap .sf-kpi-n {
 
-      background: linear-gradient(138deg, #FFD700 0%, #FFA500 55%, #FF8C00 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: #FFB020;
       font-family: "Space Grotesk", sans-serif;
       font-size: 20px;
       font-weight: 800;
