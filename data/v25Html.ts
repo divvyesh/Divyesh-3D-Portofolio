@@ -375,23 +375,85 @@ export const v25Html: Record<string, string> = {
   </div><!-- /ba-split -->
 
   <!-- Document Overlay Modal -->
-  <div id="nc-doc-overlay" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(3,3,10,0.92);backdrop-filter:blur(10px);">
-    <button onclick="closeDocOverlay()" style="position:absolute;top:16px;right:24px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;width:40px;height:40px;border-radius:50%;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10001;line-height:1;">✕</button>
-    <iframe id="nc-doc-frame" src="" style="position:absolute;top:56px;left:24px;width:calc(100% - 48px);height:calc(100% - 80px);border:none;border-radius:12px;background:#fff;"></iframe>
+  <div id="nc-doc-overlay" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(3,3,10,0.95);backdrop-filter:blur(10px);">
+    <button onclick="closeDocOverlay()" aria-label="Close" style="position:absolute;top:16px;right:24px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;width:40px;height:40px;border-radius:50%;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10001;line-height:1;">✕</button>
+    <div id="nc-doc-counter" style="position:absolute;top:24px;left:24px;color:#fff;font-family:monospace;font-size:12px;z-index:10001;letter-spacing:0.05em;"></div>
+    <div id="nc-doc-scroll" class="nc-doc-scroll" style="position:absolute;top:64px;left:0;right:0;bottom:0;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;"></div>
+    <button onclick="ncDocPrev()" aria-label="Previous page" style="position:absolute;top:50%;left:12px;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);background:rgba(6,7,13,0.75);color:#fff;font-size:22px;cursor:pointer;z-index:10001;display:flex;align-items:center;justify-content:center;">‹</button>
+    <button onclick="ncDocNext()" aria-label="Next page" style="position:absolute;top:50%;right:12px;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);background:rgba(6,7,13,0.75);color:#fff;font-size:22px;cursor:pointer;z-index:10001;display:flex;align-items:center;justify-content:center;">›</button>
   </div>
   <script>
+    var NC_DOCS = {
+      "Newdia_25.pdf": {"dir":"newdia","n":11},
+      "Newdia_Final_Presentation.pdf": {"dir":"newdia-final-presentation","n":39},
+      "Newdia_Presentation.pdf": {"dir":"newdia-presentation","n":14},
+      "Newdia_Internship_Proposal.pdf": {"dir":"newdia-internship-proposal","n":19},
+      "Newdia_Brand_Mentions.pdf": {"dir":"newdia-brand-mentions","n":11},
+      "Newdia_Consumer_Trends.pdf": {"dir":"newdia-consumer-trends","n":3},
+      "Newdia_IBIS_Report.pdf": {"dir":"newdia-i-b-i-s-report","n":6},
+      "Newdia_Interview_Transcripts.pdf": {"dir":"newdia-interview-transcripts","n":42},
+      "Newdia_Initial_Analysis.pdf": {"dir":"newdia-initial-analysis","n":14},
+      "Newdia_Mentions_Report.pdf": {"dir":"newdia-mentions-report","n":3},
+      "Newdia_Observation_Research.pdf": {"dir":"newdia-observation-research","n":6},
+      "Newdia_Online_Shopping.pdf": {"dir":"newdia-online-shopping","n":5},
+      "Newdia_Creative_Brief.pdf": {"dir":"newdia-creative-brief","n":18},
+      "Newdia_Pledge_Dia_Sponsorship.pdf": {"dir":"newdia-pledge-dia-sponsorship","n":4},
+      "Newdia_Qualtrics_Survey.pdf": {"dir":"newdia-qualtrics-survey","n":10},
+      "Newdia_Reflection_Letter.pdf": {"dir":"newdia-reflection-letter","n":8},
+      "Newdia_Reflection_Paper.pdf": {"dir":"newdia-reflection-paper","n":7},
+      "Newdia_Social_Media_Trends.pdf": {"dir":"newdia-social-media-trends","n":3},
+      "Newdia_Client_Data_Summary.pdf": {"dir":"newdia-client-data-summary","n":2},
+      "Newdia_Strategy_Framework.pdf": {"dir":"newdia-strategy-framework","n":13}
+    };
+    var ncCurrentDoc = null;
+    function ncPad(n) { return n < 10 ? '0' + n : '' + n; }
     function openDocOverlay(filename) {
-      document.getElementById('nc-doc-frame').src = filename + '#toolbar=0&navpanes=0&scrollbar=1&view=FitH';
+      var doc = NC_DOCS[filename];
+      if (!doc) return;
+      ncCurrentDoc = doc;
+      var scroll = document.getElementById('nc-doc-scroll');
+      scroll.innerHTML = '';
+      for (var i = 1; i <= doc.n; i++) {
+        var img = document.createElement('img');
+        img.src = '/pdfs/slides/' + doc.dir + '/s-' + ncPad(i) + '.jpg';
+        img.loading = i === 1 ? 'eager' : 'lazy';
+        img.alt = filename + ' page ' + i;
+        img.style.cssText = 'flex:0 0 100%;width:100%;height:100%;object-fit:contain;background:#0b0b12;scroll-snap-align:start;scroll-snap-stop:always;user-select:none;';
+        scroll.appendChild(img);
+      }
+      scroll.scrollLeft = 0;
       document.getElementById('nc-doc-overlay').style.display = 'block';
       document.body.style.overflow = 'hidden';
+      ncUpdateCounter(1, doc.n);
     }
+    function ncUpdateCounter(cur, total) {
+      document.getElementById('nc-doc-counter').textContent = cur + ' / ' + total;
+    }
+    function ncDocPrev() {
+      var s = document.getElementById('nc-doc-scroll');
+      s.scrollBy({ left: -s.clientWidth, behavior: 'smooth' });
+    }
+    function ncDocNext() {
+      var s = document.getElementById('nc-doc-scroll');
+      s.scrollBy({ left: s.clientWidth, behavior: 'smooth' });
+    }
+    (function () {
+      var s = document.getElementById('nc-doc-scroll');
+      if (!s) return;
+      s.addEventListener('scroll', function () {
+        if (!ncCurrentDoc || s.clientWidth === 0) return;
+        ncUpdateCounter(Math.round(s.scrollLeft / s.clientWidth) + 1, ncCurrentDoc.n);
+      });
+    })();
     function closeDocOverlay() {
       document.getElementById('nc-doc-overlay').style.display = 'none';
-      document.getElementById('nc-doc-frame').src = '';
+      document.getElementById('nc-doc-scroll').innerHTML = '';
+      ncCurrentDoc = null;
       document.body.style.overflow = '';
     }
     document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeDocOverlay(); });
   </script>
+  <style>.nc-doc-scroll::-webkit-scrollbar{display:none;}.nc-doc-scroll{scrollbar-width:none;}</style>
 
 
 <div style="text-align:center;margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);">
